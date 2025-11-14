@@ -1,11 +1,11 @@
 <div class="container">
     <div class="col">
         <div class="item">
-            <img src="https://cdn.pixabay.com/photo/2025/11/11/06/38/fairy-9949661_1280.jpg" alt="fasco hero" width="100%" height="100%">
+            <img src={{section.settings.image_1}} alt="fasco hero" width="100%" height="100%">
         </div>
         <div class="item item_2">
             <div class="item_2_images">
-                <img src="https://cdn.pixabay.com/photo/2025/11/11/06/38/fairy-9949661_1280.jpg" alt="fasco hero" width="100%" height="100%">
+                <img src={{section.settings.image_2}} alt="fasco hero" width="100%" height="100%">
             </div>
             <div class="item_2_content">
                 <h1>
@@ -24,12 +24,12 @@
                 </button>                
             </div>
             <div class="item_2_images">
-                <img src="https://cdn.pixabay.com/photo/2025/11/11/06/38/fairy-9949661_1280.jpg" alt="fasco hero" width="100%" height="100%">
+                <img src={{section.settings.image_3}} alt="fasco hero" width="100%" height="100%">
             </div>
 
         </div>
         <div class="item">
-            <img src="https://cdn.pixabay.com/photo/2025/11/11/06/38/fairy-9949661_1280.jpg" alt="fasco hero" width="100%" height="100%">
+            <img src={{section.settings.image_4}} alt="fasco hero" width="100%" height="100%">
         </div>
     </div>
 </div>
@@ -98,6 +98,11 @@
             "type": "image_picker",
             "id": "image_3",
             "label": "Image 3",
+        },
+        {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Image 4"
         },
         {
             "type": "text",
