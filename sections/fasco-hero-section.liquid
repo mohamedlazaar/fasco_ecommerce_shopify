@@ -1,36 +1,56 @@
+{%- style -%}
+    {%- if section.blocks.size == 1 -%}
+        .col{
+            grid-template-columns: 1f;
+        }
+    {%- elsif section.blocks.size == 2 -%}
+        .col{
+            grid-template-columns: 1fr 1fr;
+        }
+    {%- elsif section.blocks.size == 3-%}
+        .col{
+            grid-template-columns: .7fr 1fr .7fr;
+        }
+    {%- endif -%}
+{%- endstyle -%}
+
+
 <div class="container">
     <div class="col">
-        <div class="item">
-            <img src={{section.settings.image_1 | image_url}} alt="fasco hero" width="100%" height="100%">
-        </div>
-        <div class="item item_2">
-            <div class="item_2_images">
-                <img src={{section.settings.image_2 |  image_url }} alt="fasco hero" width="100%" height="100%">
-            </div>
-            <div class="item_2_content">
-                <h1>
-                    <span class="highlight">
-                        ULTIMATE
-                    </span>
-                    <span class='strong'>
-                        SALE
-                    </span>
-                </h1>
-                <p>
-                    NEW COLLECTION
-                </p>
-                <button class="button">
-                    SHOP NOW
-                </button>                
-            </div>
-            <div class="item_2_images">
-                <img src={{section.settings.image_3 | image_url}} alt="fasco hero" width="100%" height="100%">
-            </div>
+        {%- for block in section.blocks -%}
 
-        </div>
-        <div class="item">
-            <img src={{section.settings.image_4 |  image_url }} alt="fasco hero" width="100%" height="100%">
-        </div>
+           {%- if block.type == 'image' -%}
+                <div class="item">
+                    <img src={{block.settings.image | image_url}} alt={{block.settings.alt}} width="100%" height="100%">
+                </div>   
+            {%- elsif block.type == 'main_content' -%}         
+                <div class="item item_2">
+                    <div class="item_2_images">
+                        <img src={{block.settings.image_1 |  image_url }} alt="fasco hero" width="100%" height="100%">
+                    </div>
+                    <div class="item_2_content">
+                        <h1>
+                            <span class="highlight">
+                               {{block.settings.title}}
+                            </span>
+                            <span class='strong'>
+                                {{block.settings.subtitle}}
+                            </span>
+                        </h1>
+                        <p>
+                           {{block.settings.paragraph}}
+                        </p>
+                        <a href={{block.settings.button_url}} class="button">
+                            {{block.settings.button_text}}
+                        </a>                
+                    </div>
+                    <div class="item_2_images">
+                        <img src={{section.settings.image_2 | image_url}} alt="fasco hero" width="100%" height="100%">
+                    </div>
+        
+                </div>
+           {% endif %}
+        {%- endfor -%}
     </div>
 </div>
 
@@ -44,7 +64,6 @@
         width:90%;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: .7fr 1fr .7fr;
         grid-template-rows: 100%;
         gap: 20px;
         height:100%;
@@ -88,46 +107,101 @@
 {
     "name": "Fasco Hero Section",
     "settings": [
-        {
-            "type": "image_picker",
-            "id": "image_1",
-            "label": "Image 1"
-        },
-        {
-            "type": "image_picker",
-            "id": "image_2",
-            "label": "Image 2"
-        },
-        {
-            "type": "image_picker",
-            "id": "image_3",
-            "label": "Image 3",
-        },
-        {
-            "type": "image_picker",
-            "id": "image_4",
-            "label": "Image 4"
-        },
-        {
-            "type": "text",
-            "id": "title",
-            "label": "Title"
-        },
-        {
-            "type": "text",
-            "id": "subtitle",
-            "label": "Subtitle"
-        },
-        {
-            "type": "text",
-            "id": "button_label",
-            "label": "Button Label"
-        },
-        {
-            "type": "url",
-            "id": "button_link",
-            "label": "Button Link"
-        }
+       
+    
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "image",
+                "limit": 2,
+                "settings": [
+                     {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                     },
+                     {
+                        "type": "richtext",
+                        "id": "image_alt",
+                        "label": "Image Alt"
+                     },
+                     {
+                        "type": "color_background",
+                        "id": "background_color_img",
+                        "label": "Background Color",
+                        "default": "rgb(0,0,0)"
+                     }
+                ]
+
+            },
+            {
+                "type": "main_content",
+                "name": "Main Content",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image_1",
+                        "label": "Image 1"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image_2",
+                        "label": "Image 2"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "subtitle",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "paragraph",
+                        "label": "Paragraph"
+                    },
+                    {
+                        "type": "color_background",
+                        "id": "background_color_content",
+                        "label": "Background Color",
+                        "default": "rgb(0,0,0)"
+                    },
+                    {
+                        "type": "color",
+                        "id": "color_content",
+                        "label": "Texts Color",
+                        "default": "#000000"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text",
+                        "label": "Text Button"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_url",
+                        "label": "Button Url"
+                    },
+                    {
+                        "type": "color_background",
+                        "id": "button_background",
+                        "label": "Button Background Color",
+                        "default": "rgb(0,0,0)"
+                    },
+                    {
+                        "type": "color",
+                        "id": "button_color",
+                        "label": "Button Text Color",
+                        "default": "#ffffff"
+                    }
+                ]
+
+            }
         ],
         "presets": [
             {
