@@ -79,7 +79,7 @@
     "fasco_hero_section_kLpn8J": {
       "type": "fasco-hero-section",
       "blocks": {
-        "image_qwCmLC": {
+        "image_mpfpYB": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/1.png",
@@ -87,14 +87,14 @@
             "background_color_img": "rgb(0,0,0)"
           }
         },
-        "main_content_En96pT": {
+        "main_content_BHHA8F": {
           "type": "main_content",
           "settings": {
             "image_1": "shopify://shop_images/2_1.png",
             "image_2": "shopify://shop_images/2_2.png",
-            "title": "",
-            "subtitle": "",
-            "paragraph": "",
+            "title": "<h1>ULTIMATE</h1>",
+            "subtitle": "<p>SALE</p>",
+            "paragraph": "<p>NEW COLLECTION</p>",
             "background_color_content": "rgb(0,0,0)",
             "color_content": "#000000",
             "button_text": "",
@@ -103,7 +103,7 @@
             "button_color": "#ffffff"
           }
         },
-        "image_CyJeaB": {
+        "image_FTrkCh": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3.png",
@@ -113,9 +113,9 @@
         }
       },
       "block_order": [
-        "image_qwCmLC",
-        "main_content_En96pT",
-        "image_CyJeaB"
+        "image_mpfpYB",
+        "main_content_BHHA8F",
+        "image_FTrkCh"
       ],
       "name": "Fasco Hero Section",
       "settings": {}
