@@ -80,6 +80,10 @@
       "type": "fasco-hero-section",
       "name": "Fasco Hero Section",
       "settings": {
+        "image_1": "shopify://shop_images/1.png",
+        "image_2": "shopify://shop_images/2_1.png",
+        "image_3": "shopify://shop_images/2_2.png",
+        "image_4": "shopify://shop_images/3.png",
         "title": "",
         "subtitle": "",
         "button_label": "",
