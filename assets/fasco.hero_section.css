@@ -1,0 +1,143 @@
+.container{
+    width:100vw;
+    padding: 20px 0;
+    height: 90svh
+}
+.col{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 100%;
+    gap:10px;
+    height:100%
+}
+.item{
+    /* background-color: #E0E0E0; */
+    border-radius:10px;
+    overflow: hidden;
+}
+.item-img{
+    display: flex;
+    align-items:end;
+
+}
+.item-img svg{
+    height:100%;
+}
+.item-img img{
+    height: 70%;
+}
+.item_2{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px
+}
+.item_2_images{
+    height: 150px;
+    max-width: 426px;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: end;
+}
+
+img{
+    object-fit: contain;
+}
+.item_2_content{
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.item_2_images{
+    border-radius: 10px;
+}
+.item_2_content > *{
+    margin: 0;
+    text-align: center;
+}
+.highlight > *{
+    font-size: clamp(30px, 6vw, 70px);
+    line-height: 100%;
+    letter-spacing: -4px;
+    margin: 0;
+    text-align: center;
+}
+.strong > *{
+    margin: 0;
+    font-size: clamp(50px, 10vw, 120px);
+    line-height: 100%;
+    letter-spacing: -4px;
+    font-weight: bold;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-text-stroke: 1px black;
+    text-align: center;
+}
+.para > * {
+    margin: 0 ;
+    font-size: clamp(12px, 5vw, 20px);
+    letter-spacing: 10px;
+    text-align: center;
+}
+.item_2_content a{
+    text-decoration: none;
+    color: white;
+    background: black;
+    width: 207px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 10px auto
+ }
+@media screen and (min-width: 1920px) {
+    .col{
+        width: 60%
+    }
+    .strong > *{
+       font-size: 91px
+    }
+    .highlight > *{
+        font-size: 187px;
+    }
+    .para > *{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 1024px){
+    .item_2_images img{
+        object-fit: fill;
+    }
+}
+@media screen and (max-width: 768px){
+    .container{
+        min-height: 80svh;
+        height: auto;
+    }
+    .col{
+        grid-template-columns: 1fr;
+        grid-template-rows: 150px auto 150px;
+    }
+    .item-img{
+        align-items: start;
+    }
+    .item-img img{
+        height: 100%;
+    }
+    .item{
+        width: 100%;
+    }
+    .strong > *{
+       font-size: 120px;
+    }
+    .highlight > *{
+        font-size: 80px;
+    }
+}
