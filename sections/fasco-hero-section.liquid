@@ -169,7 +169,7 @@
     gsap.registerPlugin(SplitText);
     let tl = gsap.timeline();
     const images = gsap.utils.toArray('.item img');
-    const highlight = document.querySelector('.item_2_content')
+    const highlight = document.querySelector('.highlight')
     let mySplitHighlight = new SplitText(highlight, {type:'chars'})
 
     tl.fromTo(mySplitHighlight.chars, {x:'-100%', opacity: 0}, {x:'0%', opacity:'1', textAlign:'center', duration: 1}, .5)
