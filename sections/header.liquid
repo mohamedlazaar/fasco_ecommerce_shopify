@@ -304,7 +304,7 @@
       </a>
     </div>
   </header>
-</scrio{{ header_tag }}>
+</{{ header_tag }}>
 
 {%- if settings.cart_type == 'notification' -%}
   {%- render 'cart-notification',
@@ -448,7 +448,7 @@
     ],
     "url": {{ request.origin | append: page.url | json }}
   }
-</script>
+</scrip>
 
 {%- if request.page_type == 'index' -%}
   {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
