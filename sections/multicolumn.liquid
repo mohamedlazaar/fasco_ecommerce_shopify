@@ -189,7 +189,7 @@
     </div>
   </div>
 </div>
-<script>
+{% comment %} <script>
   document.addEventListener("DOMContentLoaded", ()=>{
      gsap.registerPlugin(ScrollTrigger);
      const container = document.querySelector('.multicolumn')
@@ -207,7 +207,7 @@
       tl.fromTo(element, {y:'-100%', opacity: 0}, {y:"0", opacity:1, ease:'power1.inOut'}, i )
      })
   })
-</script>
+</script> {% endcomment %}
 {% schema %}
 {
   "name": "t:sections.multicolumn.name",
