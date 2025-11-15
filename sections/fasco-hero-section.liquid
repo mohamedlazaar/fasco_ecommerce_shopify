@@ -88,13 +88,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
-    let tl = gsap.timeline({
-       scrollTrigger: {
-        trigger: ".container",       // the whole section
-        start: "top top",              // animation starts early
-        toggleActions: "play reverse play reverse", 
-        }
-    });
+    let tl = gsap.timeline();
     const images = gsap.utils.toArray('#section_{{section.id}} .item img');
     const highlight = document.querySelector('.item_2_content')
 
