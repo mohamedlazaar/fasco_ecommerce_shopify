@@ -3609,4 +3609,16 @@ details-disclosure > details {
   font-size: 16px;
   color: #484848;
 }
+.login__{
+  text-decoration: none;
+  color:#484848;
+  font-size: 16px;
+}
+.sign_up{
+  text-decoration: none;
+  color: #fff;
+  background-color:#000;
+  font-size: 16px;
+  padding: 10px 30px;
+}
 /* end fasco css changes */
