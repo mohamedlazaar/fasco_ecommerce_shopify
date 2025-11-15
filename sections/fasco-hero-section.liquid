@@ -164,19 +164,23 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  gsap.fromTo(
-    ".item img",
-    { opacity: 0, y: "100%" },
-    {
-      opacity: 1,
-      y: "0%",
-      duration: 1.5,
-      stagger: 0.4, // <-- delay between each image
-      ease: "power2.out"
-    }
-  );
-});
+    document.addEventListener('DOMContentLoaded', () => {
+    let tl = gsap.timeline();
+    const images = gsap.utils.toArray('.item img');
+
+    images.forEach((image, i) => {
+        tl.fromTo(
+        image,
+        { opacity: 0, y: "100%" },
+        {
+            opacity: 1,
+            y: "0%",
+            duration: 1.5
+        },
+        i * 0.4 // <-- start time offset for each image
+        );
+    });
+    });
 </script>
 
 
