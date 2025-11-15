@@ -3602,7 +3602,7 @@ details-disclosure > details {
 
 
 /* start fasco css changes */
-.list-menu li .a{
+.list-menu li a{
   font-size: 16px;
   color: #484848;
 }
