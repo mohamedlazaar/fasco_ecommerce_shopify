@@ -14,45 +14,6 @@
     {%- endif -%}
 
 {%- endstyle -%}
-
-
-<div class="container">
-    <div class="col">
-        {%- for block in section.blocks -%}
-
-           {%- if block.type == 'image' -%}
-                <div class="item item-img">
-                    <img src={{block.settings.image | image_url}}  width="100%" height="100%">
-                </div>   
-            {%- elsif block.type == 'main_content' -%}         
-                <div class="item item_2">
-                    <div class="item_2_images">
-                        <img src={{block.settings.image_1 |  image_url }} alt="fasco hero" width="100%" height="100%">
-                    </div>
-                    <div class="item_2_content">
-                            <span class="highlight">
-                               {{block.settings.title}}
-                            </span>
-                            <span class='strong'>
-                                {{block.settings.subtitle}}
-                            </span>
-                        <p>
-                           {{block.settings.paragraph}}
-                        </p>
-                        <a href={{block.settings.button_url}} class="button">
-                            {{block.settings.button_text}}
-                        </a>                
-                    </div>
-                    <div class="item_2_images">
-                        <img src={{block.settings.image_2 | image_url}} alt="fasco hero" width="100%" height="100%">
-                    </div>
-        
-                </div>
-           {% endif %}
-        {%- endfor -%}
-    </div>
-</div>
-
 <style>
  
     .container{
@@ -163,110 +124,172 @@
     }
 </style>
 
-{% schema %}
-{
-    "name": "Fasco Hero Section",
-    "settings": [
-       
-    
-        ],
-        "blocks": [
-            {
-                "type": "image",
-                "name": "image",
-                "limit": 2,
-                "settings": [
-                     {
-                        "type": "image_picker",
-                        "id": "image",
-                        "label": "Image"
-                     },
-                     {
-                        "type": "richtext",
-                        "id": "image_alt",
-                        "label": "Image Alt"
-                     },
-                     {
-                        "type": "color_background",
-                        "id": "background_color_img",
-                        "label": "Background Color",
-                        "default": "rgb(0,0,0)"
-                     }
-                ]
+<div class="container">
+    <div class="col">
+        {%- for block in section.blocks -%}
 
+           {%- if block.type == 'image' -%}
+                <div class="item item-img">
+                    <img src={{block.settings.image | image_url}}  width="100%" height="100%">
+                </div>   
+            {%- elsif block.type == 'main_content' -%}         
+                <div class="item item_2">
+                    <div class="item_2_images">
+                        <img src={{block.settings.image_1 |  image_url }} alt="fasco hero" width="100%" height="100%">
+                    </div>
+                    <div class="item_2_content">
+                            <span class="highlight">
+                               {{block.settings.title}}
+                            </span>
+                            <span class='strong'>
+                                {{block.settings.subtitle}}
+                            </span>
+                        <p>
+                           {{block.settings.paragraph}}
+                        </p>
+                        <a href={{block.settings.button_url}} class="button">
+                            {{block.settings.button_text}}
+                        </a>                
+                    </div>
+                    <div class="item_2_images">
+                        <img src={{block.settings.image_2 | image_url}} alt="fasco hero" width="100%" height="100%">
+                    </div>
+        
+                </div>
+           {% endif %}
+        {%- endfor -%}
+    </div>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event)=>{
+        // register the effect with GSAP:
+            gsap.registerEffect({
+            name: "fade",
+            effect: (targets, config) => {
+                return gsap.to(targets, { duration: config.duration, opacity: 0 });
             },
-            {
-                "type": "main_content",
-                "name": "Main Content",
-                "limit": 1,
-                "settings": [
-                    {
-                        "type": "image_picker",
-                        "id": "image_1",
-                        "label": "Image 1"
-                    },
-                    {
-                        "type": "image_picker",
-                        "id": "image_2",
-                        "label": "Image 2"
-                    },
-                    {
-                        "type": "richtext",
-                        "id": "title",
-                        "label": "Title"
-                    },
-                    {
-                        "type": "richtext",
-                        "id": "subtitle",
-                        "label": "Subtitle"
-                    },
-                    {
-                        "type": "richtext",
-                        "id": "paragraph",
-                        "label": "Paragraph"
-                    },
-                    {
-                        "type": "color_background",
-                        "id": "background_color_content",
-                        "label": "Background Color",
-                        "default": "rgb(0,0,0)"
-                    },
-                    {
-                        "type": "color",
-                        "id": "color_content",
-                        "label": "Texts Color",
-                        "default": "#000000"
-                    },
-                    {
-                        "type": "text",
-                        "id": "button_text",
-                        "label": "Text Button"
-                    },
-                    {
-                        "type": "url",
-                        "id": "button_url",
-                        "label": "Button Url"
-                    },
-                    {
-                        "type": "color_background",
-                        "id": "button_background",
-                        "label": "Button Background Color",
-                        "default": "rgb(0,0,0)"
-                    },
-                    {
-                        "type": "color",
-                        "id": "button_color",
-                        "label": "Button Text Color",
-                        "default": "#ffffff"
-                    }
-                ]
+            defaults: { duration: 2 }, //defaults get applied to any "config" object passed to the effect
+            extendTimeline: true, //now you can call the effect directly on any GSAP timeline to have the result immediately inserted in the position you define (default is sequenced at the end)
+            });
 
-            }
-        ],
-        "presets": [
-            {
-                "name": "Fasco Hero Section"
-            }
-        ]
-}
+            // now we can use it like this:
+            gsap.effects.fade(".item-img img");
+
+            // or directly on timelines:
+            let tl = gsap.timeline();
+            tl.fade(".item img", { duration: 3 })
+            .fade(".item_2", { duration: 1 }, "+=2")
+            })
+</script>
+
+
+{% schema %}
+    {
+        "name": "Fasco Hero Section",
+        "settings": [
+        
+        
+            ],
+            "blocks": [
+                {
+                    "type": "image",
+                    "name": "image",
+                    "limit": 2,
+                    "settings": [
+                        {
+                            "type": "image_picker",
+                            "id": "image",
+                            "label": "Image"
+                        },
+                        {
+                            "type": "richtext",
+                            "id": "image_alt",
+                            "label": "Image Alt"
+                        },
+                        {
+                            "type": "color_background",
+                            "id": "background_color_img",
+                            "label": "Background Color",
+                            "default": "rgb(0,0,0)"
+                        }
+                    ]
+
+                },
+                {
+                    "type": "main_content",
+                    "name": "Main Content",
+                    "limit": 1,
+                    "settings": [
+                        {
+                            "type": "image_picker",
+                            "id": "image_1",
+                            "label": "Image 1"
+                        },
+                        {
+                            "type": "image_picker",
+                            "id": "image_2",
+                            "label": "Image 2"
+                        },
+                        {
+                            "type": "richtext",
+                            "id": "title",
+                            "label": "Title"
+                        },
+                        {
+                            "type": "richtext",
+                            "id": "subtitle",
+                            "label": "Subtitle"
+                        },
+                        {
+                            "type": "richtext",
+                            "id": "paragraph",
+                            "label": "Paragraph"
+                        },
+                        {
+                            "type": "color_background",
+                            "id": "background_color_content",
+                            "label": "Background Color",
+                            "default": "rgb(0,0,0)"
+                        },
+                        {
+                            "type": "color",
+                            "id": "color_content",
+                            "label": "Texts Color",
+                            "default": "#000000"
+                        },
+                        {
+                            "type": "text",
+                            "id": "button_text",
+                            "label": "Text Button"
+                        },
+                        {
+                            "type": "url",
+                            "id": "button_url",
+                            "label": "Button Url"
+                        },
+                        {
+                            "type": "color_background",
+                            "id": "button_background",
+                            "label": "Button Background Color",
+                            "default": "rgb(0,0,0)"
+                        },
+                        {
+                            "type": "color",
+                            "id": "button_color",
+                            "label": "Button Text Color",
+                            "default": "#ffffff"
+                        }
+                    ]
+
+                }
+            ],
+            "presets": [
+                {
+                    "name": "Fasco Hero Section"
+                }
+            ]
+    }
 {% endschema %}
