@@ -9,7 +9,7 @@
             }
         {%- elsif section.blocks.size == 3 -%}
             .col{
-                grid-template-columns: 28% 40% 28%;
+                grid-template-columns: 1fr 2fr 1fr;
             }
     {%- endif -%}
     {%- for block in section.blocks -%}
@@ -157,6 +157,9 @@
         }
         .item-img img{
             height: 100%;
+        }
+        .item_2_images img{
+            object-fit: fill;
         }
         .item{
             width: 100%;
