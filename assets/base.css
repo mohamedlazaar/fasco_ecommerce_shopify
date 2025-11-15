@@ -3599,3 +3599,11 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+
+/* start fasco css changes */
+.list-menu li .a{
+  font-size: 16px;
+  color: #484848;
+}
+/* end fasco css changes */
