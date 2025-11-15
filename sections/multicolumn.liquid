@@ -190,24 +190,32 @@
   </div>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", ()=>{
-     gsap.registerPlugin(ScrollTrigger);
-     const container = document.querySelector('.multicolumn')
-     const li = document.querySelectorAll('.multicolumn-list__item')
-     let tl = gsap.timeline({
-       scrollTrigger:{
-        trigger: container,
-        pin: true,
-        start:'center bottom',
-        end: '+=100',
-        scrub: 1,
-       }
-     })
-     li.forEach((element, i)=>{
-      tl.fromTo(element, {y:'-100%', opacity: 0}, {y:"0", opacity:1, ease:'power1.inOut'}, i )
-     })
-  })
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const items = document.querySelectorAll('.multicolumn-list__item');
+
+  items.forEach((item, i) => {
+    gsap.fromTo(item,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+          end: "top 70%",
+          scrub: false,   // smooth animation but not scroll-scrubbed
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+});
 </script>
+
 {% schema %}
 {
   "name": "t:sections.multicolumn.name",
