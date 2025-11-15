@@ -39,6 +39,7 @@
         "image_CcM3V9": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/3.png",
             "image_alt": "",
             "background_color_img": "rgb(0,0,0)"
           }
