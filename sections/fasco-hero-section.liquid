@@ -170,9 +170,9 @@
     let tl = gsap.timeline();
     const images = gsap.utils.toArray('.item img');
     const highlight = document.querySelector('.item_2_content')
-    let mySplitHighlight = new SplitText(highlight, {type:'lines'})
+    let mySplitHighlight = new SplitText(highlight, {type:'chars'})
 
-    tl.fromTo(mySplitHighlight.lines, {x:'-100%', opacity: 0}, {x:'0%', opacity:'1', textAlign:'center', duration: 1}, .5)
+    tl.fromTo(mySplitHighlight.chars, {x:'-100%', opacity: 0}, {x:'0%', opacity:'1', textAlign:'center', duration: 1}, .5)
     images.forEach((image, i) => {
         tl.fromTo(
         image,
