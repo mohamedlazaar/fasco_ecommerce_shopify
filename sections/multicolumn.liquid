@@ -189,7 +189,25 @@
     </div>
   </div>
 </div>
-
+<script>
+  document.addEventListener("DOMContentLoaded", ()=>{
+     gsap.registerPlugin(ScrollTrigger);
+     const container = document.querySelector('.multicolumn')
+     const li = document.querySelectorAll('li')
+     let tl = gsap.timeline({
+       scrollTrigger:{
+        trigger: container,
+        pin: true,
+        start:'top top',
+        end: '+=100',
+        scrub: 1,
+       }
+     })
+     li.forEach((element, i)=>{
+      tl.fromTo(element, {y:'-100%', opacity: 0}, {y:"0", opacity:1, ease:'power1.inOut'}, i )
+     })
+  })
+</script>
 {% schema %}
 {
   "name": "t:sections.multicolumn.name",
