@@ -3609,6 +3609,11 @@ details-disclosure > details {
   font-size: 16px;
   color: #484848;
 }
+.cont{
+  display: flex;
+  align-items: center;
+  gap: 20px
+}
 .login__{
   display: flex;
   align-items: center;
