@@ -279,7 +279,7 @@
               </span>
           </a>
         {%- else -%}
-          <a href="{{ routes.account_login_url }}" class="login__">Sign in</a>
+          <a href="{{ routes.account_login_url }}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">Sign in</a>
           <a href="{{ routes.account_register_url }}" class="sign_up">Sign Up</a>
         {%- endif -%}
 
