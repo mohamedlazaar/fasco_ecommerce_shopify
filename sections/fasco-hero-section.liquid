@@ -12,12 +12,7 @@
             grid-template-columns: .7fr 1fr .7fr;
         }
     {%- endif -%}
-    /* @media screen and (max-width: 767px){
-        .col{
-            grid-template-columns: 1fr;
-            grid-template-rows: .7fr 1fr .7fr;
-        }
-    } */
+
 {%- endstyle -%}
 
 
@@ -63,7 +58,7 @@
     .container{
         width:100vw;
         padding: 20px 0;
-        height: 80vh;
+        min-height: 80vh;
     }
     .col{
         width: 90%;
@@ -153,6 +148,18 @@
             width: 60%
         }
         
+    }
+    @media screen and (max-width: 767px){
+        .col{
+            grid-template-columns: 1fr;
+            grid-template-rows: 150px auto 150px;
+        }
+        .item-img{
+            align-items: start;
+        }
+        .item-img img{
+            height: 100%;
+        }
     }
 </style>
 
