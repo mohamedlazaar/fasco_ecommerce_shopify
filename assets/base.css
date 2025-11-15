@@ -73,8 +73,8 @@
   --shadow-opacity: var(--media-shadow-opacity);
   --shadow-visible: var(--media-shadow-visible);
 }
-html{
-  overflow: hidden;
+body{
+  overflow-x: hidden;
 }
 /* base */
 
