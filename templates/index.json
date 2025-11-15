@@ -122,23 +122,23 @@
         "padding_bottom": 36
       }
     },
-    "fasco_hero_section_zjNeiq": {
+    "fasco_hero_section_Ght4Ye": {
       "type": "fasco-hero-section",
       "blocks": {
-        "image_aGgNpL": {
+        "image_Mpwz8y": {
           "type": "image",
           "settings": {
             "image_alt": "",
             "background_color_img": "rgb(0,0,0)"
           }
         },
-        "main_content_mBfbMJ": {
+        "main_content_bT6pcr": {
           "type": "main_content",
           "settings": {
             "image_1_bg_color": "rgb(255,255,255)",
             "image_2_bg_color": "rgb(255, 255, 255)",
             "title": "<h2>Title</h2>",
-            "subtitle": "<h2>Subtitle</h2>",
+            "subtitle": "<h2>Sub</h2>",
             "paragraph": "<p>Add a paragraph</p>",
             "background_color_content": "rgb(0,0,0)",
             "color_content": "#ffffff",
@@ -148,7 +148,7 @@
             "button_color": "#ffffff"
           }
         },
-        "image_hHbV9h": {
+        "image_XthCxb": {
           "type": "image",
           "settings": {
             "image_alt": "",
@@ -157,9 +157,9 @@
         }
       },
       "block_order": [
-        "image_aGgNpL",
-        "main_content_mBfbMJ",
-        "image_hHbV9h"
+        "image_Mpwz8y",
+        "main_content_bT6pcr",
+        "image_XthCxb"
       ],
       "name": "Fasco Hero Section",
       "settings": {}
@@ -169,6 +169,6 @@
     "fasco_hero_section_k4C7YX",
     "image_banner",
     "featured_collection",
-    "fasco_hero_section_zjNeiq"
+    "fasco_hero_section_Ght4Ye"
   ]
 }
