@@ -189,11 +189,11 @@
     </div>
   </div>
 </div>
-{% comment %} <script>
+<script>
   document.addEventListener("DOMContentLoaded", ()=>{
      gsap.registerPlugin(ScrollTrigger);
      const container = document.querySelector('.multicolumn')
-     const li = document.querySelectorAll('li')
+     const li = document.querySelectorAll('.multicolumn-list__item')
      let tl = gsap.timeline({
        scrollTrigger:{
         trigger: container,
@@ -207,7 +207,7 @@
       tl.fromTo(element, {y:'-100%', opacity: 0}, {y:"0", opacity:1, ease:'power1.inOut'}, i )
      })
   })
-</script> {% endcomment %}
+</script>
 {% schema %}
 {
   "name": "t:sections.multicolumn.name",
