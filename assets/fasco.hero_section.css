@@ -101,10 +101,10 @@ img{
     .col{
         width: 60%
     }
-    .strong > *{
+    .highlight > *{
        font-size: 91px
     }
-    .highlight > *{
+    .strong > *{
         font-size: 187px;
     }
     .para > *{
