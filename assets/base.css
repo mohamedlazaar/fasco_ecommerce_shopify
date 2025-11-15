@@ -129,8 +129,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 @media screen and (min-width: 990px) {
   /* fasco changing the header width */
   .header:not(.drawer-menu).page-width {
-    padding-left: 15rem; 
-    padding-right: 15rem;
+    padding-left: 10rem; 
+    padding-right: 10rem;
   }
 
   .page-width--narrow {
