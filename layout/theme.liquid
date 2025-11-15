@@ -27,8 +27,16 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer="defer"></script>
 
-    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer="defer"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js" defer="defer"></script>
+
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script> 
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
