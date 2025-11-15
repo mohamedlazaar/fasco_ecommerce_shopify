@@ -204,11 +204,12 @@
     document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(SplitText);
     let tl = gsap.timeline();
-    const images = gsap.utils.toArray('.item img');
-    const highlight = document.querySelector('.highlight')
+    const images = gsap.utils.toArray(' #section_{{section.id}} .item img');
+    const highlight = document.querySelector(' #section_{{section.id}} .item_2_content')
+    console.log('highlight', highlight)
 
     let mySplitHighlight = new SplitText(highlight, {type:'chars'})
-
+    console.log("mysplithighlight", mySplitHighlight)
     // text Animation
     tl.from(mySplitHighlight.chars, {opacity: 0, y: 50, stagger: 0.05, ease: "back.out(1.7)"})
     tl
