@@ -157,7 +157,7 @@
                    
                 </div>   
             {%- elsif block.type == 'main_content' -%}         
-                <div class="item item_2" id="content__block.id">
+                <div class="item item_2" id="content__block{{block.id}}">
                     <div class="item_2_images img_1">
                         {% if block.settings.image_1 != blank %}
                             <img src={{block.settings.image_1 |  image_url }} alt="fasco hero" width="100%" height="100%">
