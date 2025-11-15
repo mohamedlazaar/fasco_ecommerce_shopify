@@ -18,8 +18,11 @@
                 background-color: {{block.settings.background_color_img}};
             }
         {%-  elsif block.type== "main_content" -%}
-            #content__block{{block.id}}{
-                background
+            #content__block{{block.id}} .img_1{
+                background-color: {{ block.settings.image_1_bg_color }}
+            }
+            #content__block{{block.id}} .img_2{
+                background-color: {{ block.settings.image_2_bg_color }}
             }
         {%- endif -%}
     {%- endfor -%}
