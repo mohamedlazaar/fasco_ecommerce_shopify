@@ -195,26 +195,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const items = document.querySelectorAll('.multicolumn-list__item');
 
-  items.forEach((item, i) => {
-    gsap.fromTo(item,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 90%",
-          end: "top 70%",
-          scrub: false,   // smooth animation but not scroll-scrubbed
-          toggleActions: "play none none reverse"
-        }
-      }, i * .4
-    );
+  gsap.from(items, {
+    opacity: 0,
+    y: 40,
+    stagger: 0.25,  // delay between each item
+    duration: 0.7,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".multicolumn",       // the whole section
+      start: "top 85%",              // animation starts early
+      toggleActions: "play none none none"
+    }
   });
 });
 </script>
+
 
 {% schema %}
 {
