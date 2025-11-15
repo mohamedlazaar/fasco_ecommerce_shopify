@@ -12,6 +12,11 @@
             grid-template-columns: .7fr 1fr .7fr;
         }
     {%- endif -%}
+    @media screen and (max-width: 767px){
+        .col{
+            grid-template-columns: 1fr
+        }
+    }
 {%- endstyle -%}
 
 
@@ -120,7 +125,7 @@
     }
     .strong h2{
         margin: 0;
-        font-size: clamp(60px, 18vw, 187px);
+        font-size: clamp(60px, 15vw, 187px);
         line-height: 100%;
         letter-spacing: -4px;
         font-weight: bold;
