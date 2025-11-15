@@ -172,7 +172,10 @@
     const highlight = document.querySelector('.highlight')
     let mySplitHighlight = new SplitText(highlight, {type:'chars'})
 
-    tl.fromTo(mySplitHighlight.chars, {x:'-100%', opacity: 0}, {x:'0%', opacity:'1', textAlign:'center', duration: 1}, .5)
+    tl.from(mySplitHighlight.chars, {opacity: 0,
+        y: 50,
+        stagger: 0.05,
+        ease: "back.out(1.7)"})
     images.forEach((image, i) => {
         tl.fromTo(
         image,
