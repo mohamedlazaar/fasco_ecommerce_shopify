@@ -177,14 +177,10 @@
         stagger: 0.05,
         ease: "back.out(1.7)"})
     images.forEach((image, i) => {
-        tl.fromTo(
+        tl.from(
         image,
-        { opacity: 0, y: "100%" },
-        {
-            opacity: 1,
-            y: "0%",
-            duration: 1
-        },
+        { opacity: 0, y: "100%", ease: "back.out(1.7)" },
+       
         i * 0.4 // <-- start time offset for each image
         )
     });
