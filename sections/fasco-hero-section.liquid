@@ -88,7 +88,13 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
-    let tl = gsap.timeline();
+    let tl = gsap.timeline({
+       scrollTrigger: {
+        trigger: ".container",       // the whole section
+        start: "top top",              // animation starts early
+        toggleActions: "play reverse play reverse", 
+        }
+    });
     const images = gsap.utils.toArray('#section_{{section.id}} .item img');
     const highlight = document.querySelector('.item_2_content')
 
@@ -99,12 +105,7 @@
 
     //  images Animation
     images.forEach((image, i) => {
-        tl.from(image, { opacity: 0, x: "100%", ease: "back.out(1.7)", duration:1,       
-        scrollTrigger: {
-        trigger: ".container",       // the whole section
-        start: "top top",              // animation starts early
-        toggleActions: "play reverse play reverse", 
-        } }, i * 0.4 )
+        tl.fromTo(image, { opacity: 0, x: "100%" }, {opacity:1, x:'0', ease: "back.out(1.7)", duration:1}, i * 0.4 )
     });
 });
 </script>
