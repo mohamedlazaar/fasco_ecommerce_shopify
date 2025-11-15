@@ -172,14 +172,14 @@
     const highlight = document.querySelector('.item_2_content')
     let mySplitHighlight = new SplitText(highlight, {type:'lines'})
 
-    tl.fromTo(mySplitHighlight.lines, {x:'-100%', opacity: 0}, {x:'0', opacity:'1', duration: 1})
+    tl.fromTo(mySplitHighlight.lines, {x:'-100%', opacity: 0}, {x:'50%', opacity:'1', duration: 1})
     images.forEach((image, i) => {
         tl.fromTo(
         image,
         { opacity: 0, y: "100%" },
         {
             opacity: 1,
-            y: "100%",
+            y: "0%",
             duration: 1
         },
         i * 0.4 // <-- start time offset for each image
