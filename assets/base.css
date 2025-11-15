@@ -3609,6 +3609,20 @@ details-disclosure > details {
   font-size: 16px;
   color: #484848;
 }
+.login__{
+  display: flex;
+  align-items: center;
+  padding:1.2rem;
+  text-decoration: none;
+  color:#484848;
+}
+.login__ span{
+  transition: text-decoration .5s ease;
+}
+.login__:hover span{
+  text-decoration: underline;
+  text-underline-offset: .3rem;
+}
 .sign_up{
   text-decoration: none;
   color: #fff;
