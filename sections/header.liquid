@@ -251,8 +251,8 @@
       {% comment %} {% render 'header-search', input_id: 'Search-In-Modal' %} {% endcomment %}
 
       {%- if shop.customer_accounts_enabled -%}
-        {%- unless customer -%}
-          {% comment %} <a
+        {%- if customer -%}
+          <a
               href="{{ routes.account_url }}"
               class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
               rel="nofollow"
@@ -278,23 +278,23 @@
                 -%}
               </span>
           </a>
-        {%- else -%} {% endcomment %}
-              {% comment %} <a
+        {%- else -%}
+               <a
               href="{{ routes.account_url }}"
               class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
               rel="nofollow"
-            > {% endcomment %}
-              {% comment %} {%- if section.settings.enable_customer_avatar -%} {% endcomment %}
-                {% comment %} <account-icon>
+            > 
+         {%- if section.settings.enable_customer_avatar -%} 
+                 <account-icon>
                   {%- if customer and customer.has_avatar? -%}
                     {{ customer | avatar }}
                   {%- else -%}
                     <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
                   {%- endif -%}
-                </account-icon> {% endcomment %}
-              {% comment %} {%- else -%}
+                </account-icon>
+               {%- else -%}
                 <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-              {%- endif -%} {% endcomment %}
+              {%- endif -%} 
               {% comment %} <span class="visually-hidden">
                 {%- liquid
                   if customer
@@ -304,9 +304,16 @@
                   endif
                 -%}
               </span> {% endcomment %}
-          {% comment %} </a> {% endcomment %}
-          <a href="{{ routes.account_register_url }}" class="sign_up">Sign Up</a>
-        {%- endunless -%}
+          </a>
+        {%- else -%}
+        <div class="cont">
+          <a href="{{ routes.account_register_url }}" class="login__">
+            <span>Sign In</span>
+          </a>   
+            <a href="{{ routes.account_register_url }}" class="sign_up">Sign Up</a>   
+        </div>
+
+      {%- endif -%}
 
       {%- endif -%}
 
