@@ -17,14 +17,14 @@
           "settings": {
             "image": "shopify://shop_images/1.png",
             "image_alt": "",
-            "background_color_img": "rgb(0,0,0)"
+            "background_color_img": "#E0E0E0"
           }
         },
         "main_content_8r8fmP": {
           "type": "main_content",
           "settings": {
             "image_1": "shopify://shop_images/2_1.png",
-            "image_1_bg_color": "rgb(255,255,255)",
+            "image_1_bg_color": "#E0E0E0",
             "image_2": "shopify://shop_images/2_2.png",
             "image_2_bg_color": "rgb(255, 255, 255)",
             "title": "<h2>ULTIMATE</h2>",
@@ -43,7 +43,7 @@
           "settings": {
             "image": "shopify://shop_images/3.png",
             "image_alt": "",
-            "background_color_img": "rgb(0,0,0)"
+            "background_color_img": "#E0E0E0"
           }
         }
       },
