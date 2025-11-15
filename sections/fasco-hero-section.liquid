@@ -96,7 +96,7 @@
         text-align: center;
     }
     .highlight > *{
-        font-size: clamp(32px, 8vw, 91px);
+        font-size: 70px;
         line-height: 100%;
         letter-spacing: -4px;
         margin: 0;
@@ -104,7 +104,7 @@
     }
     .strong > *{
         margin: 0;
-        font-size: clamp(60px, 15vw, 167px);
+        font-size: 100px;
         line-height: 100%;
         letter-spacing: -4px;
         font-weight: bold;
@@ -133,6 +133,12 @@
     @media screen and (min-width: 1920px) {
         .col{
             width: 60%
+        }
+        .strong > *{
+           font-size: 91px
+        }
+        .highlight > *{
+            font-size: 187px;
         }
     }
     @media screen and (max-width: 768px){
