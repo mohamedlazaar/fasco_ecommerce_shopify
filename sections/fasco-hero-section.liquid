@@ -166,11 +166,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-
+    gsap.registerPlugin(SplitText);
     let tl = gsap.timeline();
     const images = gsap.utils.toArray('.item img');
-    const highlight = document.querySelector('.highlight')
-    tl.fromTo(highlight, {x:'-100%', opacity: 0}, {x:'0', opacity:'1', duration: 1})
+    const highlight = document.querySelector('.item_2_content')
+    let mySplitHighlight = new SplitText(highlight, {type:'lines'})
+
+    tl.fromTo(mySplitHighlight.lines, {x:'-100%', opacity: 0}, {x:'0', opacity:'1', duration: 1})
     images.forEach((image, i) => {
         tl.fromTo(
         image,
