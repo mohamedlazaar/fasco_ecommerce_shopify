@@ -197,12 +197,7 @@
 
     //  images Animation
     images.forEach((image, i) => {
-        tl.from(
-        image,
-        { opacity: 0, x: "100%", ease: "back.out(1.7)", duration:1 },
-       
-        i * 0.4 // <-- start time offset for each image
-        )
+        tl.from(image, { opacity: 0, x: "100%", ease: "back.out(1.7)", duration:1 }, i * 0.4 )
     });
     });
    
