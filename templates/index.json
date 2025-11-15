@@ -26,7 +26,7 @@
             "image_1": "shopify://shop_images/2_1.png",
             "image_2": "shopify://shop_images/2_2.png",
             "title": "<h2>ULTIMATE</h2>",
-            "subtitle": "<p>SALE</p>",
+            "subtitle": "<h2>SALE</h2>",
             "paragraph": "<p>NEW COLLECTION</p>",
             "background_color_content": "rgb(0,0,0)",
             "color_content": "#ffffff",
