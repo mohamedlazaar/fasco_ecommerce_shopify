@@ -1,17 +1,8 @@
 {%- style -%}
-    {%- if section.blocks.size == 1 -%}
-        .col{
-            grid-template-columns: 1f;
-        }
-    {%- elsif section.blocks.size == 2 -%}
-        .col{
-            grid-template-columns: 1fr 1fr;
-        }
-    {%- elsif section.blocks.size == 3 -%}
-        .col{
-            grid-template-columns: .7fr 1fr .7fr;
-        }
-    {%- endif -%}
+    .col{
+        grid-template-columns: repeat({{section.blocks.size}}, minmax(280px, 1fr));
+
+    }
 {%- endstyle -%}
 
 
