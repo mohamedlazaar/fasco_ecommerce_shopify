@@ -166,7 +166,9 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event)=>{
       let tl = gsap.timeline();
-      tl.fromTo('.item img', {opacity: 0, y:'100%'}, {y:'0',opacity:1,  duration: 3})  
+      const images_array= gsap.utils.toArray('.item img')
+      console.log('imm',  images_array)
+      tl.fromTo('.item img', {opacity: 0, y:'100%'}, {y:'0',opacity:1,  duration: 3}, '+=3')  
     })
 </script>
 
