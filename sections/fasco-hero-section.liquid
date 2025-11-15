@@ -168,7 +168,7 @@
     document.addEventListener('DOMContentLoaded', () => {
     let tl = gsap.timeline();
     const images = gsap.utils.toArray('.item img');
-
+    tl.fromTo('.highlight', {x:'-100%', opacity: 0}, {x:'0', opacity:'1', duration: 1})
     images.forEach((image, i) => {
         tl.fromTo(
         image,
@@ -181,7 +181,7 @@
         i * 0.4 // <-- start time offset for each image
         )
     });
-    tl.fromTo('.highlight', {x:'-100%', opacity: 0}, {x:'0', opacity:'1', duration: 1})
+    
 
  
     });
