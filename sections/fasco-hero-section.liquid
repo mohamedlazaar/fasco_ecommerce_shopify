@@ -29,14 +29,12 @@
                         <img src={{block.settings.image_1 |  image_url }} alt="fasco hero" width="100%" height="100%">
                     </div>
                     <div class="item_2_content">
-                        <div>
                             <span class="highlight">
                                {{block.settings.title}}
                             </span>
                             <span class='strong'>
                                 {{block.settings.subtitle}}
                             </span>
-                        </div>
                         <p>
                            {{block.settings.paragraph}}
                         </p>
@@ -58,7 +56,6 @@
     .container{
         width:100vw;
         padding: 20px 0;
-        height:90vh
     }
     .col{
         width:90%;
@@ -99,13 +96,19 @@
         justify-content: center;
         align-items: center;
     }
+    .item_2_content > *{
+        margin: 0;
+        text-align: center;
+    }
     .highlight h1{
-        margin:0;
         font-size: 91px;
+        font-weight: bold;
     }
     .strong p{
-        margin: 0;
         font-size: 120px;
+        font-weight: bold;
+        -webkit-text-fill-color: #ffffff;
+        -webkit-text-stroke: 2px black;
     }
 </style>
 
