@@ -211,8 +211,8 @@
     let mySplitHighlight = new SplitText(highlight, {type:'lines'})
     console.log("mysplithighlight", mySplitHighlight)
     // text Animation
-    tl.from(mySplitHighlight.chars, {opacity: 0, y: 50, stagger: 0.05, ease: "back.out(1.7)"})
-    tl
+    tl.from(mySplitHighlight.lines, {opacity: 0, y: 50, stagger: 0.05, ease: "back.out(1.7)"})
+
 
     //  images Animation
     images.forEach((image, i) => {
