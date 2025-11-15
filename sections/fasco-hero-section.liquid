@@ -168,7 +168,10 @@
       let tl = gsap.timeline();
       const images_array= gsap.utils.toArray('.item img')
       console.log('imm',  images_array)
-      tl.fromTo('.item img', {opacity: 0, y:'100%'}, {y:'0',opacity:1,  duration: 3}, '+=3')  
+      images_array.array.forEach(element => {
+        tl.fromTo(element,{opacity: 0, y:'100%'}, {y:'0',opacity:1,  duration: 3}, .5)
+      });
+ 
     })
 </script>
 
