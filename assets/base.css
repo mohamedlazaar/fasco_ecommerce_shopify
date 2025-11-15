@@ -73,7 +73,9 @@
   --shadow-opacity: var(--media-shadow-opacity);
   --shadow-visible: var(--media-shadow-visible);
 }
-
+html{
+  overflow: hidden;
+}
 /* base */
 
 .page-width {
