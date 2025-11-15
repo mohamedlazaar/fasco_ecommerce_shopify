@@ -121,11 +121,54 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "fasco_hero_section_pfcKEF": {
+      "type": "fasco-hero-section",
+      "blocks": {
+        "image_6ydrtR": {
+          "type": "image",
+          "settings": {
+            "image_alt": "",
+            "background_color_img": "rgb(0,0,0)"
+          }
+        },
+        "main_content_CQACXU": {
+          "type": "main_content",
+          "settings": {
+            "image_1_bg_color": "rgb(255,255,255)",
+            "image_2_bg_color": "rgb(255, 255, 255)",
+            "title": "<h2>ULTIMATE</h2>",
+            "subtitle": "<h2>SALE</h2>",
+            "paragraph": "<p>NEW COLLECTION</p>",
+            "background_color_content": "rgb(0,0,0)",
+            "color_content": "#ffffff",
+            "button_text": "Button",
+            "button_url": "https://google.com",
+            "button_background": "rgb(0,0,0)",
+            "button_color": "#ffffff"
+          }
+        },
+        "image_FkUDqn": {
+          "type": "image",
+          "settings": {
+            "image_alt": "",
+            "background_color_img": "rgb(0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "image_6ydrtR",
+        "main_content_CQACXU",
+        "image_FkUDqn"
+      ],
+      "name": "Fasco Hero Section",
+      "settings": {}
     }
   },
   "order": [
     "fasco_hero_section_k4C7YX",
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "fasco_hero_section_pfcKEF"
   ]
 }
