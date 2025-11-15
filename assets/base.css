@@ -3602,7 +3602,7 @@ details-disclosure > details {
 
 
 /* start fasco css changes */
-.list-menu{
+.list-menu.list-menu--inline{
   gap:20px
 }
 .list-menu li a{
