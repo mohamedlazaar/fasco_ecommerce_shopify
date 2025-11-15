@@ -20,7 +20,7 @@
         {%- for block in section.blocks -%}
 
            {%- if block.type == 'image' -%}
-                <div class="item">
+                <div class="item item-img">
                     <img src={{block.settings.image | image_url}}  width="100%" height="100%">
                 </div>   
             {%- elsif block.type == 'main_content' -%}         
@@ -71,7 +71,13 @@
         background-color: #E0E0E0;
         border-radius:10px
     }
-
+    .item-img{
+        display: flex;
+        align-items:end;
+    }
+    .item-img img{
+        height: 60%;
+    }
     .item_2{
         background-color: white;
         display: flex;
