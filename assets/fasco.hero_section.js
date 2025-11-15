@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(SplitText);
     let tl = gsap.timeline();
-    const images = gsap.utils.toArray(' #section_{{section.id}} .item img');
-    const highlight = document.querySelector(' #section_{{section.id}} .item_2_content')
+    const images = gsap.utils.toArray('.item img');
+    const highlight = document.querySelector('.item_2_content')
     console.log('highlight', highlight)
 
     let mySplitHighlight = new SplitText(highlight, {type:'lines'})
