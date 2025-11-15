@@ -96,13 +96,13 @@
         margin: 0;
         text-align: center;
     }
-    .highlight h2{
+    .highlight > *{
         font-size: clamp(32px, 8vw, 91px);
         line-height: 100%;
         letter-spacing: -4px;
         margin: 0
     }
-    .strong h2{
+    .strong > *{
         margin: 0;
         font-size: clamp(60px, 15vw, 167px);
         line-height: 100%;
@@ -110,6 +110,7 @@
         font-weight: bold;
         -webkit-text-fill-color: #ffffff;
         -webkit-text-stroke: 1px black;
+        text-align: center;
     }
     .para > * {
         margin: 0 ;
@@ -134,7 +135,7 @@
             width: 60%
         }
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 768px){
         .col{
             grid-template-columns: 1fr;
             grid-template-rows: 150px auto 150px;
@@ -148,10 +149,10 @@
         .item{
             width: 100%;
         }
-        .strong h2{
+        .strong > *{
            font-size: 120px;
         }
-        .highlight h2{
+        .highlight > *{
             font-size: 80px;
         }
     }
