@@ -1,9 +1,5 @@
 {%-  assign collection = section.settings.collection -%}
 
-<!-- Slick Slider CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
 <style>
     .flash_sale_container {
         width: 100%;
@@ -337,98 +333,101 @@
     </div>
 </div>
 
-<!-- jQuery (required for Slick) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer="defer"></script>
 
-<!-- Slick Slider JS -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
 
 <script>  
-    // Countdown Timer
-    (function() {
-        let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-        const clockElement = document.getElementById('count_down_clock');
+    (function($) {
+        'use strict';
         
-        if (!clockElement) return;
-        
-        let x = setInterval(function(){
-            const now = new Date().getTime();
-            let distance = countDownDate - now;
+        // Countdown Timer
+        (function() {
+            let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+            const clockElement = document.getElementById('count_down_clock');
             
-            if (distance < 0) {
-                clearInterval(x);
-                clockElement.innerHTML = '<span class="time-value">Expired</span>';
-                return;
-            }
+            if (!clockElement) return;
             
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            clockElement.innerHTML = `
-                <div class="time-unit">
-                    <div class="time-value">${String(days).padStart(2, '0')}</div>
-                    <div class="time-label">Days</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value">${String(hours).padStart(2, '0')}</div>
-                    <div class="time-label">Hr</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value">${String(minutes).padStart(2, '0')}</div>
-                    <div class="time-label">Mins</div>
-                </div>
-                <div class="time-unit">
-                    <div class="time-value">${String(seconds).padStart(2, '0')}</div>
-                    <div class="time-label">Sec</div>
-                </div>
-            `;
-        }, 1000);
-    })();
-    
-    // Initialize Slick Slider
-    $(document).ready(function(){
-        $('.center').slick({
-            centerMode: true,
-            centerPadding: '0px',
-            slidesToShow: 3,
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            arrows: true,
-            dots: true,
-            focusOnSelect: true,
-            cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            speed: 500,
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '0px',
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '0px',
-                        slidesToShow: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '0px',
-                        slidesToShow: 1
-                    }
+            let x = setInterval(function(){
+                const now = new Date().getTime();
+                let distance = countDownDate - now;
+                
+                if (distance < 0) {
+                    clearInterval(x);
+                    clockElement.innerHTML = '<span class="time-value">Expired</span>';
+                    return;
                 }
-            ]
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                clockElement.innerHTML = `
+                    <div class="time-unit">
+                        <div class="time-value">${String(days).padStart(2, '0')}</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">${String(hours).padStart(2, '0')}</div>
+                        <div class="time-label">Hr</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">${String(minutes).padStart(2, '0')}</div>
+                        <div class="time-label">Mins</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value">${String(seconds).padStart(2, '0')}</div>
+                        <div class="time-label">Sec</div>
+                    </div>
+                `;
+            }, 1000);
+        })();
+        
+        // Initialize Slick Slider when DOM is ready
+        $(document).ready(function(){
+            if ($('.center').length) {
+                $('.center').slick({
+                    centerMode: true,
+                    centerPadding: '0px',
+                    slidesToShow: 3,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    arrows: true,
+                    dots: true,
+                    focusOnSelect: true,
+                    cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                    speed: 500,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                centerMode: true,
+                                centerPadding: '0px',
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                centerMode: true,
+                                centerPadding: '0px',
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                centerMode: true,
+                                centerPadding: '0px',
+                                slidesToShow: 1
+                            }
+                        }
+                    ]
+                });
+            }
         });
-    });
+        
+    })(jQuery);
 </script>
 
 {% schema %}
