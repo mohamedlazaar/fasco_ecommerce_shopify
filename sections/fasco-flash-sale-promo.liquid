@@ -279,7 +279,7 @@ let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
   }, 1000);
 
     /* Splide */
-    new Splide( '.splide', {
+    const splide = new Splide( '.splide', {
     type   : 'loop',
     focus  : 'center',
     perPage: 3,
