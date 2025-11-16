@@ -1,5 +1,4 @@
-{%- assign collection = section.settings.collection -%}
-
+{%-  assign collection = section.settings.collection -%}
 <style>
     .flash_sale_container {
         width: 100%;
@@ -282,73 +281,49 @@
     }
 </style>
 
-<div class="flash_sale_container">
+
+  <div class="flash_sale_container">
     <div class="flash_content">
         <div class="content">
-            {{ section.settings.title }}
-            {{ section.settings.description }}
+            <h2>{{ section.settings.title }}</h2>
+            <p>
+                {{ section.settings.description }}
+            </p>
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         </div>
         <div class="count_down">
-            {{ section.settings.countdown_title }}
-            <div class="count_down_clock" id="count_down_clock"></div>
+            <h3 class="count_down_title">
+               {{ section.settings.countdown_title }}
+            </h3>
+            <div class="count_down_clock" id="count_down_clock">
+
+            </div>
         </div>
     </div>
-    
     <div class="flash_collection">
         {% if collection != blank %}
-            <div class="slider-container">
-                <div class="slider-wrapper" id="sliderWrapper">
-                    {% for product in collection.products limit: 10 %}
-                        <div class="collection" data-index="{{ forloop.index0 }}">
-                            <img 
-                                src="{{ product.featured_image | image_url }}" 
-                                alt="{{ product.title }}"
-                                loading="lazy"
-                                width="100"
-                                height="100"
-                            >
-                            <div class="product-info" style="display: none;">
-                                <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
-                                <div class="product-discount">30% OFF</div>
-                            </div>
-                        </div>
-                    {% endfor %}
+            {% for product in collection.products %}
+                <div class="collection">
+                    <img src="{{ product.featured_image |  image_url  }}" alt="{{ product.title }}" width="100" height="100">
+                    <h3>{{ product.title }}</h3>                    
                 </div>
-            </div>
-            
-            <div class="slider-controls">
-                <button class="slider-btn" id="prevBtn" aria-label="Previous">‹</button>
-                <div class="slider-dots" id="sliderDots"></div>
-                <button class="slider-btn" id="nextBtn" aria-label="Next">›</button>
-            </div>
+
+            {% endfor %}
         {% endif %}
     </div>
 </div>
 
-<script>
-    // Countdown Timer
-    (function() {
-        let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-        const clockElement = document.getElementById('count_down_clock');
-        
-        if (!clockElement) return;
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            let distance = countDownDate - now;
-            
-            if (distance < 0) {
-                clockElement.innerHTML = '<span class="time-value">Expired</span>';
-                return;
-            }
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            clockElement.innerHTML = `
+<script>  
+    let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+    console.log('countD', countDownDate)
+    let x= setInterval(function(){
+        const now = new Date().getTime();
+        let distance = countDownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        clockElement.innerHTML = `
                 <div class="time-unit">
                     <div class="time-value">${String(days).padStart(2, '0')}</div>
                     <div class="time-label">Days</div>
@@ -366,145 +341,11 @@
                     <div class="time-label">Sec</div>
                 </div>
             `;
+        if(distance < 0){
+            clearInterval(x);
+            document.getElementById('count_down_clock').innerHTML = "Expired"
         }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    })();
-
-    // Infinite Loop Slider with Active Card Scaling
-    (function() {
-        const wrapper = document.getElementById('sliderWrapper');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('sliderDots');
-        
-        if (!wrapper || !prevBtn || !nextBtn) return;
-        
-        const originalSlides = Array.from(wrapper.querySelectorAll('.collection'));
-        const totalSlides = originalSlides.length;
-        
-        if (totalSlides === 0) return;
-        
-        // Clone slides for infinite loop
-        originalSlides.forEach(slide => {
-            const cloneBefore = slide.cloneNode(true);
-            const cloneAfter = slide.cloneNode(true);
-            wrapper.insertBefore(cloneBefore, wrapper.firstChild);
-            wrapper.appendChild(cloneAfter);
-        });
-        
-        const allSlides = Array.from(wrapper.querySelectorAll('.collection'));
-        let currentIndex = totalSlides; // Start at first original slide (after clones)
-        let isTransitioning = false;
-        
-        // Create dots (only for original slides)
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'dot';
-            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i + totalSlides));
-            dotsContainer.appendChild(dot);
-        }
-        
-        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
-        
-        function updateSlider(animate = true) {
-            if (!animate) {
-                wrapper.style.transition = 'none';
-            } else {
-                wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            }
-            
-            // Update active class
-            allSlides.forEach((slide, index) => {
-                const isActive = index === currentIndex;
-                slide.classList.toggle('active', isActive);
-                
-                // Show/hide product info only on active card
-                const productInfo = slide.querySelector('.product-info');
-                if (productInfo) {
-                    productInfo.style.display = isActive ? 'block' : 'none';
-                }
-            });
-            
-            // Calculate offset
-            let offset = 0;
-            for (let i = 0; i < currentIndex; i++) {
-                const isActiveSlide = i === currentIndex - 1;
-                const slideWidth = isActiveSlide ? 350 : 280;
-                offset += slideWidth + 20;
-            }
-            
-            wrapper.style.transform = `translateX(-${offset}px)`;
-            
-            // Update dots (map to original slide index)
-            const realIndex = ((currentIndex - totalSlides) % totalSlides + totalSlides) % totalSlides;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === realIndex);
-            });
-            
-            // Force reflow if no animation
-            if (!animate) {
-                void wrapper.offsetHeight;
-            }
-        }
-        
-        function goToSlide(index, animate = true) {
-            if (isTransitioning) return;
-            currentIndex = index;
-            updateSlider(animate);
-        }
-        
-        function nextSlide() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            
-            currentIndex++;
-            updateSlider(true);
-            
-            // Check if we're at the end of clones
-            setTimeout(() => {
-                if (currentIndex >= totalSlides * 2) {
-                    currentIndex = totalSlides;
-                    updateSlider(false);
-                }
-                isTransitioning = false;
-            }, 500);
-        }
-        
-        function prevSlide() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            
-            currentIndex--;
-            updateSlider(true);
-            
-            // Check if we're at the beginning of clones
-            setTimeout(() => {
-                if (currentIndex < totalSlides) {
-                    currentIndex = totalSlides * 2 - 1;
-                    updateSlider(false);
-                }
-                isTransitioning = false;
-            }, 500);
-        }
-        
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                updateSlider(false);
-            }, 250);
-        });
-        
-        // Initialize
-        updateSlider(false);
-    })();
+    }, 1000);
 </script>
 
 {% schema %}
@@ -521,8 +362,8 @@
                 "label": "Collection"
             },
             {
-                "type": "header",
-                "content": "General Settings"
+               "type": "header",
+               "content": "General Settings"
             },
             {
                 "type": "color_background",
@@ -531,9 +372,9 @@
                 "default": "#ffffff"
             },
             {
-                "type": "richtext",
+                "type":"richtext",
                 "id": "title",
-                "label": "Title",
+                "label":"Title",
                 "default": "<h2>Deals Of The Month</h2>"
             },
             {
@@ -546,7 +387,7 @@
                 "type": "text",
                 "id": "button_text",
                 "label": "Button Text",
-                "default": "Buy Now"
+                "default": "Button"
             },
             {
                 "type": "url",
@@ -567,7 +408,7 @@
             },
             {
                 "type": "header",
-                "content": "CountDown Clock"
+                "content": "CountDown CLock"
             },
             {
                 "type": "richtext",
@@ -582,6 +423,7 @@
                 "default": "2025-12-31 23:59:59",
                 "info": "Format: YYYY-MM-DD HH:MM:SS"
             }
+        
         ],
         "presets": [
             {
