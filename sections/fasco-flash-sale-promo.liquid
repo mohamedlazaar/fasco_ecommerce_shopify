@@ -1,7 +1,20 @@
-<style></style>
-<div class="container">
+<style>
+    .flash_sale_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding: 52px 0;
+    }
+    .flash_content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+</style>
+
   <div class="flash_sale_container">
-    <div class="flash_col col_1">
+    <div class="flash_content">
         <div class="content">
             <h2>Deals Of The Month</h2>
             <p>
@@ -18,9 +31,11 @@
             </div>
         </div>
     </div>
+    <div class="falsh_collection">
+
+    </div>
 </div>
 
-</div>
 <script>  
     let countDownDate = new Date('Jan 16, 2026 15:40:25').getTime();
     let x= setInterval(function(){
