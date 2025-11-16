@@ -426,15 +426,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ---------------------------
-       GET ELEMENTS
-    ---------------------------- */
     const track = document.querySelector(".slider-track");
     const slides = document.querySelectorAll(".slide");
     const prevBtn = document.querySelector(".slider-prev");
     const nextBtn = document.querySelector(".slider-next");
     const pagination = document.querySelector(".slider-pagination");
 
+    const visibleSlides = 3; 
     let currentIndex = 0;
     const totalSlides = slides.length;
 
@@ -457,25 +455,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const bullets = document.querySelectorAll(".bullet");
 
     /* ---------------------------
-       UPDATE SLIDER FUNCTION
+       UPDATE SLIDER
     ---------------------------- */
     function updateSlider() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const slideWidth = slides[0].offsetWidth + 20; // include gap
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 
         bullets.forEach(b => b.classList.remove("active"));
         bullets[currentIndex].classList.add("active");
     }
 
     /* ---------------------------
-       NEXT / PREV BUTTONS
+       BUTTONS
     ---------------------------- */
     nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % totalSlides;
+        if (currentIndex < totalSlides - visibleSlides) {
+            currentIndex++;
+        }
         updateSlider();
     });
 
     prevBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        if (currentIndex > 0) {
+            currentIndex--;
+        }
         updateSlider();
     });
 
