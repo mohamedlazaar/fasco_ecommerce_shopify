@@ -334,9 +334,7 @@
         </div>
     </div>
 
-    <div class="flash_collection splide" aria-label="Flash Sale Products">
-        <div class="splide__track">
-            <ul class="splide__list">
+    <div class="flash_collectio" >
                 {% if collection != blank %}
                     {% for product in collection.products limit: 10 %}
                     <li class="splide__slide">
@@ -354,8 +352,6 @@
                     </li>
                     {% endfor %}
                 {% endif %}
-            </ul>
-        </div>
     </div>
 </div>
 
@@ -392,46 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-    /* Splide Slider */
-    if (typeof Splide !== 'undefined') {
-        const splide = new Splide('.splide', {
-            type: 'loop',
-            perPage: 1,
-            perMove: 1,
-            gap: '20px',
-            padding: 0,
-            autoplay: false,
-            interval: 3000,
-            pauseOnHover: true,
-            arrows: true,
-            pagination: true,
-            speed: 600,
 
-            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            updateOnMove: true,
-            trimSpace: false,
-            height: '550px',
-            breakpoints: {
-                1200: {
-                    perPage: 3,
-                    height: '500px',
-                },
-                768: {
-                    perPage: 2,
-                    height: '450px',
-                    gap: '15px',
-                },
-                480: {
-                    perPage: 1,
-                    height: '400px',
-                    gap: '10px',
-                }
-            }
-        });
-
-        splide.mount();
-    }
-});
 </script>
 
 {% schema %}
