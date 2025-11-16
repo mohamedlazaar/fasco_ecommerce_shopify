@@ -86,17 +86,19 @@
         font-weight: 400;
     }
     
-    /* Slider Container */
+    /* Slider Container - FIXED: Added proper overflow containment */
     .flash_collection {
         position: relative;
         width: 100%;
         padding-bottom: 80px;
+        isolation: isolate; /* Creates new stacking context */
     }
     
     .slider-container {
-        overflow: hidden;
+        overflow: hidden; /* FIXED: This prevents content from pushing the layout */
         width: 100%;
         padding: 20px 0;
+        position: relative;
     }
     
     /* Slider Wrapper */
@@ -105,6 +107,7 @@
         gap: 20px;
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         align-items: center;
+        will-change: transform; /* Optimization for animations */
     }
     
     /* Product Cards */
@@ -169,6 +172,7 @@
         display: flex;
         align-items: center;
         gap: 15px;
+        z-index: 10;
     }
     
     .slider-btn {
@@ -188,15 +192,10 @@
         flex-shrink: 0;
     }
     
-    .slider-btn:hover:not(:disabled) {
+    .slider-btn:hover {
         background: #000;
         color: #fff;
         transform: scale(1.05);
-    }
-    
-    .slider-btn:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
     }
     
     /* Dot Navigation */
@@ -306,7 +305,8 @@
                                 src="{{ product.featured_image | image_url }}" 
                                 alt="{{ product.title }}"
                                 loading="lazy"
-                                width="100" height="100"
+                                width="100"
+                                height="100"
                             >
                             <div class="product-info" style="display: none;">
                                 <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
@@ -372,7 +372,7 @@
         setInterval(updateCountdown, 1000);
     })();
 
-    // Product Slider with Active Card Scaling
+    // Infinite Loop Slider with Active Card Scaling
     (function() {
         const wrapper = document.getElementById('sliderWrapper');
         const prevBtn = document.getElementById('prevBtn');
@@ -381,27 +381,43 @@
         
         if (!wrapper || !prevBtn || !nextBtn) return;
         
-        const slides = Array.from(wrapper.querySelectorAll('.collection'));
-        const totalSlides = slides.length;
+        const originalSlides = Array.from(wrapper.querySelectorAll('.collection'));
+        const totalSlides = originalSlides.length;
         
         if (totalSlides === 0) return;
         
-        let currentIndex = 0;
+        // Clone slides for infinite loop
+        originalSlides.forEach(slide => {
+            const cloneBefore = slide.cloneNode(true);
+            const cloneAfter = slide.cloneNode(true);
+            wrapper.insertBefore(cloneBefore, wrapper.firstChild);
+            wrapper.appendChild(cloneAfter);
+        });
         
-        // Create dots
+        const allSlides = Array.from(wrapper.querySelectorAll('.collection'));
+        let currentIndex = totalSlides; // Start at first original slide (after clones)
+        let isTransitioning = false;
+        
+        // Create dots (only for original slides)
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('button');
             dot.className = 'dot';
             dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i));
+            dot.addEventListener('click', () => goToSlide(i + totalSlides));
             dotsContainer.appendChild(dot);
         }
         
         const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
         
-        function updateSlider() {
-            // Update active class and visibility
-            slides.forEach((slide, index) => {
+        function updateSlider(animate = true) {
+            if (!animate) {
+                wrapper.style.transition = 'none';
+            } else {
+                wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+            
+            // Update active class
+            allSlides.forEach((slide, index) => {
                 const isActive = index === currentIndex;
                 slide.classList.toggle('active', isActive);
                 
@@ -412,44 +428,66 @@
                 }
             });
             
-            // Calculate offset - account for different sizes
+            // Calculate offset
             let offset = 0;
             for (let i = 0; i < currentIndex; i++) {
-                const slideWidth = i === currentIndex - 1 ? 350 : 280; // Active card is wider
-                offset += slideWidth + 20; // 20 is the gap
+                const isActiveSlide = i === currentIndex - 1;
+                const slideWidth = isActiveSlide ? 350 : 280;
+                offset += slideWidth + 20;
             }
             
             wrapper.style.transform = `translateX(-${offset}px)`;
             
-            // Update dots
+            // Update dots (map to original slide index)
+            const realIndex = ((currentIndex - totalSlides) % totalSlides + totalSlides) % totalSlides;
             dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
+                dot.classList.toggle('active', index === realIndex);
             });
             
-            // Update button states
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= totalSlides - 1;
+            // Force reflow if no animation
+            if (!animate) {
+                void wrapper.offsetHeight;
+            }
         }
         
-        function goToSlide(index) {
-            if (index >= 0 && index < totalSlides) {
-                currentIndex = index;
-                updateSlider();
-            }
+        function goToSlide(index, animate = true) {
+            if (isTransitioning) return;
+            currentIndex = index;
+            updateSlider(animate);
         }
         
         function nextSlide() {
-            if (currentIndex < totalSlides - 1) {
-                currentIndex++;
-                updateSlider();
-            }
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentIndex++;
+            updateSlider(true);
+            
+            // Check if we're at the end of clones
+            setTimeout(() => {
+                if (currentIndex >= totalSlides * 2) {
+                    currentIndex = totalSlides;
+                    updateSlider(false);
+                }
+                isTransitioning = false;
+            }, 500);
         }
         
         function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentIndex--;
+            updateSlider(true);
+            
+            // Check if we're at the beginning of clones
+            setTimeout(() => {
+                if (currentIndex < totalSlides) {
+                    currentIndex = totalSlides * 2 - 1;
+                    updateSlider(false);
+                }
+                isTransitioning = false;
+            }, 500);
         }
         
         prevBtn.addEventListener('click', prevSlide);
@@ -460,12 +498,12 @@
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(function() {
-                updateSlider();
+                updateSlider(false);
             }, 250);
         });
         
         // Initialize
-        updateSlider();
+        updateSlider(false);
     })();
 </script>
 
