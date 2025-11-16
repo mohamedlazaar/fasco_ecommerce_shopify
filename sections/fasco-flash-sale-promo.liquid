@@ -98,7 +98,7 @@
     }
 
     /* Splide track and list - CRITICAL FIX */
-    .splide__track {
+    /* .splide__track {
         overflow: visible !important;
         padding: 20px 0;
     }
@@ -113,7 +113,7 @@
         justify-content: center !important;
         align-items: center !important;
         height: auto !important;
-    }
+    } */
 
     /* Product Cards */
     .collection {
@@ -333,32 +333,30 @@
             <div class="count_down_clock" id="count_down_clock"></div>
         </div>
     </div>
-    <div>
-        <div class="flash_collection splide" aria-label="Flash Sale Products">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    {% if collection != blank %}
-                        {% for product in collection.products limit: 10 %}
-                        <li class="splide__slide">
-                            <div class="collection">
-                                <img 
-                                src="{{ product.featured_image | image_url }}" 
-                                alt="{{ product.title }}"
-                                loading="lazy" width="100" height="100"
-                                >
-                                <div class="product-info">
-                                    <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
-                                    <div class="product-discount">30% OFF</div>
-                                </div>
-                            </div>
-                        </li>
-                        {% endfor %}
-                    {% endif %}
-                </ul>
-            </div>
-        </div>        
-    </div>
 
+    <div class="flash_collection splide" aria-label="Flash Sale Products">
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% if collection != blank %}
+                    {% for product in collection.products limit: 10 %}
+                    <li class="splide__slide">
+                        <div class="collection">
+                            <img 
+                              src="{{ product.featured_image | image_url }}" 
+                              alt="{{ product.title }}"
+                              loading="lazy" width="100" height="100"
+                            >
+                            <div class="product-info">
+                                <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
+                                <div class="product-discount">30% OFF</div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </div>
 
 
@@ -396,18 +394,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Splide Slider */
     if (typeof Splide !== 'undefined') {
-            const splide = new Splide( '.splide', {
-                type:'loop',
-                fixedWidth  : 400,
-                pagination  : false,
-                isNavigation: true,
-                breakpoints : {
-                    600: {
-                    fixedWidth : 60,
-                    fixedHeight: 44,
-                    },
+        const splide = new Splide('.splide', {
+            type: 'loop',
+            perPage: 3,
+            perMove: 1,
+            gap: '20px',
+            padding: 0,
+            autoplay: false,
+            interval: 3000,
+            pauseOnHover: true,
+            arrows: true,
+            pagination: true,
+            speed: 600,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            updateOnMove: true,
+            trimSpace: false,
+            height: '550px',
+            breakpoints: {
+                1200: {
+                    perPage: 3,
+                    height: '500px',
                 },
-                } )
+                768: {
+                    perPage: 2,
+                    height: '450px',
+                    gap: '15px',
+                },
+                480: {
+                    perPage: 1,
+                    height: '400px',
+                    gap: '10px',
+                }
+            }
+        });
 
         splide.mount();
     }
