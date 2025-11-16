@@ -262,7 +262,12 @@
         }
       }
     {% endstyle %}
+    {% comment %} fasco slick slider css start {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
 
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+      {% comment %} fasco slick slider css end {% endcomment %}
+       
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -327,7 +332,13 @@
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
+    {% comment %} fasco slick slider script start {% endcomment %}
 
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" defer="defer"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js" defer="defer"></script>
+      <script type="text/javascript" src="slick/slick.min.js" defer="defer"></script>
+
+     {% comment %} fasco slick slider script end {% endcomment %}
     <script>
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
