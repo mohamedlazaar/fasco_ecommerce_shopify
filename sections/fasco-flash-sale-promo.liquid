@@ -1,71 +1,247 @@
-{%-  assign collection = section.settings.collection -%}
+{%- assign collection = section.settings.collection -%}
+
 <style>
-    .flash_sale_container{
+    .flash_sale_container {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 52px 0;
     }
-    .flash_content{
+    
+    .flash_content {
         display: flex;
         flex-direction: column;
         justify-content: end;
         width: 100%;
-        padding:10px
+        padding: 10px;
     }
-    .flash_collection{
+    
+    /* Slider Container */
+    .flash_collection {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    /* Slider Wrapper */
+    .slider-wrapper {
         display: flex;
+        transition: transform 0.5s ease-in-out;
+        gap: 15px;
     }
-
+    
+    /* Product Cards */
+    .collection {
+        flex: 0 0 calc(33.333% - 10px);
+        min-width: calc(33.333% - 10px);
+        background: #f5f5f5;
+        border-radius: 10px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    
+    .collection img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .collection h3 {
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+    }
+    
+    /* Navigation Buttons */
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    .slider-btn {
+        pointer-events: all;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .slider-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+    }
+    
+    .slider-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+    
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+        .flash_sale_container {
+            grid-template-columns: 1fr;
+        }
+        
+        .collection {
+            flex: 0 0 calc(50% - 10px);
+            min-width: calc(50% - 10px);
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .collection {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+    }
 </style>
 
-  <div class="flash_sale_container">
+<div class="flash_sale_container">
     <div class="flash_content">
         <div class="content">
             <h2>{{ section.settings.title }}</h2>
-            <p>
-                {{ section.settings.description }}
-            </p>
+            <p>{{ section.settings.description }}</p>
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         </div>
         <div class="count_down">
             <h3 class="count_down_title">
-               {{ section.settings.countdown_title }}
+                {{ section.settings.countdown_title }}
             </h3>
-            <div class="count_down_clock" id="count_down_clock">
-
-            </div>
+            <div class="count_down_clock" id="count_down_clock"></div>
         </div>
     </div>
+    
     <div class="flash_collection">
         {% if collection != blank %}
-            {% for product in collection.products %}
-                <div class="collection">
-                    <img src="{{ product.featured_image |  image_url  }}" alt="{{ product.title }}" width="100" height="100">
-                    <h3>{{ product.title }}</h3>                    
-                </div>
-
-            {% endfor %}
+            <div class="slider-wrapper" id="sliderWrapper">
+                {% for product in collection.products %}
+                    <div class="collection">
+                        <img 
+                            src="{{ product.featured_image | image_url: width: 400 }}" 
+                            alt="{{ product.title }}"
+                            loading="lazy"
+                        >
+                        <h3>{{ product.title }}</h3>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="slider-nav">
+                <button class="slider-btn" id="prevBtn" aria-label="Previous">‹</button>
+                <button class="slider-btn" id="nextBtn" aria-label="Next">›</button>
+            </div>
         {% endif %}
     </div>
 </div>
 
-<script>  
+<script>
+    // Countdown Timer
     let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-    console.log('countD', countDownDate)
-    let x= setInterval(function(){
+    let x = setInterval(function() {
         const now = new Date().getTime();
         let distance = countDownDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById("count_down_clock").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        if(distance < 0){
+        
+        document.getElementById("count_down_clock").innerHTML = 
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        
+        if (distance < 0) {
             clearInterval(x);
-            document.getElementById('count_down_clock').innerHTML = "Expired"
+            document.getElementById('count_down_clock').innerHTML = "Expired";
         }
     }, 1000);
+
+    // Product Slider
+    (function() {
+        const slider = document.getElementById('sliderWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (!slider || !prevBtn || !nextBtn) return;
+        
+        let currentIndex = 0;
+        const slides = slider.querySelectorAll('.collection');
+        const totalSlides = slides.length;
+        
+        // Calculate how many slides are visible
+        function getSlidesPerView() {
+            const width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 2;
+            return 3;
+        }
+        
+        let slidesPerView = getSlidesPerView();
+        const maxIndex = Math.max(0, totalSlides - slidesPerView);
+        
+        function updateSlider() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 15;
+            const offset = -(currentIndex * (slideWidth + gap));
+            slider.style.transform = `translateX(${offset}px)`;
+            
+            // Update button states
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+        }
+        
+        function nextSlide() {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateSlider();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                slidesPerView = getSlidesPerView();
+                const newMaxIndex = Math.max(0, totalSlides - slidesPerView);
+                
+                // Adjust current index if needed
+                if (currentIndex > newMaxIndex) {
+                    currentIndex = newMaxIndex;
+                }
+                
+                updateSlider();
+            }, 250);
+        });
+        
+        // Initialize
+        updateSlider();
+    })();
 </script>
 
 {% schema %}
@@ -82,8 +258,8 @@
                 "label": "Collection"
             },
             {
-               "type": "header",
-               "content": "General Settings"
+                "type": "header",
+                "content": "General Settings"
             },
             {
                 "type": "color_background",
@@ -92,16 +268,16 @@
                 "default": "#ffffff"
             },
             {
-                "type":"richtext",
+                "type": "richtext",
                 "id": "title",
-                "label":"Title",
+                "label": "Title",
                 "default": "<h2>Deals Of The Month</h2>"
             },
             {
                 "type": "richtext",
                 "id": "description",
                 "label": "Description",
-                "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>"
+                "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>"
             },
             {
                 "type": "text",
@@ -128,7 +304,7 @@
             },
             {
                 "type": "header",
-                "content": "CountDown CLock"
+                "content": "CountDown Clock"
             },
             {
                 "type": "richtext",
@@ -143,7 +319,6 @@
                 "default": "2025-12-31 23:59:59",
                 "info": "Format: YYYY-MM-DD HH:MM:SS"
             }
-        
         ],
         "presets": [
             {
