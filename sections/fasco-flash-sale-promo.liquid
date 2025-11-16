@@ -1,5 +1,8 @@
 {%-  assign collection = section.settings.collection -%}
 
+{{ 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' | stylesheet_tag }}
+{{ 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css' | stylesheet_tag }}
+
 <style>
     .flash_sale_container {
         width: 100%;
@@ -318,10 +321,9 @@
             {% for product in collection.products limit: 10 %}
                 <div class="collection">
                     <img 
-                        src="{{ product.featured_image | image_url }}" 
+                        src="{{ product.featured_image | image_url: width: 800 }}" 
                         alt="{{ product.title }}"
                         loading="lazy"
-                        width="100" height="100"
                     >
                     <div class="product-info">
                         <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
@@ -333,14 +335,15 @@
     </div>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" integrity="sha256-qg7o1J7bS4tqFj9vp6BJCF1h0TmJgn6qhyS8s0W9w5Q=" crossorigin="anonymous"></script>
 
 <script>  
-    (function($) {
+    (function() {
         'use strict';
         
         // Countdown Timer
-        (function() {
+        function initCountdown() {
             let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
             const clockElement = document.getElementById('count_down_clock');
             
@@ -380,54 +383,78 @@
                     </div>
                 `;
             }, 1000);
-        })();
+        }
         
-        // Initialize Slick Slider when DOM is ready
-        $(document).ready(function(){
-            if ($('.center').length) {
-                $('.center').slick({
-                    centerMode: true,
-                    centerPadding: '0px',
-                    slidesToShow: 3,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    arrows: true,
-                    dots: true,
-                    focusOnSelect: true,
-                    cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                    speed: 500,
-                    responsive: [
-                        {
-                            breakpoint: 1200,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 1
-                            }
-                        }
-                    ]
-                });
+        // Initialize Slick Slider
+        function initSlider() {
+            if (typeof jQuery === 'undefined') {
+                console.error('jQuery is not loaded');
+                return;
             }
-        });
+            
+            if (typeof jQuery.fn.slick === 'undefined') {
+                console.error('Slick slider is not loaded');
+                setTimeout(initSlider, 100); // Retry after 100ms
+                return;
+            }
+            
+            jQuery(document).ready(function($){
+                if ($('.flash_collection.center').length) {
+                    $('.flash_collection.center').slick({
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 3,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        arrows: true,
+                        dots: true,
+                        focusOnSelect: true,
+                        cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                        speed: 500,
+                        responsive: [
+                            {
+                                breakpoint: 1200,
+                                settings: {
+                                    centerMode: true,
+                                    centerPadding: '0px',
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    centerMode: true,
+                                    centerPadding: '0px',
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    centerMode: true,
+                                    centerPadding: '0px',
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
+                }
+            });
+        }
         
-    })(jQuery);
+        // Initialize everything
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                initCountdown();
+                initSlider();
+            });
+        } else {
+            initCountdown();
+            initSlider();
+        }
+        
+    })();
 </script>
 
 {% schema %}
