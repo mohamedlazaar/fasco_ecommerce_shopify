@@ -134,9 +134,11 @@
                 {% for product in collection.products %}
                     <div class="collection">
                         <img 
-                            src="{{ product.featured_image | image_url: width: 400 }}" 
+                            src="{{ product.featured_image | image_url}}" 
                             alt="{{ product.title }}"
                             loading="lazy"
+                            width="400"
+                            height="600"
                         >
                         <h3>{{ product.title }}</h3>
                     </div>
