@@ -1,4 +1,9 @@
 {%-  assign collection = section.settings.collection -%}
+
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
 <style>
     .flash_sale_container {
         width: 100%;
@@ -85,48 +90,47 @@
         font-weight: 400;
     }
     
-    /* Slider Container - FIXED: Added proper overflow containment */
+    /* Slider Container */
     .flash_collection {
         position: relative;
         width: 100%;
         padding-bottom: 80px;
-        isolation: isolate; /* Creates new stacking context */
     }
     
-    .slider-container {
-        overflow: hidden; /* FIXED: This prevents content from pushing the layout */
-        width: 100%;
+    /* Slick Slider Overrides */
+    .flash_collection.center {
         padding: 20px 0;
-        position: relative;
     }
     
-    /* Slider Wrapper */
-    .slider-wrapper {
+    .flash_collection .slick-list {
+        overflow: visible;
+    }
+    
+    .flash_collection .slick-track {
         display: flex;
-        gap: 20px;
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         align-items: center;
-        will-change: transform; /* Optimization for animations */
+        gap: 20px;
     }
     
     /* Product Cards */
     .collection {
-        flex-shrink: 0;
         height: 420px;
-        width: 280px;
+        width: 280px !important;
         overflow: hidden;
         position: relative;
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0.7;
         transform: scale(0.9);
+        outline: none;
     }
     
-    /* Active (First visible) card - Larger */
-    .collection.active {
+    /* Active (Center) card - Larger */
+    .collection.slick-center {
         height: 500px;
-        width: 350px;
+        width: 350px !important;
         opacity: 1;
         transform: scale(1);
+        z-index: 10;
     }
     
     .collection img {
@@ -136,7 +140,11 @@
         display: block;
     }
     
-    /* Product Info Overlay - Only on active card */
+    .collection h3 {
+        display: none;
+    }
+    
+    /* Product Info Overlay - Only on center card */
     .product-info {
         position: absolute;
         bottom: 20px;
@@ -145,6 +153,11 @@
         backdrop-filter: blur(10px);
         padding: 25px 30px;
         max-width: 70%;
+        display: none;
+    }
+    
+    .collection.slick-center .product-info {
+        display: block;
     }
     
     .product-label {
@@ -163,63 +176,75 @@
         line-height: 1;
     }
     
-    /* Navigation Controls */
-    .slider-controls {
-        position: absolute;
-        bottom: 20px;
-        left: 0;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        z-index: 10;
-    }
-    
-    .slider-btn {
+    /* Custom Slick Arrows */
+    .flash_collection .slick-prev,
+    .flash_collection .slick-next {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: #fff;
-        color: #000;
+        background: #fff !important;
         border: 1px solid #e0e0e0;
-        font-size: 24px;
-        cursor: pointer;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        flex-shrink: 0;
+        z-index: 100;
     }
     
-    .slider-btn:hover {
-        background: #000;
+    .flash_collection .slick-prev:before,
+    .flash_collection .slick-next:before {
+        color: #000;
+        font-size: 24px;
+        opacity: 1;
+    }
+    
+    .flash_collection .slick-prev {
+        left: 0;
+    }
+    
+    .flash_collection .slick-next {
+        right: auto;
+        left: 70px;
+    }
+    
+    .flash_collection .slick-prev:hover,
+    .flash_collection .slick-next:hover {
+        background: #000 !important;
+    }
+    
+    .flash_collection .slick-prev:hover:before,
+    .flash_collection .slick-next:hover:before {
         color: #fff;
-        transform: scale(1.05);
     }
     
-    /* Dot Navigation */
-    .slider-dots {
-        display: flex;
-        gap: 8px;
-        align-items: center;
+    /* Custom Slick Dots */
+    .flash_collection .slick-dots {
+        bottom: -60px;
+        left: 140px;
+        width: auto;
+        display: flex !important;
+        justify-content: flex-start;
     }
     
-    .dot {
+    .flash_collection .slick-dots li {
         width: 10px;
         height: 10px;
-        border-radius: 50%;
-        background: #d0d0d0;
-        cursor: pointer;
-        transition: all 0.3s;
-        border: none;
+        margin: 0 4px;
+    }
+    
+    .flash_collection .slick-dots li button {
+        width: 10px;
+        height: 10px;
         padding: 0;
     }
     
-    .dot:hover {
-        background: #999;
+    .flash_collection .slick-dots li button:before {
+        width: 10px;
+        height: 10px;
+        content: '';
+        background: #d0d0d0;
+        border-radius: 50%;
+        opacity: 1;
     }
     
-    .dot.active {
+    .flash_collection .slick-dots li.slick-active button:before {
         background: #000;
         width: 12px;
         height: 12px;
@@ -234,24 +259,24 @@
         
         .collection {
             height: 380px;
-            width: 250px;
+            width: 250px !important;
         }
         
-        .collection.active {
+        .collection.slick-center {
             height: 450px;
-            width: 300px;
+            width: 300px !important;
         }
     }
     
     @media screen and (max-width: 768px) {
         .collection {
             height: 350px;
-            width: 220px;
+            width: 220px !important;
         }
         
-        .collection.active {
+        .collection.slick-center {
             height: 400px;
-            width: 260px;
+            width: 260px !important;
         }
         
         .product-info {
@@ -265,67 +290,83 @@
     }
     
     @media screen and (max-width: 480px) {
-        .slider-wrapper {
-            gap: 15px;
-        }
-        
         .collection {
             height: 300px;
-            width: 200px;
+            width: 200px !important;
         }
         
-        .collection.active {
+        .collection.slick-center {
             height: 350px;
-            width: 240px;
+            width: 240px !important;
         }
     }
 </style>
 
-
-  <div class="flash_sale_container">
+<div class="flash_sale_container">
     <div class="flash_content">
         <div class="content">
             <h2>{{ section.settings.title }}</h2>
-            <p>
-                {{ section.settings.description }}
-            </p>
+            <p>{{ section.settings.description }}</p>
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         </div>
         <div class="count_down">
             <h3 class="count_down_title">
                {{ section.settings.countdown_title }}
             </h3>
-            <div class="count_down_clock" id="count_down_clock">
-
-            </div>
+            <div class="count_down_clock" id="count_down_clock"></div>
         </div>
     </div>
+    
     <div class="flash_collection center">
         {% if collection != blank %}
-            {% for product in collection.products %}
+            {% for product in collection.products limit: 10 %}
                 <div class="collection">
-                    <img src="{{ product.featured_image |  image_url  }}" alt="{{ product.title }}" width="100" height="100">
-                    <h3>{{ product.title }}</h3>                    
+                    <img 
+                        src="{{ product.featured_image | image_url }}" 
+                        alt="{{ product.title }}"
+                        loading="lazy"
+                        width="100" height="100"
+                    >
+                    <div class="product-info">
+                        <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
+                        <div class="product-discount">30% OFF</div>
+                    </div>
                 </div>
-
             {% endfor %}
         {% endif %}
     </div>
 </div>
 
+<!-- jQuery (required for Slick) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer="defer"></script>
+
+<!-- Slick Slider JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
+
 <script>  
-    let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-    const clockElement = document.getElementById('count_down_clock');
-
-
-    let x= setInterval(function(){
-        const now = new Date().getTime();
-        let distance = countDownDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        clockElement.innerHTML = `
+    // Countdown Timer
+    (function() {
+        let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+        const clockElement = document.getElementById('count_down_clock');
+        
+        if (!clockElement) return;
+        
+        let x = setInterval(function(){
+            const now = new Date().getTime();
+            let distance = countDownDate - now;
+            
+            if (distance < 0) {
+                clearInterval(x);
+                clockElement.innerHTML = '<span class="time-value">Expired</span>';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            clockElement.innerHTML = `
                 <div class="time-unit">
                     <div class="time-value">${String(days).padStart(2, '0')}</div>
                     <div class="time-label">Days</div>
@@ -343,39 +384,51 @@
                     <div class="time-label">Sec</div>
                 </div>
             `;
-        if(distance < 0){
-            clearInterval(x);
-            document.getElementById('count_down_clock').innerHTML = "Expired"
-        }
-    }, 1000);
-
-
+        }, 1000);
+    })();
+    
+    // Initialize Slick Slider
+    $(document).ready(function(){
         $('.center').slick({
-        centerMode: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        responsive: [
-            {
-            breakpoint: 768,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 3
-            }
-            },
-            {
-            breakpoint: 480,
-            settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 1
-            }
-            }
-        ]
+            centerMode: true,
+            centerPadding: '0px',
+            slidesToShow: 3,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: true,
+            dots: true,
+            focusOnSelect: true,
+            cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            speed: 500,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '0px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
-                
+    });
 </script>
 
 {% schema %}
@@ -417,7 +470,7 @@
                 "type": "text",
                 "id": "button_text",
                 "label": "Button Text",
-                "default": "Button"
+                "default": "Buy Now"
             },
             {
                 "type": "url",
@@ -438,7 +491,7 @@
             },
             {
                 "type": "header",
-                "content": "CountDown CLock"
+                "content": "CountDown Clock"
             },
             {
                 "type": "richtext",
@@ -453,7 +506,6 @@
                 "default": "2025-12-31 23:59:59",
                 "info": "Format: YYYY-MM-DD HH:MM:SS"
             }
-        
         ],
         "presets": [
             {
