@@ -334,11 +334,12 @@
         </div>
     </div>
 
-    <div class="flash_collectio" >
+    <div class="flash_collection swiper" >
                 {% if collection != blank %}
+                <div class="swiper-wrapper">
                     {% for product in collection.products limit: 10 %}
-                    <li class="splide__slide">
-                        <div class="collection">
+
+                        <div class="collection swiper-slide">
                             <img 
                               src="{{ product.featured_image | image_url }}" 
                               alt="{{ product.title }}"
@@ -349,8 +350,10 @@
                                 <div class="product-discount">30% OFF</div>
                             </div>
                         </div>
-                    </li>
-                    {% endfor %}
+        
+                    {% endfor %}                    
+                </div>
+
                 {% endif %}
     </div>
 </div>
@@ -386,7 +389,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="time-unit"><div class="time-value">${seconds}</div><div class="time-label">Sec</div></div>
             `;
         }, 1000);
+
     }
+    const swiper = new Swiper('.swiper', {
+        speed: 400,
+        spaceBetween: 100,
+        });
+})
 
 
 </script>
