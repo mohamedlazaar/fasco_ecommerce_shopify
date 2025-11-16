@@ -203,91 +203,61 @@
     }
 
 
-    /* Main slider wrapper */
-.custom-slider {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
+    .custom-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-/* holds all slides */
-.slides-wrapper {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+.slider-track {
+    display: flex;
+    transition: transform 0.6s ease;
+    width: 100%;
 }
 
-/* each slide */
 .slide {
-  min-width: calc(100% / 3);
-  position: relative;
-  padding: 10px;
-  transform: scale(0.9);
-  transition: transform 0.4s ease;
-}
-
-.slide.active {
-  transform: scale(1);
+    min-width: 100%;
+    position: relative;
 }
 
 .slide img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
 }
 
-/* Product info block */
-.product-info {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: white;
-  padding: 20px 30px;
-  display: none;
-  border-radius: 4px;
+.slider-pagination {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: 50px;
 }
 
-.slide.active .product-info {
-  display: block;
+.bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d5d5d5;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Arrow buttons */
-.arrow {
-  position: absolute;
-  bottom: 60px;
-  left: 50px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: white;
-  border: none;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
-  cursor: pointer;
+.bullet.active {
+    background: #000;
+    transform: scale(1.2);
 }
 
-.arrow.next {
-  left: 100px;
+.arrow-buttons-container button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: 0 0 10px #999;
+    cursor: pointer;
+    font-size: 24px;
 }
 
-/* Pagination dots */
-.pagination {
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  display: flex;
-  gap: 8px;
-}
-
-.pagination span {
-  width: 10px;
-  height: 10px;
-  background: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.pagination span.active {
-  background: #000;
-}
 
 
 
@@ -385,17 +355,16 @@
 
     <div class="flash_collection custom-slider">
 
-    <div class="slides-wrapper">
-        {% for product in collection.products limit: 10 %}
+    <div class="slider-track">
+        {% for product in collection.products %}
             <div class="slide">
                 <img 
                   src="{{ product.featured_image | image_url }}" 
                   alt="{{ product.title }}" width="100" height="100"
                 >
-
                 <div class="product-info">
                     <div class="product-label">
-                        {{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale
+                        {{ forloop.index | prepend: '0' | slice: -2, 2 }} — Spring Sale
                     </div>
                     <div class="product-discount">30% OFF</div>
                 </div>
@@ -403,13 +372,17 @@
         {% endfor %}
     </div>
 
-    <!-- arrows -->
-    <button class="arrow prev">←</button>
-    <button class="arrow next">→</button>
+    <!-- BULLETS -->
+    <div class="slider-pagination"></div>
 
-    <!-- pagination -->
-    <div class="pagination"></div>
+    <!-- ARROWS -->
+    <div class="arrow-buttons-container">
+        <button class="slider-prev">‹</button>
+        <button class="slider-next">›</button>
+    </div>
+
 </div>
+
 
 </div>
 
@@ -448,63 +421,67 @@
         }
     })
 </script>
+
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-        /* -------------------
-        PURE JS SLIDER
-        -------------------- */
+    /* ---------------------------
+       GET ELEMENTS
+    ---------------------------- */
+    const track = document.querySelector(".slider-track");
+    const slides = document.querySelectorAll(".slide");
+    const prevBtn = document.querySelector(".slider-prev");
+    const nextBtn = document.querySelector(".slider-next");
+    const pagination = document.querySelector(".slider-pagination");
 
-        let index = 0;
-        const slider = document.querySelector(".custom-slider");
-        const wrapper = slider.querySelector(".slides-wrapper");
-        const slides = slider.querySelectorAll(".slide");
+    let currentIndex = 0;
+    const totalSlides = slides.length;
 
-        const prev = slider.querySelector(".prev");
-        const next = slider.querySelector(".next");
-        const pagination = slider.querySelector(".pagination");
+    /* ---------------------------
+       CREATE PAGINATION BULLETS
+    ---------------------------- */
+    slides.forEach((_, i) => {
+        const bullet = document.createElement("span");
+        bullet.className = "bullet";
+        if (i === 0) bullet.classList.add("active");
 
-        const slidesToShow = 6;
-
-        function updateSlider() {
-            wrapper.style.transform = `translateX(-${index * (100 / slidesToShow)}%)`;
-
-            slides.forEach((s, i) => {
-                s.classList.toggle("active", i === index + 1);
-            });
-
-            const dots = pagination.querySelectorAll("span");
-            dots.forEach((d, i) => {
-                d.classList.toggle("active", i === index);
-            });
-        }
-
-        // Create pagination dots
-        slides.forEach((_, i) => {
-            if (i <= slides.length - slidesToShow) {
-                const dot = document.createElement("span");
-                dot.addEventListener("click", () => {
-                    index = i;
-                    updateSlider();
-                });
-                pagination.appendChild(dot);
-            }
-        });
-
-        updateSlider();
-
-        next.addEventListener("click", () => {
-            if (index < slides.length - slidesToShow) index++;
+        bullet.addEventListener("click", () => {
+            currentIndex = i;
             updateSlider();
         });
 
-        prev.addEventListener("click", () => {
-            if (index > 0) index--;
-            updateSlider();
-        });
-
+        pagination.appendChild(bullet);
     });
+
+    const bullets = document.querySelectorAll(".bullet");
+
+    /* ---------------------------
+       UPDATE SLIDER FUNCTION
+    ---------------------------- */
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        bullets.forEach(b => b.classList.remove("active"));
+        bullets[currentIndex].classList.add("active");
+    }
+
+    /* ---------------------------
+       NEXT / PREV BUTTONS
+    ---------------------------- */
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
+
+});
 </script>
+
 
 
 {% schema %}
