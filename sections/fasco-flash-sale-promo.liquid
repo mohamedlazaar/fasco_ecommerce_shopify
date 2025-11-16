@@ -325,82 +325,82 @@
 
 
 
-<script>  
-document.addEventListener("DOMContentLoaded", () => {
+<script type="text/javascript">  
+    document.addEventListener("DOMContentLoaded", () => {
 
-    /* Countdown Timer */
-    const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-    const clockElement = document.getElementById('count_down_clock');
+        /* Countdown Timer */
+        const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+        const clockElement = document.getElementById('count_down_clock');
 
-    if (clockElement) {
-        const x = setInterval(() => {
-            const now = Date.now();
-            const distance = countDownDate - now;
+        if (clockElement) {
+            const x = setInterval(() => {
+                const now = Date.now();
+                const distance = countDownDate - now;
 
-            if (distance <= 0) {
-                clearInterval(x);
-                clockElement.innerHTML = '<span class="time-value">Expired</span>';
-                return;
-            }
-
-            const days = String(Math.floor(distance / 86400000)).padStart(2, '0');
-            const hours = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
-            const minutes = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
-            const seconds = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
-
-            clockElement.innerHTML = `
-                <div class="time-unit"><div class="time-value">${days}</div><div class="time-label">Days</div></div>
-                <div class="time-unit"><div class="time-value">${hours}</div><div class="time-label">Hr</div></div>
-                <div class="time-unit"><div class="time-value">${minutes}</div><div class="time-label">Mins</div></div>
-                <div class="time-unit"><div class="time-value">${seconds}</div><div class="time-label">Sec</div></div>
-            `;
-        }, 1000);
-
-    }
-
-    const swiper = new Swiper('.swiper', {            
-            // Slides
-            slidesPerView: 10,
-            spaceBetween: 20,
-            
-            // Speed
-            speed: 600,
-            
-            // Autoplay
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            
-            // Navigation - These must match your HTML elements
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            
-            // Pagination - Must match your HTML element
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: false,
-            },
-            
-            // Responsive
-            breakpoints: {
-                320: {
-                    spaceBetween: 10,
-                },
-                768: {
-                    spaceBetween: 15,
-                },
-                1024: {
-                    spaceBetween: 20,
+                if (distance <= 0) {
+                    clearInterval(x);
+                    clockElement.innerHTML = '<span class="time-value">Expired</span>';
+                    return;
                 }
-            }
-        });
-        swiper();
-})
+
+                const days = String(Math.floor(distance / 86400000)).padStart(2, '0');
+                const hours = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
+                const minutes = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
+                const seconds = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
+
+                clockElement.innerHTML = `
+                    <div class="time-unit"><div class="time-value">${days}</div><div class="time-label">Days</div></div>
+                    <div class="time-unit"><div class="time-value">${hours}</div><div class="time-label">Hr</div></div>
+                    <div class="time-unit"><div class="time-value">${minutes}</div><div class="time-label">Mins</div></div>
+                    <div class="time-unit"><div class="time-value">${seconds}</div><div class="time-label">Sec</div></div>
+                `;
+            }, 1000);
+
+        }
+
+        const swiper = new Swiper('.swiper', {            
+                // Slides
+                slidesPerView: 10,
+                spaceBetween: 20,
+                
+                // Speed
+                speed: 600,
+                
+                // Autoplay
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                
+                // Navigation - These must match your HTML elements
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                
+                // Pagination - Must match your HTML element
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: false,
+                },
+                
+                // Responsive
+                breakpoints: {
+                    320: {
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        spaceBetween: 15,
+                    },
+                    1024: {
+                        spaceBetween: 20,
+                    }
+                }
+            });
+            swiper();
+    })
 
 
 </script>
