@@ -313,7 +313,7 @@
         </div>
     </div>
     
-    <div class="flash_collection center">
+    <div class="flash_collection splide">
         {% if collection != blank %}
             {% for product in collection.products limit: 10 %}
                 <div class="collection">
@@ -336,32 +336,17 @@
 
 
 <script>  
-    (function($) {
-        'use strict';
-        
-        // Countdown Timer
-        (function() {
-            let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-            const clockElement = document.getElementById('count_down_clock');
-            
-            if (!clockElement) return;
-            
-            let x = setInterval(function(){
-                const now = new Date().getTime();
-                let distance = countDownDate - now;
-                
-                if (distance < 0) {
-                    clearInterval(x);
-                    clockElement.innerHTML = '<span class="time-value">Expired</span>';
-                    return;
-                }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                clockElement.innerHTML = `
+  let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+  const clockElement = document.getElementById('count_down_clock');
+    console.log('countD', countDownDate)
+    let x= setInterval(function(){
+        const now = new Date().getTime();
+        let distance = countDownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        clockElement.innerHTML = `
                     <div class="time-unit">
                         <div class="time-value">${String(days).padStart(2, '0')}</div>
                         <div class="time-label">Days</div>
@@ -379,55 +364,21 @@
                         <div class="time-label">Sec</div>
                     </div>
                 `;
-            }, 1000);
-        })();
-        
-        // Initialize Slick Slider when DOM is ready
-        $(document).ready(function(){
-            if ($('.center').length) {
-                $('.center').slick({
-                    centerMode: true,
-                    centerPadding: '0px',
-                    slidesToShow: 3,
-                    infinite: true,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    arrows: true,
-                    dots: true,
-                    focusOnSelect: true,
-                    cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                    speed: 500,
-                    responsive: [
-                        {
-                            breakpoint: 1200,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                centerMode: true,
-                                centerPadding: '0px',
-                                slidesToShow: 1
-                            }
-                        }
-                    ]
-                });
-            }
-        });
-        
-    })();
+       
+                if (distance < 0) {
+                    clearInterval(x);
+                    clockElement.innerHTML = '<span class="time-value">Expired</span>';
+                    return;
+                }
+    }, 1000);
+
+var splide = new Splide( '.splide', {
+  perPage: 3,
+  focus  : 0,
+  omitEnd: true,
+} );
+
+splide.mount();
 </script>
 
 {% schema %}
