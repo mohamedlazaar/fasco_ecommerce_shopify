@@ -262,10 +262,10 @@
                 {% for product in collection.products limit: 10 %}
                     <div class="collection">
                         <img 
-                            src="{{ product.featured_image | image_url: width: 600 }}" 
+                            src="{{ product.featured_image | image_url }}" 
                             alt="{{ product.title }}"
                             loading="lazy"
-                        >
+                            width="600" height="600"                        >
                         <div class="product-info">
                             <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
                             <div class="product-discount">30% OFF</div>
