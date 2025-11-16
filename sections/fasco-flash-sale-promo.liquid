@@ -327,7 +327,7 @@
 
 <script>  
 document.addEventListener("DOMContentLoaded", () => {
-    const collection_length = {{ collection.products.size }};
+    const collection_length = {{ collection.products.size }} + 1;
     /* Countdown Timer */
     const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
     const clockElement = document.getElementById('count_down_clock');
