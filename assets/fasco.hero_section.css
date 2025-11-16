@@ -74,7 +74,7 @@
     align-items: end;
     overflow: hidden;
     width: 100%;
-    max-width: var(--hero-content-max-width);
+    /* max-width: var(--hero-content-max-width); */
     height: var(--hero-item-height);
     border-radius: var(--hero-border-radius);
   }
