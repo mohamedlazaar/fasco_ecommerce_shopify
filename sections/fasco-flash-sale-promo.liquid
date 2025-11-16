@@ -357,6 +357,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
 
     }
+
+    const totalProducts = parseInt(swiperElement.getAttribute('data-total-products')) || 0;
     const swiper = new Swiper('.swiper', {
             slidesPerView: 10,
             // Centered slides
@@ -392,6 +394,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 el: '.swiper-pagination',
                 clickable: true,
                 dynamicBullets: false,
+                renderBullet: function (index, className) {
+                    // Show "X / Total" format
+                    return '<span class="' + className + '">' + (index + 1) + '/' + totalProducts + '</span>';
+                },
             },
             
             // Responsive
