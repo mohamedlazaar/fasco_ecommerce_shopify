@@ -358,48 +358,30 @@
 
         }
 
-        const swiper = new Swiper('.swiper', {            
-                // Slides
-                slidesPerView: 10,
-                spaceBetween: 20,
-                
-                // Speed
-                speed: 600,
-                
-                // Autoplay
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                
-                // Navigation - These must match your HTML elements
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                
-                // Pagination - Must match your HTML element
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    dynamicBullets: false,
-                },
-                
-                // Responsive
-                breakpoints: {
-                    320: {
-                        spaceBetween: 10,
-                    },
-                    768: {
-                        spaceBetween: 15,
-                    },
-                    1024: {
-                        spaceBetween: 20,
-                    }
-                }
-            });
-            swiper();
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 10,
+            spaceBetween: 20,
+            speed: 600,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                320: { spaceBetween: 10 },
+                768: { spaceBetween: 15 },
+                1024: { spaceBetween: 20 },
+            }
+        });
+
     })
 
 
