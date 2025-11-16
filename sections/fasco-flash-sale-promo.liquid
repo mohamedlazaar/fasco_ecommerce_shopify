@@ -289,8 +289,11 @@
         
                     {% endfor %}                    
                 </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
 
-                {% endif %}
+            {% endif %}
     </div>
 </div>
 
@@ -331,7 +334,14 @@ document.addEventListener("DOMContentLoaded", () => {
         speed: 400,
         spaceBetween: 10,
         loop: true,
-        slidesPerView: 3
+        slidesPerView: 3,
+        pagination: {
+            el:'.swiper-pagination',
+        },
+        navigation:{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
 
         
     });
