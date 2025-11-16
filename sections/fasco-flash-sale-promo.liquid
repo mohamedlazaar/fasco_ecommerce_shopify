@@ -352,14 +352,11 @@
         }
 
         const swiper = new Swiper('.swiper', {
-            slidesPerView: 3,
-            spaceBetween: 20,
+            slidesPerView: "auto",
+            spaceBetween: 30,
             speed: 600,
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            //     pauseOnMouseEnter: true,
-            // },
+            centeredSlides: true,
+
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
