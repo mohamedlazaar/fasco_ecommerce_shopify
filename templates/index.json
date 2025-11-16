@@ -137,7 +137,18 @@
     "fasco_flash_sale_promo_GW3UKx": {
       "type": "fasco-flash-sale-promo",
       "name": "Fasco Flash Sales Promo",
-      "settings": {}
+      "settings": {
+        "collection": "flash-sales-promotion",
+        "flash_background": "#ffffff",
+        "title": "<h2>Deals Of The Month</h2>",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>",
+        "button_text": "Button",
+        "button_url": "",
+        "button_text_color": "#ffffff",
+        "button_bg_color": "#000000",
+        "countdown_title": "<h3>Hurry, Before It's Too Late!</h3>",
+        "end_date": "2026-12-31 23:59:59"
+      }
     }
   },
   "order": [
