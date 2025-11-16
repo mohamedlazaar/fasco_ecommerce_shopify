@@ -133,10 +133,16 @@
         "padding_top": 52,
         "padding_bottom": 52
       }
+    },
+    "fasco_flash_sale_promo_GW3UKx": {
+      "type": "fasco-flash-sale-promo",
+      "name": "Fasco Flash Sales Promo",
+      "settings": {}
     }
   },
   "order": [
     "fasco_hero_section_zjnxqR",
-    "multicolumn_r4VCMK"
+    "multicolumn_r4VCMK",
+    "fasco_flash_sale_promo_GW3UKx"
   ]
 }
