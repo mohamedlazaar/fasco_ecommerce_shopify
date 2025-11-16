@@ -358,9 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    const totalProducts = parseInt(swiperElement.getAttribute('data-total-products')) || 0;
     const swiper = new Swiper('.swiper', {
-            slidesPerView: 10,
             // Centered slides
             // centeredSlides: true,
             // centeredSlidesBounds: true,
@@ -370,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // loopAdditionalSlides: 2,
             
             // Slides
-
+            slidesPerView: collection_length,
             spaceBetween: 20,
             
             // Speed
@@ -393,6 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                dynamicBullets: false,
             },
             
             // Responsive
