@@ -366,16 +366,17 @@
                 el: '.swiper-pagination',
                 clickable: true,
                 renderBullet: function (index, className) {
-                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+                    return `<span class="${className}"></span>`;
                 }
             },
 
             breakpoints: {
-                320:  { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 10 },
-                768:  { slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 20 },
-                1024: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 }
+                320:  { slidesPerView: 1 },
+                768:  { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
             }
         });
+
 
 
 
