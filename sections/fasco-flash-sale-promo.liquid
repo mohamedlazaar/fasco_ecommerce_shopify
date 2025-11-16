@@ -201,6 +201,100 @@
         left: 50px !important;
         bottom: 10% !important;
     }
+
+    
+    /* Main slider wrapper */
+.custom-slider {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* holds all slides */
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* each slide */
+.slide {
+  min-width: calc(100% / 3);
+  position: relative;
+  padding: 10px;
+  transform: scale(0.9);
+  transition: transform 0.4s ease;
+}
+
+.slide.active {
+  transform: scale(1);
+}
+
+.slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Product info block */
+.product-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  padding: 20px 30px;
+  display: none;
+  border-radius: 4px;
+}
+
+.slide.active .product-info {
+  display: block;
+}
+
+/* Arrow buttons */
+.arrow {
+  position: absolute;
+  bottom: 60px;
+  left: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.arrow.next {
+  left: 100px;
+}
+
+/* Pagination dots */
+.pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  display: flex;
+  gap: 8px;
+}
+
+.pagination span {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pagination span.active {
+  background: #000;
+}
+
+
+
+
+
+
+
     /* Responsive */
     @media (max-width: 1200px) {
         .flash_sale_container {
@@ -289,32 +383,34 @@
         </div>
     </div>
 
-    <div class="flash_collection swiper" >
-                {% if collection != blank %}
-                <div class="swiper-wrapper">
-                    {% for product in collection.products limit: 10 %}
+    <div class="flash_collection custom-slider">
 
-                        <div class="collection swiper-slide">
-                            <img 
-                              src="{{ product.featured_image | image_url }}" 
-                              alt="{{ product.title }}"
-                              loading="lazy" width="100" height="100"
-                            >
-                            <div class="product-info">
-                                <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
-                                <div class="product-discount">30% OFF</div>
-                            </div>
-                        </div>
-        
-                    {% endfor %}                    
+    <div class="slides-wrapper">
+        {% for product in collection.products limit: 10 %}
+            <div class="slide">
+                <img 
+                  src="{{ product.featured_image | image_url }}" 
+                  alt="{{ product.title }}" width="100" height="100"
+                >
+
+                <div class="product-info">
+                    <div class="product-label">
+                        {{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale
+                    </div>
+                    <div class="product-discount">30% OFF</div>
                 </div>
-                <div class="swiper-pagination"></div>
-            {% endif %}
+            </div>
+        {% endfor %}
     </div>
-    <div class="arrow-buttons-container">
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
+
+    <!-- arrows -->
+    <button class="arrow prev">←</button>
+    <button class="arrow next">→</button>
+
+    <!-- pagination -->
+    <div class="pagination"></div>
+</div>
+
 </div>
 
 
@@ -350,35 +446,66 @@
             }, 1000);
 
         }
+    })
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 3,
-            spaceBetween: 20,
-            speed: 600,
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            //     pauseOnMouseEnter: true,
-            // },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                320: { spaceBetween: 10 },
-                768: { spaceBetween: 15 },
-                1024: { spaceBetween: 20 },
+        /* -------------------
+        PURE JS SLIDER
+        -------------------- */
+
+        let index = 0;
+        const slider = document.querySelector(".custom-slider");
+        const wrapper = slider.querySelector(".slides-wrapper");
+        const slides = slider.querySelectorAll(".slide");
+
+        const prev = slider.querySelector(".prev");
+        const next = slider.querySelector(".next");
+        const pagination = slider.querySelector(".pagination");
+
+        const slidesToShow = 3;
+
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${index * (100 / slidesToShow)}%)`;
+
+            slides.forEach((s, i) => {
+                s.classList.toggle("active", i === index + 1);
+            });
+
+            const dots = pagination.querySelectorAll("span");
+            dots.forEach((d, i) => {
+                d.classList.toggle("active", i === index);
+            });
+        }
+
+        // Create pagination dots
+        slides.forEach((_, i) => {
+            if (i <= slides.length - slidesToShow) {
+                const dot = document.createElement("span");
+                dot.addEventListener("click", () => {
+                    index = i;
+                    updateSlider();
+                });
+                pagination.appendChild(dot);
             }
         });
 
-    })
+        updateSlider();
 
+        next.addEventListener("click", () => {
+            if (index < slides.length - slidesToShow) index++;
+            updateSlider();
+        });
 
+        prev.addEventListener("click", () => {
+            if (index > 0) index--;
+            updateSlider();
+        });
+
+    });
 </script>
+
 
 {% schema %}
 {
