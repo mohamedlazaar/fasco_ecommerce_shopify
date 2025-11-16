@@ -86,7 +86,7 @@
 
 {% comment %} script {% endcomment %}
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     let tl = gsap.timeline();
     const images = gsap.utils.toArray('#section_{{section.id}} .item img');
