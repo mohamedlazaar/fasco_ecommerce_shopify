@@ -96,6 +96,7 @@
     .slider-container {
         overflow: hidden;
         width: 100%;
+        padding: 20px 0;
     }
     
     /* Slider Wrapper */
@@ -103,21 +104,27 @@
         display: flex;
         gap: 20px;
         transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        align-items: center;
     }
     
     /* Product Cards */
     .collection {
-        flex: 0 0 calc(33.333% - 14px);
-        min-width: calc(33.333% - 14px);
-        height: 500px;
-        border-radius: 0;
+        flex-shrink: 0;
+        height: 420px;
+        width: 280px;
         overflow: hidden;
         position: relative;
-        transition: transform 0.3s;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.7;
+        transform: scale(0.9);
     }
     
-    .collection:hover {
-        transform: scale(1.02);
+    /* Active (First visible) card - Larger */
+    .collection.active {
+        height: 500px;
+        width: 350px;
+        opacity: 1;
+        transform: scale(1);
     }
     
     .collection img {
@@ -127,7 +134,7 @@
         display: block;
     }
     
-    /* Product Info Overlay - Only on first card */
+    /* Product Info Overlay - Only on active card */
     .product-info {
         position: absolute;
         bottom: 20px;
@@ -135,7 +142,6 @@
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         padding: 25px 30px;
-        border-radius: 0;
         max-width: 70%;
     }
     
@@ -229,17 +235,25 @@
         }
         
         .collection {
-            flex: 0 0 calc(50% - 10px);
-            min-width: calc(50% - 10px);
+            height: 380px;
+            width: 250px;
+        }
+        
+        .collection.active {
             height: 450px;
+            width: 300px;
         }
     }
     
     @media screen and (max-width: 768px) {
         .collection {
-            flex: 0 0 calc(80% - 10px);
-            min-width: calc(80% - 10px);
+            height: 350px;
+            width: 220px;
+        }
+        
+        .collection.active {
             height: 400px;
+            width: 260px;
         }
         
         .product-info {
@@ -253,9 +267,18 @@
     }
     
     @media screen and (max-width: 480px) {
+        .slider-wrapper {
+            gap: 15px;
+        }
+        
         .collection {
-            flex: 0 0 calc(100% - 10px);
-            min-width: calc(100% - 10px);
+            height: 300px;
+            width: 200px;
+        }
+        
+        .collection.active {
+            height: 350px;
+            width: 240px;
         }
     }
 </style>
@@ -278,20 +301,17 @@
             <div class="slider-container">
                 <div class="slider-wrapper" id="sliderWrapper">
                     {% for product in collection.products limit: 10 %}
-                        <div class="collection">
+                        <div class="collection" data-index="{{ forloop.index0 }}">
                             <img 
                                 src="{{ product.featured_image | image_url }}" 
                                 alt="{{ product.title }}"
                                 loading="lazy"
-                                width="100"
-                                height="100"
+                                width="100" height="100"
                             >
-                            {% if forloop.first %}
-                                <div class="product-info">
-                                    <div class="product-label">01 —— Spring Sale</div>
-                                    <div class="product-discount">30% OFF</div>
-                                </div>
-                            {% endif %}
+                            <div class="product-info" style="display: none;">
+                                <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
+                                <div class="product-discount">30% OFF</div>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -352,7 +372,7 @@
         setInterval(updateCountdown, 1000);
     })();
 
-    // Product Slider
+    // Product Slider with Active Card Scaling
     (function() {
         const wrapper = document.getElementById('sliderWrapper');
         const prevBtn = document.getElementById('prevBtn');
@@ -368,19 +388,7 @@
         
         let currentIndex = 0;
         
-        // Calculate slides per view
-        function getSlidesPerView() {
-            const width = window.innerWidth;
-            if (width <= 480) return 1;
-            if (width <= 768) return 1.2;
-            if (width <= 1200) return 2;
-            return 3;
-        }
-        
-        let slidesPerView = getSlidesPerView();
-        const maxIndex = Math.max(0, totalSlides - Math.floor(slidesPerView));
-        
-        // Create dots (one per slide)
+        // Create dots
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('button');
             dot.className = 'dot';
@@ -392,10 +400,26 @@
         const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
         
         function updateSlider() {
-            const slideWidth = slides[0].offsetWidth;
-            const gap = 20;
-            const offset = -(currentIndex * (slideWidth + gap));
-            wrapper.style.transform = `translateX(${offset}px)`;
+            // Update active class and visibility
+            slides.forEach((slide, index) => {
+                const isActive = index === currentIndex;
+                slide.classList.toggle('active', isActive);
+                
+                // Show/hide product info only on active card
+                const productInfo = slide.querySelector('.product-info');
+                if (productInfo) {
+                    productInfo.style.display = isActive ? 'block' : 'none';
+                }
+            });
+            
+            // Calculate offset - account for different sizes
+            let offset = 0;
+            for (let i = 0; i < currentIndex; i++) {
+                const slideWidth = i === currentIndex - 1 ? 350 : 280; // Active card is wider
+                offset += slideWidth + 20; // 20 is the gap
+            }
+            
+            wrapper.style.transform = `translateX(-${offset}px)`;
             
             // Update dots
             dots.forEach((dot, index) => {
@@ -404,18 +428,18 @@
             
             // Update button states
             prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= maxIndex;
+            nextBtn.disabled = currentIndex >= totalSlides - 1;
         }
         
         function goToSlide(index) {
-            if (index >= 0 && index <= maxIndex) {
+            if (index >= 0 && index < totalSlides) {
                 currentIndex = index;
                 updateSlider();
             }
         }
         
         function nextSlide() {
-            if (currentIndex < maxIndex) {
+            if (currentIndex < totalSlides - 1) {
                 currentIndex++;
                 updateSlider();
             }
@@ -436,10 +460,6 @@
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(function() {
-                slidesPerView = getSlidesPerView();
-                if (currentIndex > maxIndex) {
-                    currentIndex = maxIndex;
-                }
                 updateSlider();
             }, 250);
         });
