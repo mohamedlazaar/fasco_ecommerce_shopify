@@ -300,7 +300,7 @@
             </div>
         </div>
     </div>
-    <div class="flash_collection">
+    <div class="flash_collection center">
         {% if collection != blank %}
             {% for product in collection.products %}
                 <div class="collection">
@@ -350,7 +350,7 @@
     }, 1000);
 
 
-        $('.flash_collection').slick({
+        $('.center').slick({
         centerMode: true,
         centerPadding: '60px',
         slidesToShow: 3,
