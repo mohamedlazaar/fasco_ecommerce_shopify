@@ -37,7 +37,7 @@
     <div class="falsh_collection">
         {% if collection != blank %}
             {% for product in collection.products %}
-                {{ product.featured_image }}
+                {{ product.featured_image |  image_url: width:100  }}
                 {{ product.title }}
             {% endfor %}
         {% endif %}
