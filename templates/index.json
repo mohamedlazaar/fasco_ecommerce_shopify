@@ -9,134 +9,76 @@
  */
 {
   "sections": {
-    "fasco_hero_section_VN8QEm": {
-      "type": "fasco-hero-section",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "image_bPyMj9": {
-          "type": "image",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "image": "shopify://shop_images/1.png",
-            "image_alt": "",
-            "background_color_img": "#E0E0E0"
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "main_content_CDHyHH": {
-          "type": "main_content",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "image_1": "shopify://shop_images/2_1.png",
-            "image_1_bg_color": "#E0E0E0",
-            "image_2": "shopify://shop_images/2_2.png",
-            "image_2_bg_color": "#E0E0E0",
-            "title": "<h2>ULTIMATE</h2>",
-            "subtitle": "<h2>SALE</h2>",
-            "paragraph": "<p>NEW COLLECTION</p>",
-            "background_color_content": "rgb(0,0,0)",
-            "color_content": "#ffffff",
-            "button_text": "Shop now",
-            "button_url": "https://google.com",
-            "button_background": "rgb(0,0,0)",
-            "button_color": "#ffffff"
-          }
-        },
-        "image_KBmeki": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/3.png",
-            "image_alt": "",
-            "background_color_img": "#E0E0E0"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "image_bPyMj9",
-        "main_content_CDHyHH",
-        "image_KBmeki"
+        "heading",
+        "button"
       ],
-      "name": "Fasco Hero Section",
-      "settings": {}
-    },
-    "multicolumn_e7B4J6": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_R3Q7bx": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/chanel.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_XNiE6N": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/luisVuitton.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_pGGHRG": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/prada.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_zcaCJR": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/calvinklein.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Tddqnr": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Denim.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_R3Q7bx",
-        "column_XNiE6N",
-        "column_pGGHRG",
-        "column_zcaCJR",
-        "column_Tddqnr"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 5,
-        "column_alignment": "left",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "padding_top": 52,
-        "padding_bottom": 52
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "fasco_hero_section_VN8QEm",
-    "multicolumn_e7B4J6"
+    "image_banner",
+    "featured_collection"
   ]
 }
