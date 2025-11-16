@@ -290,19 +290,4 @@
     },
   }).mount();
 </script>
-
-{% schema %}
-{
-  "name": "Fasco Flash Sales Promo",
-  "settings": [
-      { "type": "collection", "id": "collection", "label": "Collection" },
-      { "type": "richtext", "id": "title", "label": "Title" },
-      { "type": "richtext", "id": "description", "label": "Description" },
-      { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy Now" },
-      { "type": "url", "id": "button_url", "label": "Button Link" },
-      { "type": "richtext", "id": "countdown_title", "label": "Countdown Title" },
-      { "type": "text", "id": "end_date", "label": "End date" }
-  ],
-  "presets": [{ "name": "Fasco Flash Sales Promo" }]
-}
-{% endschema %}
+{% schema %} { "name": "Fasco Flash Sales Promo", "settings": [ { "type": "header", "content": "Collection Settings" }, { "type": "collection", "id": "collection", "label": "Collection" }, { "type": "header", "content": "General Settings" }, { "type": "color_background", "id": "flash_background", "label": "Background Color", "default": "#ffffff" }, { "type":"richtext", "id": "title", "label":"Title", "default": "<h2>Deals Of The Month</h2>" }, { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>" }, { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy Now" }, { "type": "url", "id": "button_url", "label": "Button Link" }, { "type": "color", "id": "button_text_color", "label": "Button Text Color", "default": "#ffffff" }, { "type": "color_background", "id": "button_bg_color", "label": "Button Background Color", "default": "#000000" }, { "type": "header", "content": "CountDown Clock" }, { "type": "richtext", "id": "countdown_title", "label": "CountDown Title", "default": "<h3>Hurry, Before It's Too Late!</h3>" }, { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD HH:MM:SS)", "default": "2025-12-31 23:59:59", "info": "Format: YYYY-MM-DD HH:MM:SS" } ], "presets": [ { "name": "Fasco Flash Sales Promo" } ] } {% endschema %}
