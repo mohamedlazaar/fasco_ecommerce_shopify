@@ -45,7 +45,7 @@
 </div>
 
 <script>  
-    let countDownDate = new Date('Jan 16, 2026 15:40:25').getTime();
+    let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
     let x= setInterval(function(){
         const now = new Date().getTime();
         let distance = countDownDate - now;
