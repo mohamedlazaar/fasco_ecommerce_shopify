@@ -330,7 +330,7 @@
 
 <script>  
 document.addEventListener("DOMContentLoaded", () => {
-    const collection_length = {{ collection.products.size }}
+    const collection_length = {{ collection.products.size }};
     /* Countdown Timer */
     const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
     const clockElement = document.getElementById('count_down_clock');
@@ -363,17 +363,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiper = new Swiper('.swiper', {
         speed: 400,
         spaceBetween: 30,
-
-
+        
+        loop: true,
+        slidesPerView: collection_length,
         pagination: {
             el:'.swiper-pagination',
         },
         navigation:{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: collection_length,
-        
+        }        
     });
 })
 
