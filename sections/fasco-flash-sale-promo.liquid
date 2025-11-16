@@ -117,7 +117,7 @@
     .flash_collection {
         position: relative;
         width: 100%;
-        padding-bottom: 80px 0;
+        padding: 80px 0;
     }
     .swiper-slide.swiper-slide-active{
         height: 582px;
@@ -326,7 +326,7 @@
 
 
 <script type="text/javascript">  
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("load", () => {
         /* Countdown Timer */
         const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
         const clockElement = document.getElementById('count_down_clock');
@@ -358,7 +358,7 @@
         }
 
         const swiper = new Swiper('.swiper', {
-            slidesPerView: 10,
+            slidesPerView: 6,
             spaceBetween: 20,
             speed: 600,
             autoplay: {
