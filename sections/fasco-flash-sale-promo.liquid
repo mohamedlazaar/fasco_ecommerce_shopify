@@ -397,12 +397,19 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Splide Slider */
     if (typeof Splide !== 'undefined') {
             const splide = new Splide( '.splide', {
-                fixedWidth: 400,
-                fixedHeight 500,
+                fixedWidth  : 400,
+                fixedHeight : 50,
                 gap         : 10,
+                rewind      : true,
                 pagination  : false,
                 isNavigation: true,
-            } )
+                breakpoints : {
+                    600: {
+                    fixedWidth : 60,
+                    fixedHeight: 44,
+                    },
+                },
+                } )
 
         splide.mount();
     }
