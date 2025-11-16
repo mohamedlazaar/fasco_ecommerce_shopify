@@ -1,4 +1,4 @@
-{%-  assign collection = section.settings.collection -%}
+{%- assign collection = section.settings.collection -%}
 
 <style>
     .flash_sale_container {
@@ -9,7 +9,7 @@
         gap: 40px;
         align-items: center;
     }
-    
+
     .flash_content {
         display: flex;
         flex-direction: column;
@@ -18,19 +18,19 @@
         padding: 10px;
         gap: 30px;
     }
-    
+
     .content h2 {
         font-size: clamp(2rem, 5vw, 3.5rem);
         margin-bottom: 15px;
         font-weight: 700;
     }
-    
+
     .content p {
         color: #666;
         line-height: 1.6;
         margin-bottom: 20px;
     }
-    
+
     .content a {
         display: inline-block;
         padding: 15px 40px;
@@ -41,33 +41,33 @@
         transition: all 0.3s;
         width: fit-content;
     }
-    
+
     .content a:hover {
         background: #333;
     }
-    
+
     .count_down {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .count_down_title {
         font-size: 1.5rem;
         font-weight: 600;
     }
-    
+
     .count_down_clock {
         display: flex;
         gap: 10px;
     }
-    
+
     .time-unit {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    
+
     .time-value {
         background: #f5f5f5;
         padding: 15px 20px;
@@ -78,69 +78,63 @@
         font-weight: 700;
         font-family: 'Courier New', monospace;
     }
-    
+
     .time-label {
         font-size: 0.875rem;
         color: #666;
         margin-top: 5px;
         font-weight: 400;
     }
-    
-    /* Slider Container */
+
+    /* Slider container */
     .flash_collection {
         position: relative;
         width: 100%;
         padding-bottom: 80px;
     }
-    
-    /* Slick Slider Overrides */
-    .flash_collection.center {
-        padding: 20px 0;
+
+    /* SPLIDE VERSION OF YOUR CARD EFFECTS */
+    .splide__track {
+        overflow: visible !important;
     }
-    
-    .flash_collection .slick-list {
-        overflow: visible;
-    }
-    
-    .flash_collection .slick-track {
+
+    .splide__list {
         display: flex;
-        align-items: center;
         gap: 20px;
     }
-    
-    /* Product Cards */
+
+    .splide__slide {
+        display: flex;
+        justify-content: center;
+    }
+
     .collection {
         height: 420px;
-        width: 280px !important;
+        width: 280px;
         overflow: hidden;
         position: relative;
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0.7;
         transform: scale(0.9);
-        outline: none;
+        border-radius: 12px;
     }
-    
-    /* Active (Center) card - Larger */
-    .collection.slick-center {
+
+    /* Equivalent of .slick-center → Splide uses .is-active */
+    .splide__slide.is-active .collection {
         height: 500px;
-        width: 350px !important;
+        width: 350px;
         opacity: 1;
         transform: scale(1);
         z-index: 10;
     }
-    
+
     .collection img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
     }
-    
-    .collection h3 {
-        display: none;
-    }
-    
-    /* Product Info Overlay - Only on center card */
+
     .product-info {
         position: absolute;
         bottom: 20px;
@@ -151,11 +145,11 @@
         max-width: 70%;
         display: none;
     }
-    
-    .collection.slick-center .product-info {
+
+    .splide__slide.is-active .product-info {
         display: block;
     }
-    
+
     .product-label {
         font-size: 0.75rem;
         color: #999;
@@ -163,7 +157,7 @@
         letter-spacing: 2px;
         text-transform: uppercase;
     }
-    
+
     .product-discount {
         font-size: 2rem;
         font-weight: 700;
@@ -171,129 +165,45 @@
         margin: 0;
         line-height: 1;
     }
-    
-    /* Custom Slick Arrows */
-    .flash_collection .slick-prev,
-    .flash_collection .slick-next {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: #fff !important;
-        border: 1px solid #e0e0e0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-    }
-    
-    .flash_collection .slick-prev:before,
-    .flash_collection .slick-next:before {
-        color: #000;
-        font-size: 24px;
-        opacity: 1;
-    }
-    
-    .flash_collection .slick-prev {
-        left: 0;
-    }
-    
-    .flash_collection .slick-next {
-        right: auto;
-        left: 70px;
-    }
-    
-    .flash_collection .slick-prev:hover,
-    .flash_collection .slick-next:hover {
-        background: #000 !important;
-    }
-    
-    .flash_collection .slick-prev:hover:before,
-    .flash_collection .slick-next:hover:before {
-        color: #fff;
-    }
-    
-    /* Custom Slick Dots */
-    .flash_collection .slick-dots {
-        bottom: -60px;
-        left: 140px;
-        width: auto;
-        display: flex !important;
-        justify-content: flex-start;
-    }
-    
-    .flash_collection .slick-dots li {
-        width: 10px;
-        height: 10px;
-        margin: 0 4px;
-    }
-    
-    .flash_collection .slick-dots li button {
-        width: 10px;
-        height: 10px;
-        padding: 0;
-    }
-    
-    .flash_collection .slick-dots li button:before {
-        width: 10px;
-        height: 10px;
-        content: '';
-        background: #d0d0d0;
-        border-radius: 50%;
-        opacity: 1;
-    }
-    
-    .flash_collection .slick-dots li.slick-active button:before {
-        background: #000;
-        width: 12px;
-        height: 12px;
-    }
-    
-    /* Responsive */
-    @media screen and (max-width: 1200px) {
+
+    @media (max-width: 1200px) {
         .flash_sale_container {
             grid-template-columns: 1fr;
             gap: 40px;
         }
-        
+
         .collection {
             height: 380px;
-            width: 250px !important;
+            width: 250px;
         }
-        
-        .collection.slick-center {
+
+        .splide__slide.is-active .collection {
             height: 450px;
-            width: 300px !important;
+            width: 300px;
         }
     }
-    
-    @media screen and (max-width: 768px) {
+
+    @media (max-width: 768px) {
         .collection {
             height: 350px;
-            width: 220px !important;
+            width: 220px;
         }
-        
-        .collection.slick-center {
+
+        .splide__slide.is-active .collection {
             height: 400px;
-            width: 260px !important;
-        }
-        
-        .product-info {
-            padding: 20px;
-            max-width: 80%;
-        }
-        
-        .product-discount {
-            font-size: 1.5rem;
+            width: 260px;
         }
     }
-    
-    @media screen and (max-width: 480px) {
+
+    @media (max-width: 480px) {
         .collection {
             height: 300px;
-            width: 200px !important;
+            width: 200px;
         }
-        
-        .collection.slick-center {
+
+        .splide__slide.is-active .collection {
             height: 350px;
-            width: 240px !important;
+            width: 240px;
         }
     }
 </style>
@@ -305,162 +215,94 @@
             <p>{{ section.settings.description }}</p>
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         </div>
+
         <div class="count_down">
-            <h3 class="count_down_title">
-               {{ section.settings.countdown_title }}
-            </h3>
+            <h3 class="count_down_title">{{ section.settings.countdown_title }}</h3>
             <div class="count_down_clock" id="count_down_clock"></div>
         </div>
     </div>
-    
+
     <div class="flash_collection splide">
-        {% if collection != blank %}
-            {% for product in collection.products limit: 10 %}
-                <div class="collection">
-                    <img 
-                        src="{{ product.featured_image | image_url }}" 
-                        alt="{{ product.title }}"
-                        loading="lazy"
-                        width="100" height="100"
-                    >
-                    <div class="product-info">
-                        <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} —— Spring Sale</div>
-                        <div class="product-discount">30% OFF</div>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% if collection != blank %}
+                    {% for product in collection.products limit: 10 %}
+                    <li class="splide__slide">
+                        <div class="collection">
+                            <img 
+                              src="{{ product.featured_image | image_url }}" 
+                              alt="{{ product.title }}"
+                              loading="lazy" width="100" height="100"
+                            >
+
+                            <div class="product-info">
+                                <div class="product-label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} — Spring Sale</div>
+                                <div class="product-discount">30% OFF</div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
     </div>
 </div>
 
-
-
 <script>  
+  /* Countdown */
   let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
   const clockElement = document.getElementById('count_down_clock');
-    console.log('countD', countDownDate)
-    let x= setInterval(function(){
-        const now = new Date().getTime();
-        let distance = countDownDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        clockElement.innerHTML = `
-                    <div class="time-unit">
-                        <div class="time-value">${String(days).padStart(2, '0')}</div>
-                        <div class="time-label">Days</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value">${String(hours).padStart(2, '0')}</div>
-                        <div class="time-label">Hr</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value">${String(minutes).padStart(2, '0')}</div>
-                        <div class="time-label">Mins</div>
-                    </div>
-                    <div class="time-unit">
-                        <div class="time-value">${String(seconds).padStart(2, '0')}</div>
-                        <div class="time-label">Sec</div>
-                    </div>
-                `;
-       
-                if (distance < 0) {
-                    clearInterval(x);
-                    clockElement.innerHTML = '<span class="time-value">Expired</span>';
-                    return;
-                }
-    }, 1000);
 
-    var splide = new Splide( '.splide', {
+  let x = setInterval(() => {
+    const now = Date.now();
+    let distance = countDownDate - now;
+
+    if (distance <= 0) {
+        clearInterval(x);
+        clockElement.innerHTML = '<span class="time-value">Expired</span>';
+        return;
+    }
+
+    const days = String(Math.floor(distance / 86400000)).padStart(2, '0');
+    const hours = String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0');
+    const minutes = String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0');
+    const seconds = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
+
+    clockElement.innerHTML = `
+        <div class="time-unit"><div class="time-value">${days}</div><div class="time-label">Days</div></div>
+        <div class="time-unit"><div class="time-value">${hours}</div><div class="time-label">Hr</div></div>
+        <div class="time-unit"><div class="time-value">${minutes}</div><div class="time-label">Mins</div></div>
+        <div class="time-unit"><div class="time-value">${seconds}</div><div class="time-label">Sec</div></div>
+    `;
+  }, 1000);
+
+  /* Splide */
+  new Splide('.splide', {
+    type: 'loop',
     perPage: 3,
-    focus  : 0,
-    omitEnd: true,
-    } );
-
-    splide.mount();
+    gap: 20,
+    focus: 'center',
+    pagination: false,
+    autoplay: true,
+    breakpoints: {
+      1024: { perPage: 2 },
+      768: { perPage: 1 },
+    },
+  }).mount();
 </script>
 
 {% schema %}
-    {
-        "name": "Fasco Flash Sales Promo",
-        "settings": [
-            {
-                "type": "header",
-                "content": "Collection Settings"
-            },
-            {
-                "type": "collection",
-                "id": "collection",
-                "label": "Collection"
-            },
-            {
-               "type": "header",
-               "content": "General Settings"
-            },
-            {
-                "type": "color_background",
-                "id": "flash_background",
-                "label": "Background Color",
-                "default": "#ffffff"
-            },
-            {
-                "type":"richtext",
-                "id": "title",
-                "label":"Title",
-                "default": "<h2>Deals Of The Month</h2>"
-            },
-            {
-                "type": "richtext",
-                "id": "description",
-                "label": "Description",
-                "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>"
-            },
-            {
-                "type": "text",
-                "id": "button_text",
-                "label": "Button Text",
-                "default": "Buy Now"
-            },
-            {
-                "type": "url",
-                "id": "button_url",
-                "label": "Button Link"
-            },
-            {
-                "type": "color",
-                "id": "button_text_color",
-                "label": "Button Text Color",
-                "default": "#ffffff"
-            },
-            {
-                "type": "color_background",
-                "id": "button_bg_color",
-                "label": "Button Background Color",
-                "default": "#000000"
-            },
-            {
-                "type": "header",
-                "content": "CountDown Clock"
-            },
-            {
-                "type": "richtext",
-                "id": "countdown_title",
-                "label": "CountDown Title",
-                "default": "<h3>Hurry, Before It's Too Late!</h3>"
-            },
-            {
-                "type": "text",
-                "id": "end_date",
-                "label": "End date (YYYY-MM-DD HH:MM:SS)",
-                "default": "2025-12-31 23:59:59",
-                "info": "Format: YYYY-MM-DD HH:MM:SS"
-            }
-        ],
-        "presets": [
-            {
-                "name": "Fasco Flash Sales Promo"
-            }
-        ]
-    }
+{
+  "name": "Fasco Flash Sales Promo",
+  "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "richtext", "id": "title", "label": "Title" },
+      { "type": "richtext", "id": "description", "label": "Description" },
+      { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy Now" },
+      { "type": "url", "id": "button_url", "label": "Button Link" },
+      { "type": "richtext", "id": "countdown_title", "label": "Countdown Title" },
+      { "type": "text", "id": "end_date", "label": "End date" }
+  ],
+  "presets": [{ "name": "Fasco Flash Sales Promo" }]
+}
 {% endschema %}
