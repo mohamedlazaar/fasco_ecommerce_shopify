@@ -325,8 +325,8 @@
 
 
 
-<script >  
-    document.addEventListener("load", () => {
+<script type="text/javascript">  
+    document.addEventListener("DOMContentLoaded", () => {
         /* Countdown Timer */
         const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
         const clockElement = document.getElementById('count_down_clock');
@@ -358,7 +358,7 @@
         }
 
         const swiper = new Swiper('.swiper', {
-            slidesPerView: 6,
+            slidesPerView: 2,
             spaceBetween: 20,
             speed: 600,
             autoplay: {
