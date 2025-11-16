@@ -6,109 +6,260 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 52px 0;
+        gap: 40px;
+        align-items: center;
     }
     
     .flash_content {
         display: flex;
         flex-direction: column;
-        justify-content: end;
+        justify-content: center;
         width: 100%;
         padding: 10px;
+        gap: 30px;
+    }
+    
+    .content h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    
+    .content p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    
+    .content a {
+        display: inline-block;
+        padding: 15px 40px;
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    
+    .content a:hover {
+        background: #333;
+    }
+    
+    .count_down {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .count_down_title {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .count_down_clock {
+        display: flex;
+        gap: 10px;
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: 'Courier New', monospace;
+    }
+    
+    .time-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .time-value {
+        background: #f5f5f5;
+        padding: 15px 20px;
+        border-radius: 8px;
+        min-width: 70px;
+        text-align: center;
+    }
+    
+    .time-label {
+        font-size: 0.875rem;
+        color: #666;
+        margin-top: 5px;
+        font-weight: 400;
     }
     
     /* Slider Container */
     .flash_collection {
         position: relative;
         width: 100%;
-        overflow: hidden;
-    }
-    
-    /* Slider Wrapper */
-    .slider-wrapper {
+        height: 500px;
         display: flex;
-        transition: transform 0.5s ease-in-out;
-        gap: 15px;
+        align-items: center;
+        justify-content: center;
     }
     
-    /* Product Cards */
+    /* Slider Cards */
+    .slider-track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .collection {
-        flex: 0 0 calc(33.333% - 10px);
-        min-width: calc(33.333% - 10px);
-        background: #f5f5f5;
-        border-radius: 10px;
-        padding: 15px;
-        box-sizing: border-box;
+        position: absolute;
+        width: 320px;
+        height: 450px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: all 0.5s ease;
+        opacity: 0;
+        transform: translateX(0) scale(0.8);
+        pointer-events: none;
+    }
+    
+    .collection.active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: 3;
+        pointer-events: all;
+    }
+    
+    .collection.prev {
+        opacity: 0.7;
+        transform: translateX(-60%) scale(0.85);
+        z-index: 2;
+        pointer-events: all;
+    }
+    
+    .collection.next {
+        opacity: 0.7;
+        transform: translateX(60%) scale(0.85);
+        z-index: 2;
+        pointer-events: all;
     }
     
     .collection img {
         width: 100%;
-        height: 250px;
+        height: 100%;
         object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
+    }
+    
+    .product-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .product-label {
+        font-size: 0.75rem;
+        color: #999;
+        margin-bottom: 5px;
+    }
+    
+    .product-discount {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #000;
     }
     
     .collection h3 {
-        font-size: 16px;
-        margin: 0;
-        text-align: center;
+        font-size: 1rem;
+        margin: 10px 0 0;
+        font-weight: 500;
     }
     
     /* Navigation Buttons */
     .slider-nav {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
-        justify-content: space-between;
-        padding: 0 10px;
-        pointer-events: none;
+        gap: 15px;
         z-index: 10;
     }
     
     .slider-btn {
-        pointer-events: all;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border: none;
+        background: #fff;
+        color: #000;
+        border: 1px solid #e0e0e0;
         font-size: 20px;
         cursor: pointer;
         transition: all 0.3s;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     .slider-btn:hover {
-        background: rgba(0, 0, 0, 0.9);
+        background: #000;
+        color: #fff;
         transform: scale(1.1);
     }
     
-    .slider-btn:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
+    /* Dot Navigation */
+    .slider-dots {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #d0d0d0;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .dot.active {
+        background: #000;
+        width: 12px;
+        height: 12px;
     }
     
     /* Responsive */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         .flash_sale_container {
             grid-template-columns: 1fr;
+            gap: 60px;
         }
         
         .collection {
-            flex: 0 0 calc(50% - 10px);
-            min-width: calc(50% - 10px);
+            width: 280px;
+            height: 400px;
         }
     }
     
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         .collection {
-            flex: 0 0 100%;
-            min-width: 100%;
+            width: 240px;
+            height: 350px;
+        }
+        
+        .collection.prev,
+        .collection.next {
+            transform: translateX(0) scale(0.7);
+            opacity: 0.3;
+        }
+        
+        .flash_collection {
+            height: 450px;
         }
     }
 </style>
@@ -121,26 +272,26 @@
             <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
         </div>
         <div class="count_down">
-            <h3 class="count_down_title">
-                {{ section.settings.countdown_title }}
-            </h3>
+            <h3 class="count_down_title">{{ section.settings.countdown_title }}</h3>
             <div class="count_down_clock" id="count_down_clock"></div>
         </div>
     </div>
     
     <div class="flash_collection">
         {% if collection != blank %}
-            <div class="slider-wrapper" id="sliderWrapper">
-                {% for product in collection.products %}
-                    <div class="collection">
+            <div class="slider-track" id="sliderTrack">
+                {% for product in collection.products limit: 10 %}
+                    <div class="collection" data-index="{{ forloop.index0 }}">
                         <img 
-                            src="{{ product.featured_image | image_url}}" 
+                            src="{{ product.featured_image | image_url: width: 600 }}" 
                             alt="{{ product.title }}"
                             loading="lazy"
-                            width="400"
-                            height="600"
                         >
-                        <h3>{{ product.title }}</h3>
+                        <div class="product-info">
+                            <div class="product-label">01 —— Spring Sale</div>
+                            <div class="product-discount">30% OFF</div>
+                            <h3>{{ product.title }}</h3>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -149,96 +300,126 @@
                 <button class="slider-btn" id="prevBtn" aria-label="Previous">‹</button>
                 <button class="slider-btn" id="nextBtn" aria-label="Next">›</button>
             </div>
+            
+            <div class="slider-dots" id="sliderDots"></div>
         {% endif %}
     </div>
 </div>
 
 <script>
-    // Countdown Timer
-    let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-    let x = setInterval(function() {
-        const now = new Date().getTime();
-        let distance = countDownDate - now;
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById("count_down_clock").innerHTML = 
-            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById('count_down_clock').innerHTML = "Expired";
-        }
-    }, 1000);
-
-    // Product Slider
+    // Countdown Timer with formatted display
     (function() {
-        const slider = document.getElementById('sliderWrapper');
+        let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
+        const clockElement = document.getElementById('count_down_clock');
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            let distance = countDownDate - now;
+            
+            if (distance < 0) {
+                clockElement.innerHTML = '<span class="time-value">Expired</span>';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            clockElement.innerHTML = `
+                <div class="time-unit">
+                    <div class="time-value">${String(days).padStart(2, '0')}</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value">${String(hours).padStart(2, '0')}</div>
+                    <div class="time-label">Hr</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value">${String(minutes).padStart(2, '0')}</div>
+                    <div class="time-label">Mins</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value">${String(seconds).padStart(2, '0')}</div>
+                    <div class="time-label">Sec</div>
+                </div>
+            `;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    })();
+
+    // Card Slider with 3 visible cards
+    (function() {
+        const track = document.getElementById('sliderTrack');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('sliderDots');
         
-        if (!slider || !prevBtn || !nextBtn) return;
+        if (!track || !prevBtn || !nextBtn) return;
         
-        let currentIndex = 0;
-        const slides = slider.querySelectorAll('.collection');
+        const slides = Array.from(track.querySelectorAll('.collection'));
         const totalSlides = slides.length;
+        let currentIndex = 0;
         
-        // Calculate how many slides are visible
-        function getSlidesPerView() {
-            const width = window.innerWidth;
-            if (width <= 480) return 1;
-            if (width <= 768) return 2;
-            return 3;
-        }
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
         
-        let slidesPerView = getSlidesPerView();
-        const maxIndex = Math.max(0, totalSlides - slidesPerView);
+        const dots = Array.from(dotsContainer.querySelectorAll('.dot'));
         
         function updateSlider() {
-            const slideWidth = slides[0].offsetWidth;
-            const gap = 15;
-            const offset = -(currentIndex * (slideWidth + gap));
-            slider.style.transform = `translateX(${offset}px)`;
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev', 'next');
+                
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+                    slide.classList.add('prev');
+                } else if (index === (currentIndex + 1) % totalSlides) {
+                    slide.classList.add('next');
+                }
+            });
             
-            // Update button states
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex >= maxIndex;
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
         }
         
         function nextSlide() {
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
         }
         
         function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
         }
         
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
         
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                slidesPerView = getSlidesPerView();
-                const newMaxIndex = Math.max(0, totalSlides - slidesPerView);
-                
-                // Adjust current index if needed
-                if (currentIndex > newMaxIndex) {
-                    currentIndex = newMaxIndex;
-                }
-                
-                updateSlider();
-            }, 250);
+        // Auto-play
+        let autoplayInterval = setInterval(nextSlide, 5000);
+        
+        // Pause on hover
+        track.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
         });
         
         // Initialize
@@ -279,13 +460,13 @@
                 "type": "richtext",
                 "id": "description",
                 "label": "Description",
-                "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>"
+                "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>"
             },
             {
                 "type": "text",
                 "id": "button_text",
                 "label": "Button Text",
-                "default": "Button"
+                "default": "Buy Now"
             },
             {
                 "type": "url",
