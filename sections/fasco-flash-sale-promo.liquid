@@ -315,7 +315,9 @@
 
 <script>  
     let countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-    console.log('countD', countDownDate)
+    const clockElement = document.getElementById('count_down_clock');
+
+
     let x= setInterval(function(){
         const now = new Date().getTime();
         let distance = countDownDate - now;
@@ -346,6 +348,34 @@
             document.getElementById('count_down_clock').innerHTML = "Expired"
         }
     }, 1000);
+
+
+        $('.flash_collection').slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        responsive: [
+            {
+            breakpoint: 768,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+            }
+            }
+        ]
+        });
+                
 </script>
 
 {% schema %}
