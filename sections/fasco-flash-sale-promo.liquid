@@ -90,6 +90,14 @@
         font-weight: 400;
     }
 
+    .arrow-buttons-container{
+        position: absolute;
+        top:50%;
+        left:50%;
+        display: flex;
+        width: 100px;
+        
+    }
     /* Slider container */
     .flash_collection {
         position: relative;
@@ -290,13 +298,14 @@
                     {% endfor %}                    
                 </div>
                 <div class="swiper-pagination"></div>
-                <div class="arrow-buttons-container">
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+
    
 
             {% endif %}
+    </div>
+    <div class="arrow-buttons-container">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
 </div>
 
