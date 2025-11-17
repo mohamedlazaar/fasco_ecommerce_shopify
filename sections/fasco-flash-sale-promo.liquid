@@ -348,12 +348,12 @@
             speed: 600,
 
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.flash_{{ section.id }} .swiper-button-next',
+                prevEl: '.flash_{{ section.id }} .swiper-button-prev',
             },
 
             pagination: {
-                el: '.swiper-pagination',
+                el: '.flash_{{ section.id }} .swiper-pagination',
                 clickable: true,
                 renderBullet: function (index, className) {
                     return `<span class="${className}"></span>`;
