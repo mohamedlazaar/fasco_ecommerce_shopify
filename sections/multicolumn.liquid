@@ -204,7 +204,7 @@
 </div>
 {% comment %} fasco gsap add to the multicolumn {% endcomment %}
 <script>
-  document.addEventListener("DOMContentLoaded", (event){
+  document.addEventListener("DOMContentLoaded", (event)=>{
     const items = document.querySelectorAll('.item_{{ section.id }}');
 
     gsap.from(items, {
