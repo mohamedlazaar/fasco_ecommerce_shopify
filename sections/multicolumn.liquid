@@ -211,26 +211,17 @@
     // Create a timeline
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".multicolumn-{{ section.id }}",
-        start: "top +=95",
-        scrub: true,
-        toggleActions: "play reverse play reverse",
-        // markers: true  // uncomment to debug
+        trigger: ".multicolumn",
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,  // ties animation to scroll position
       }
     });
+
     tl.fromTo(items, 
-        {
-          opacity: 0,
-          y: 40
-        },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.5,
-          duration: 0.5,
-          ease: "power2.inOut"
-        }
-      );      
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, stagger: 0.1 }
+    );     
     
     // items.forEach((item, i)=>{
     //   tl.fromTo(item, 
