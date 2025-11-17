@@ -376,8 +376,45 @@
     },
     "fasco_testimonials_cticDb": {
       "type": "fasco-testimonials",
+      "blocks": {
+        "testimonial_xdXmBH": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/testti.png",
+            "text": "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
+            "name": "James K.",
+            "role": "Traveler"
+          }
+        },
+        "testimonial_Gbn3UT": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/testi2.png",
+            "text": "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
+            "name": "James K.",
+            "role": "Traveler"
+          }
+        },
+        "testimonial_LRdway": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/image5.png",
+            "text": "You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!",
+            "name": "James K.",
+            "role": "Traveler"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xdXmBH",
+        "testimonial_Gbn3UT",
+        "testimonial_LRdway"
+      ],
       "name": "Fasco Testimonials",
-      "settings": {}
+      "settings": {
+        "title": "Testimonials",
+        "subtitle": "See what our travelers say about us."
+      }
     }
   },
   "order": [
