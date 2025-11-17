@@ -97,7 +97,7 @@
           {% for btn in tabs %}
             {% assign collection_list = btn.settings.collection_list %}
             {% for collection in collection_list %}
-              {% assign tab_label = collections[collection].title %}
+              {% assign tab_label = collection.title %}
               <button class="tab-button" data-tab="is_{{ tab_label | handleize }}">{{ tab_label }}</button>
             {% endfor %}
           {% endfor %}
