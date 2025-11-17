@@ -19,7 +19,7 @@
           "settings": {
             "image": "shopify://shop_images/FASCO.png",
             "image_width": 100,
-            "alignment": ""
+            "alignment": "center"
           }
         },
         "link_list_cxrz8p": {
@@ -33,6 +33,9 @@
       "block_order": [
         "image_zLKqeE",
         "link_list_cxrz8p"
+      ],
+      "custom_css": [
+        ".footer-block__details-content.list-unstyled {display: flex; gap: 20px; align-items: center;}"
       ],
       "settings": {
         "color_scheme": "scheme-1",
