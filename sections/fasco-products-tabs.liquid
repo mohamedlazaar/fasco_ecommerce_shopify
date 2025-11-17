@@ -119,7 +119,12 @@
                           <h3>{{ product.title }}</h3>
                           <p>{{ product.vendor }}</p>
                         </div>
-                        <span>{{ product.rating }}</span>
+                        {% if product.metafields.custom.product_rating %}
+                          <div class="product-rating">
+                            <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating }};"></span>
+                            <span class="rating-value">{{ product.metafields.custom.product_rating }}</span>
+                          </div>
+                        {% endif %}
                       </div>
                     </div>
                
