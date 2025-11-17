@@ -6,6 +6,17 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card{
+            display: flex;
+            height:50px;
+          }
+  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card .multicolumn-card__image-wrapper{
+            width: 51px;
+            height: 51px;
+          }
+  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card .multicolumn-card__info{
+            padding-top: 0;
+          }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -331,6 +342,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "step": 1,
       "default": 3,
       "label": "t:sections.multicolumn.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_flex",
+      "label": "Is Flex ?",
+      "default": false
     },
     {
       "type": "select",
