@@ -204,23 +204,24 @@
 </div>
 {% comment %} fasco gsap add to the multicolumn {% endcomment %}
 <script>
+  document.addEventListener("DOMContentLoaded", (event){
+    const items = document.querySelectorAll('.item_{{ section.id }}');
 
+    gsap.from(items, {
+      opacity: 0,
+      y: 40,
+      stagger: 0.25,  // delay between each item
+      duration: 0.7,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: ".multicolumn",       // the whole section
+        start: "top 20%",              // animation starts early
+        toggleActions: "play reverse play reverse", 
+      }
+    });
+  })
 
-
-  const items = document.querySelectorAll('.item_{{ section.id }}');
-
-  gsap.from(items, {
-    opacity: 0,
-    y: 40,
-    stagger: 0.25,  // delay between each item
-    duration: 0.7,
-    ease: "power2.inOut",
-    scrollTrigger: {
-      trigger: ".multicolumn",       // the whole section
-      start: "top 20%",              // animation starts early
-      toggleActions: "play reverse play reverse", 
-    }
-  });
+ 
 
 </script>
 
