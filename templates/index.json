@@ -130,7 +130,7 @@
         "background_style": "none",
         "color_scheme": "",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 52,
         "padding_bottom": 52
       }
