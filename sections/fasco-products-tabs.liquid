@@ -95,10 +95,11 @@
    width: 100%;
   }
   .product__title h3 {
-    font-size: 1.18rem;
-    font-weight: 700;
     margin: 0 auto;
     color: #222;
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 1;
   }
   .product__title p {
     font-size: 0.93rem;
@@ -203,7 +204,7 @@
                       {% if product.metafields.custom.product_rating %}
                         <div class="product-rating" aria-label="Rated {{ product.metafields.custom.product_rating }} ">
                           <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating | divided_by: 1.0 }}"></span>
-                          <span class="rating-value">{{ product.metafields.custom.product_rating | round: 1 }}</span>
+                          {% comment %} <span class="rating-value">{{ product.metafields.custom.product_rating | round: 1 }}</span> {% endcomment %}
                         </div>
                       {% endif %}
                       <div class="review-text">(4.1k Customer Reviews)</div>
