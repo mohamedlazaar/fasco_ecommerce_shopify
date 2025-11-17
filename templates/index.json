@@ -150,20 +150,64 @@
         "end_date": "2026-12-31 23:59:59"
       }
     },
-    "fasco_flash_sale_promo_tp8tx8": {
-      "type": "fasco-flash-sale-promo",
-      "name": "Fasco Flash Sales Promo",
+    "fasco_products_tabs_WP4CQV": {
+      "type": "fasco-products-tabs",
+      "blocks": {
+        "tabs_filter_buttons_jUqK9F": {
+          "type": "tabs-filter-buttons",
+          "settings": {
+            "btn1": "cake",
+            "btn2": "muffins",
+            "btn3": "",
+            "btn4": "",
+            "btn5": "",
+            "btn6": ""
+          }
+        },
+        "tabs_info_TGeLVw": {
+          "type": "tabs-info",
+          "settings": {
+            "thumbnail_1": "shopify://shop_images/1012421.jpg",
+            "thumbnail_2": "shopify://shop_images/1055841.jpg",
+            "thumbnail_3": "shopify://shop_images/1055838.jpg",
+            "thumbnail_4": "shopify://shop_images/whiteDress.png",
+            "thumbnail_5": "shopify://shop_images/958963.jpg",
+            "thumbnail_6": "shopify://shop_images/1053881.jpg",
+            "tab_name": "cake",
+            "is_cake": true,
+            "is_muffins": false,
+            "is_croissant": false,
+            "is_bread": false,
+            "is_tart": false,
+            "is_favorite": false,
+            "artist_link": ""
+          }
+        },
+        "tabs_info_ikpPyK": {
+          "type": "tabs-info",
+          "settings": {
+            "thumbnail_1": "shopify://shop_images/2_1.png",
+            "thumbnail_2": "shopify://shop_images/1012426.jpg",
+            "tab_name": "muffins",
+            "is_cake": false,
+            "is_muffins": true,
+            "is_croissant": false,
+            "is_bread": false,
+            "is_tart": false,
+            "is_favorite": false,
+            "artist_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tabs_filter_buttons_jUqK9F",
+        "tabs_info_TGeLVw",
+        "tabs_info_ikpPyK"
+      ],
+      "name": "Tabs",
       "settings": {
-        "collection": "flash-sales-promotion",
-        "flash_background": "#ffffff",
-        "title": "<h2>Deals Of The Month</h2>",
-        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>",
-        "button_text": "Buy Now",
-        "button_url": "",
-        "button_text_color": "#ffffff",
-        "button_bg_color": "#000000",
-        "countdown_title": "<h3>Hurry, Before It's Too Late!</h3>",
-        "end_date": "2025-12-31 23:59:59"
+        "width": false,
+        "description": ""
       }
     }
   },
@@ -171,6 +215,6 @@
     "fasco_hero_section_zjnxqR",
     "multicolumn_r4VCMK",
     "fasco_flash_sale_promo_GW3UKx",
-    "fasco_flash_sale_promo_tp8tx8"
+    "fasco_products_tabs_WP4CQV"
   ]
 }
