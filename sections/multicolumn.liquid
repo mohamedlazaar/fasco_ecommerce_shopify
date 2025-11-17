@@ -217,21 +217,23 @@
         // markers: true  // uncomment to debug
       }
     });
-
+    items.forEach((item, i)=>{
+      tl.fromTo(item, 
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.25,
+          duration: 0.7,
+          ease: "power2.inOut"
+        }
+      );      
+    })
     // Add animations to the timeline
-    tl.fromTo(items, 
-      {
-        opacity: 0,
-        y: 40
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.25,
-        duration: 0.7,
-        ease: "power2.inOut"
-      }
-    );
+
   });
 </script>
 
