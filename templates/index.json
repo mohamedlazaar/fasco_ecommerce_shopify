@@ -157,23 +157,15 @@
           "type": "tabs-filter-buttons",
           "settings": {
             "collection_list": [
-              "flash-sales-promotion",
-              "frontpage"
+              "womens-fashion",
+              "flash-sales-promotion"
             ]
           }
         },
         "tabs_info_HUTzzU": {
           "type": "tabs-info",
           "settings": {
-            "collection": "flash-sales-promotion",
-            "tab_name": "",
-            "is_cake": false,
-            "is_muffins": false,
-            "is_croissant": false,
-            "is_bread": false,
-            "is_tart": false,
-            "is_favorite": false,
-            "artist_link": ""
+            "collection": "womens-fashion"
           }
         }
       },
