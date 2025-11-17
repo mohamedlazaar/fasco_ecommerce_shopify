@@ -263,7 +263,7 @@
 }
 {%- endstyle -%} 
 
-<div class="flash_sale_container">
+<div class="flash_sale_container flash_{{ section.id }}">
     <div class="flash_content">
         <div class="content">
             {{ section.settings.title }}
@@ -340,7 +340,7 @@
 
         }
 
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('.flash_{{ section.id }} .swiper', {
             slidesPerView: 3,
             slidesPerGroup: 1,
             spaceBetween: 30,
@@ -366,10 +366,6 @@
                 1024: { slidesPerView: 3 }
             }
         });
-
-
-
-
     })
 
 
