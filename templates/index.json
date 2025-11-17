@@ -315,8 +315,64 @@
     },
     "fasco_gallery_images_ixdwnM": {
       "type": "fasco-gallery-images",
+      "blocks": {
+        "image_PXiWbC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1055838.jpg"
+          }
+        },
+        "image_rpiCBU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1013860.jpg"
+          }
+        },
+        "image_ada6dT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1010293.jpg"
+          }
+        },
+        "image_8TndTW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1010427.jpg"
+          }
+        },
+        "image_MhYpfY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1012961.jpg"
+          }
+        },
+        "image_4MQ69m": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1046143.jpg"
+          }
+        },
+        "image_L4aznt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/963900.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_PXiWbC",
+        "image_rpiCBU",
+        "image_ada6dT",
+        "image_8TndTW",
+        "image_MhYpfY",
+        "image_4MQ69m",
+        "image_L4aznt"
+      ],
       "name": "Images Gallery",
-      "settings": {}
+      "settings": {
+        "title": "Follow Us On Instagram",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
+      }
     }
   },
   "order": [
