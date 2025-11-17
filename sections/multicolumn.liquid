@@ -204,7 +204,7 @@
 </div>
 {% comment %} fasco gsap add to the multicolumn {% endcomment %}
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+
   gsap.registerPlugin(ScrollTrigger);
 
   const items = document.querySelectorAll('#Slide-{{ section.id }}-{{ forloop.index }}');
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleActions: "play reverse play reverse", 
     }
   });
-});
+
 </script>
 
 
