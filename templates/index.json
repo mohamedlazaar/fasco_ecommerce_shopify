@@ -316,57 +316,57 @@
     "fasco_gallery_images_ixdwnM": {
       "type": "fasco-gallery-images",
       "blocks": {
-        "image_PXiWbC": {
-          "type": "image",
+        "photo_h4nHFr": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1055838.jpg"
+            "image": "shopify://shop_images/1050151.jpg"
           }
         },
-        "image_rpiCBU": {
-          "type": "image",
+        "photo_FzrDpY": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1013860.jpg"
+            "image": "shopify://shop_images/1048110.jpg"
           }
         },
-        "image_ada6dT": {
-          "type": "image",
+        "photo_JGiHAe": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1010293.jpg"
+            "image": "shopify://shop_images/1012959.jpg"
           }
         },
-        "image_8TndTW": {
-          "type": "image",
+        "photo_EBDBCk": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1010427.jpg"
+            "image": "shopify://shop_images/1010295.jpg"
           }
         },
-        "image_MhYpfY": {
-          "type": "image",
+        "photo_eCkFbi": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1012961.jpg"
+            "image": "shopify://shop_images/1010359.jpg"
           }
         },
-        "image_4MQ69m": {
-          "type": "image",
+        "photo_jBWeiJ": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/1046143.jpg"
+            "image": "shopify://shop_images/1046097.jpg"
           }
         },
-        "image_L4aznt": {
-          "type": "image",
+        "photo_RgTBn3": {
+          "type": "photo",
           "settings": {
-            "image": "shopify://shop_images/963900.jpg"
+            "image": "shopify://shop_images/1006201.jpg"
           }
         }
       },
       "block_order": [
-        "image_PXiWbC",
-        "image_rpiCBU",
-        "image_ada6dT",
-        "image_8TndTW",
-        "image_MhYpfY",
-        "image_4MQ69m",
-        "image_L4aznt"
+        "photo_h4nHFr",
+        "photo_FzrDpY",
+        "photo_JGiHAe",
+        "photo_EBDBCk",
+        "photo_eCkFbi",
+        "photo_jBWeiJ",
+        "photo_RgTBn3"
       ],
       "name": "Images Gallery",
       "settings": {
