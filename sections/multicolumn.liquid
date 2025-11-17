@@ -214,10 +214,10 @@
       duration: 0.7,
       ease: "power2.inOut",
       scrollTrigger: {
-        trigger: ".multicolumn",       // the whole section
-        start: "top 85%",              // animation starts early
-        end:"bootm bottom",
-        toggleActions: "play reverse play reverse", 
+        trigger: ".multicolumn",
+        start: "top 85%",
+        end: "bottom 20%",
+        scrub: 1,  // ties animation to scroll position
       }
     });
   })
