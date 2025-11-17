@@ -205,6 +205,7 @@
 {% comment %} fasco gsap add to the multicolumn {% endcomment %}
 <script>
   document.addEventListener("onscroll", (event)=>{
+    gsap.registerPlugin(SplitText, ScrollTrigger);
     const items = document.querySelectorAll('.item-{{ section.id }}');
 
     // Create a timeline
