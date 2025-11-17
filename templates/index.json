@@ -373,6 +373,11 @@
         "title": "Follow Us On Instagram",
         "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
       }
+    },
+    "fasco_testimonials_cticDb": {
+      "type": "fasco-testimonials",
+      "name": "Fasco Testimonials",
+      "settings": {}
     }
   },
   "order": [
@@ -382,6 +387,7 @@
     "fasco_products_tabs_FnPg3q",
     "fasco_image_banner_8mpnnj",
     "multicolumn_GJ6xTy",
-    "fasco_gallery_images_ixdwnM"
+    "fasco_gallery_images_ixdwnM",
+    "fasco_testimonials_cticDb"
   ]
 }
