@@ -312,7 +312,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         /* Countdown Timer */
         const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
-        const clockElement = document.getElementById('count_down_clock');
+        const clockElement = document.querySelector('.flash_{{ section.id }} .count_down .count_down_clock')
 
         if (clockElement) {
             const x = setInterval(() => {
