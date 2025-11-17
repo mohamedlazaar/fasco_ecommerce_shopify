@@ -159,6 +159,13 @@
     font-weight: normal;
     line-height: 20px
   }
+  .show_more_col{
+   text-align:center; 
+   text-decoration:none; 
+   color:#fff; 
+   background-color:#000;
+   padding:10px 20px;
+  }
   @media (max-width: 850px) {
     .profile-group .thumbnails {
       grid-template-columns: repeat(2, 1fr);
@@ -224,7 +231,7 @@
                 {% endfor %}
               </div>
             </div>
-            <a href="{{ c.url }}" style="text-align:center; text-decoration:none; color:#fff; background-color:#000; padding:10px 20;">Show more</a>
+            <a href="{{ c.url }}" class="show_more_col">Show more</a>
           </div>
         {% endfor %}
       </div>
