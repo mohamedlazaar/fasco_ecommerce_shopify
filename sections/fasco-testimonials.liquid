@@ -193,7 +193,7 @@
 </div>
 
 <script>
-(function() {
+function() {
   let currentIndex{{ section.id }} = 0;
   const container = document.getElementById('testimonials-{{ section.id }}');
   const testimonials = container.querySelectorAll('.testimonial');
@@ -219,7 +219,7 @@
   };
 
   updateSlides();
-})();
+}
 </script>
 
 {% schema %}
