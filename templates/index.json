@@ -415,6 +415,40 @@
         "title": "Testimonials",
         "subtitle": "See what our travelers say about us."
       }
+    },
+    "newsletter_pricRT": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_FG6gGt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_WCiUQ4": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_7jXcTR": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_FG6gGt",
+        "paragraph_WCiUQ4",
+        "email_form_7jXcTR"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -425,6 +459,7 @@
     "fasco_image_banner_8mpnnj",
     "multicolumn_GJ6xTy",
     "fasco_gallery_images_ixdwnM",
-    "fasco_testimonials_cticDb"
+    "fasco_testimonials_cticDb",
+    "newsletter_pricRT"
   ]
 }
