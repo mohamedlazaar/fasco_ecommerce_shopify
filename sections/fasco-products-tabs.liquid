@@ -1,0 +1,236 @@
+{% style %}
+    .section__wrapper.artist-section {
+      {% if section.settings.width == 'wide' %}
+        width: 100%;
+        max-width: 95%;
+      {% endif %}
+    }
+    {% endstyle %}
+    
+    <style>
+    .artist-section .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .page_aritists_decription {
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+    }
+    .page_aritists_decription p {
+      font-size: 3rem;
+      font-weight: 800;
+      color: black;
+      line-height: 27px;
+    }
+    .buttons__container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    
+      border-bottom: 1px solid #E3E3E3;
+    }
+    .tab-button {
+      padding: 12px 25px;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      background: white;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+    .tab-button:hover {
+      border-bottom: 4px solid #933C24;
+    }
+    .tab-button.active {
+      border-bottom: 4px solid #933C24;
+      color: #000;
+    }
+    .fliter_artist_profiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px;
+    }
+    .profile_link {
+      display: none;
+    }
+    .profile_link.active {
+      display: block;
+    }
+    .profile-group {
+      display: grid;
+      position: relative;
+      width: 90vw;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .thumbnails {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 10px;
+      margin: 15px auto 0;
+      justify-content: center;
+      align-items: center;
+    }
+    .thumbnails img{
+        width: 300px;
+        height: 300px
+    }
+    
+    </style>
+    
+    <section class="section__wrapper artist-section">
+      <div class="container">
+        <!-- Description -->
+        <div class="page_aritists_decription">
+          <p>{{ section.settings.description }}</p>
+        </div>
+    
+        <!-- Tabs -->
+        {% assign btns = section.blocks | where: "type", "tabs-filter-buttons" %}
+        {% for btn in btns %}
+          <div class="buttons__container">
+            {% for i in (1..6) %}
+              {% assign btn_id = 'btn' | append: i %}
+              {% assign btn_label = btn.settings[btn_id] %}
+              {% assign data_value = 'is_' | append: btn_label | handleize %}
+              {% if btn_label %}
+                <button class="tab-button" data-tab="{{ data_value }}">{{ btn_label }}</button>
+              {% endif %}
+            {% endfor %}
+    
+          </div>
+        {% endfor %}
+    
+        <!-- Profiles -->
+        <div class="fliter_artist_profiles">
+          {% assign tab_profiles = section.blocks | where: "type", "tabs-info" %}
+          {% for profile in tab_profiles %}
+          <div class="profile_link
+            {% if profile.settings.is_cake %} is_cake
+            {% elsif profile.settings.is_muffins %} is_muffins
+            {% elsif profile.settings.is_croissant %} is_croissant
+            {% elsif profile.settings.is_bread %} is_bread
+            {% elsif profile.settings.is_tart %} is_tart
+            {% elsif profile.settings.is_favorite %} is_favorite
+            {% endif %}">
+            <div class="profile-group">
+              <div class="thumbnails">
+                {% for i in (1..6) %}
+                  {% assign thumb = 'thumbnail_' | append: i %}
+                  {% if profile.settings[thumb] %}
+                    <img src="{{ profile.settings[thumb] | image_url }}" alt="Thumbnail {{ i }}" width="100" height="100" >
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const tabButtons = document.querySelectorAll(".tab-button");
+        const profiles = document.querySelectorAll(".profile_link");
+    
+        if (tabButtons.length > 0) {
+            // Set first tab as active by default
+            const firstTab = tabButtons[0];
+            firstTab.classList.add("active");
+            const defaultTab = firstTab.dataset.tab;
+    
+            // Show only profiles matching the first tab on load
+            profiles.forEach(profile => {
+            if (profile.classList.contains(defaultTab)) {
+                profile.classList.add("active");
+            } else {
+                profile.classList.remove("active");
+            }
+            });
+        }
+    
+        tabButtons.forEach(button => {
+            button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+    
+            const selectedTab = button.dataset.tab;
+    
+            // Show only profiles from selected category
+            profiles.forEach(profile => {
+                profile.classList.remove("active");
+                if (profile.classList.contains(selectedTab)) {
+                profile.classList.add("active");
+                }
+            });
+            });
+        });
+        });
+    </script>
+    
+    
+    {% schema %}
+    {
+      "name": "Tabs Section",
+      "class": "artists-template-section",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "width",
+          "label": "Wide display"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "tabs-filter-buttons",
+          "name": "Tabs Filter Buttons",
+          "settings": [
+            { "type": "text", "id": "btn1", "label": "Button 1" },
+            { "type": "text", "id": "btn2", "label": "Button 2" },
+            { "type": "text", "id": "btn3", "label": "Button 3" },
+            { "type": "text", "id": "btn4", "label": "Button 4" },
+            { "type": "text", "id": "btn5", "label": "Button 5" },
+            { "type": "text", "id": "btn6", "label": "Button 6" }
+          ]
+        },
+        {
+          "type": "tabs-info",
+          "name": "Tabs Info",
+          "settings": [
+            { "type": "image_picker", "id": "thumbnail_1", "label": "Thumbnail 1" },
+            { "type": "image_picker", "id": "thumbnail_2", "label": "Thumbnail 2" },
+            { "type": "image_picker", "id": "thumbnail_3", "label": "Thumbnail 3" },
+            { "type": "image_picker", "id": "thumbnail_4", "label": "Thumbnail 4" },
+            { "type": "image_picker", "id": "thumbnail_5", "label": "Thumbnail 5" },
+            { "type": "image_picker", "id": "thumbnail_6", "label": "Thumbnail 6" },
+            { "type": "text", "id": "tab_name", "label": "Tab Name" },
+            { "type": "checkbox", "id": "is_cake", "label": "Cake" },
+            { "type": "checkbox", "id": "is_muffins", "label": "Muffins" },
+            { "type": "checkbox", "id": "is_croissant", "label": "Croissant" },
+            { "type": "checkbox", "id": "is_bread", "label": "Bread" },
+            { "type": "checkbox", "id": "is_tart", "label": "Tart" },
+            { "type": "checkbox", "id": "is_favorite", "label": "Favorite" },
+            { "type": "url", "id": "artist_link", "label": "Artist Link" }
+          ]
+        }
+      ],
+      "presets": [
+        { "name": "Tabs", "blocks": [] }
+      ]
+    }
+    {% endschema %}
+    
