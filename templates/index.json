@@ -242,6 +242,74 @@
       "settings": {
         "product": "peaky-blinders"
       }
+    },
+    "multicolumn_GJ6xTy": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NE6kPQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/high_quality.png",
+            "title": "High Quality",
+            "text": "<p>crafted from top materials</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_AmmTRc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/good.png",
+            "title": "Warrany Protection",
+            "text": "<p>Over 2 years</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7rKUBE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shipping.png",
+            "title": "Free Shipping",
+            "text": "<p>Order over 150 $</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hXtfGK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/support.png",
+            "title": "24 / 7 Support",
+            "text": "<p>Delicated support</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_NE6kPQ",
+        "column_AmmTRc",
+        "column_7rKUBE",
+        "column_hXtfGK"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -249,6 +317,7 @@
     "multicolumn_r4VCMK",
     "fasco_flash_sale_promo_GW3UKx",
     "fasco_products_tabs_FnPg3q",
-    "fasco_image_banner_8mpnnj"
+    "fasco_image_banner_8mpnnj",
+    "multicolumn_GJ6xTy"
   ]
 }
