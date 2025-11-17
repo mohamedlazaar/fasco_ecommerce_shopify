@@ -6,15 +6,15 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card{
+  .section-{{ section.id }}-padding .slider-mobile-gutter .multicolumn-list .multicolumn-list__item  .multicolumn-card{
             display: flex;
             height:50px;
           }
-  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card .multicolumn-card__image-wrapper{
+  .section-{{ section.id }}-padding .slider-mobile-gutter .multicolumn-list .multicolumn-list__item  .multicolumn-card .multicolumn-card__image-wrapper{
             width: 51px;
             height: 51px;
           }
-  #Slide-{{ section.id }}-{{ forloop.index }} .multicolumn-card .multicolumn-card__info{
+  .section-{{ section.id }}-padding .slider-mobile-gutter .multicolumn-list .multicolumn-list__item  .multicolumn-card .multicolumn-card__info{
             padding-top: 0;
           }
 
