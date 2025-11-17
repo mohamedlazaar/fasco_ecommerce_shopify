@@ -8,105 +8,151 @@
     {% endstyle %}
     
     <style>
-    .artist-section .container_ {
-      flex-direction: column;
-      align-items: center;
-    }
-    .page_aritists_decription {
-      width: 100%;
-      text-align: center;
-      padding: 25px 0;
-    }
-    .page_aritists_decription p {
-      font-size: 3rem;
-      font-weight: 800;
-      color: black;
-      line-height: 27px;
-    }
-    .buttons__container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    
-      border-bottom: 1px solid #E3E3E3;
-    }
-    .tab-button {
-      padding: 12px 25px;
-      color: #000;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      background: white;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-    .tab-button:hover {
-      border-bottom: 4px solid #933C24;
-    }
-    .tab-button.active {
-      border-bottom: 4px solid #933C24;
-      color: #000;
-    }
-    .fliter_artist_profiles {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 30px;
-    }
-    .profile_link {
-      display: none;
-    }
-    .profile_link.active {
-      display: block;
-    }
-    .profile-group {
-      display: grid;
-      position: relative;
-      width: 90vw;
-      margin: 0 auto;
-      align-items: center;
-    }
-    .thumbnails {
-      display: grid;
-      grid-template-columns: auto auto auto;
-      gap: 10px;
-      margin: 15px auto 0;
-      justify-content: center;
-      align-items: center;
-    }
-    .thumbnails img{
-        width: 300px;
-        height: 300px
-    }
-    
-    .star-rating {
-      --star-size: 24px;
-      --star-color: #fc0;
-      --star-background: #eee;
-      display: inline-block;
-      position: relative;
-      font-size: var(--star-size);
-      font-family: 'Arial', sans-serif;
-      line-height: 1;
-      letter-spacing: 2px;
-      /* Optional: visually hidden text so screen readers get info */
-      overflow: hidden;
-    }
+        .section__wrapper.artist-section {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 40px;
+      }
+      .container_ {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .page_aritists_decription {
+        width: 100%;
+        text-align: center;
+      }
+      .page_aritists_decription h2 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: #232323;
+      }
+      .page_aritists_decription p {
+        font-size: 1rem;
+        color: #555;
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+      .buttons__container {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 32px;
+      }
+      .tab-button {
+        padding: 14px 38px;
+        border-radius: 18px;
+        background: #f6f6f6;
+        color: #333;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        cursor: pointer;
+        transition: background .2s, color .2s;
+      }
+      .tab-button.active {
+        background: #191919;
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+      }
+      .fliter_artist_profiles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(270px, 1fr));
+        gap: 32px;
+        justify-content: center;
+      }
+      .profile_link {
+        display: none;
+      }
+      .profile_link.active {
+        display: contents;
+      }
+      .product_card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(40,44,53,0.09);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 18px 18px 18px;
+        transition: box-shadow .2s;
+      }
+      .product_card img {
+        width: 100%;
+        max-width: 260px;
+        height: 238px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 1px 7px rgba(0,0,0,0.03);
+        margin-bottom: 16px;
+      }
+      .product_content {
+        width: 100%;
+      }
+      .product__title h3 {
+        font-size: 1.18rem;
+        font-weight: 700;
+        margin-bottom: 0;
+        color: #222;
+      }
+      .product__title p {
+        font-size: 0.93rem;
+        color: #949494;
+        margin-bottom: 6px;
+      }
+      .product-rating {
+        margin-bottom: 2px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .star-rating {
+        --star-size: 18px;
+        font-size: var(--star-size);
+        color: #ffc700;
+      }
+      .rating-value {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #232323;
+      }
+      .review-text {
+        font-size: 0.93rem;
+        color: #949494;
+        margin-bottom: 8px;
+      }
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .price {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #191919;
+      }
+      .almost-sold-out {
+        font-size: 0.96rem;
+        color: #d63b3b;
+        font-weight: 600;
+      }
+      @media (max-width: 850px) {
+        .fliter_artist_profiles {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 22px;
+        }
+      }
+      @media (max-width: 600px) {
+        .fliter_artist_profiles {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+      }
 
-    .star-rating::before {
-      content: "★★★★★";
-      background: linear-gradient(
-        90deg, 
-        var(--star-color) calc(var(--rating) / 5 * 100%), 
-        var(--star-background) calc(var(--rating) / 5 * 100%)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
 
     </style>
     
@@ -114,8 +160,10 @@
       <div class="container_">
         <!-- Description -->
         <div class="page_aritists_decription">
-          <p>{{ section.settings.description }}</p>
+          <h2>New Arrivals</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
         </div>
+        
     
         <div class="buttons__container">
           {% assign tabs = section.blocks | where: "type", "tabs-filter-buttons" %}
@@ -137,23 +185,25 @@
               <div class="profile-group">
                 <div class="thumbnails">
                   {% for product in c.products %}
-                    <div class="prouct_card">
+                    <div class="product_card">
                       <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100" height="100" />
                       <div class="product_content">
                         <div class="product__title">
                           <h3>{{ product.title }}</h3>
                           <p>{{ product.vendor }}</p>
                         </div>
-                        {% if product.metafields.custom.product_rating %}
-                          <div class="product-rating" aria-label="Rated {{ product.metafields.custom.product_rating }} out of 5">
-                            <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating }}"></span>
-                            <span class="rating-value">{{ product.metafields.custom.product_rating | round: 1 }}</span>
-                          </div>
-                        {% endif %}
-                        
+                        <div class="product-rating" aria-label="Rated {{ product.metafields.custom.product_rating }} out of 5">
+                          <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating }}"></span>
+                          <span class="rating-value">{{ product.metafields.custom.product_rating | round: 1 }}</span>
+                        </div>
+                        <div class="review-text">(4.1k Customer Reviews)</div>
+                        <div class="price-row">
+                          <span class="price">${{ product.price | divided_by: 100.0 }}</span>
+                          <span class="almost-sold-out">Almost Sold Out</span>
+                        </div>
                       </div>
                     </div>
-               
+                    
                   {% endfor %}
                 </div>
               </div>
