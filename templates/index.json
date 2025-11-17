@@ -183,7 +183,8 @@
       "name": "Tabs",
       "settings": {
         "width": false,
-        "description": ""
+        "tabs_title": "<h2>New Arrivals</h2>",
+        "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident praesentium amet iste! Iusto ducimus perspiciatis molestias quidem laborum recusandae ex.</p>"
       }
     }
   },
