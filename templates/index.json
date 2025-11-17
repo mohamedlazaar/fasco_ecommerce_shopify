@@ -167,11 +167,18 @@
           "settings": {
             "collection": "womens-fashion"
           }
+        },
+        "tabs_info_FbREpg": {
+          "type": "tabs-info",
+          "settings": {
+            "collection": "flash-sales-promotion"
+          }
         }
       },
       "block_order": [
         "tabs_filter_buttons_T7RVpp",
-        "tabs_info_HUTzzU"
+        "tabs_info_HUTzzU",
+        "tabs_info_FbREpg"
       ],
       "name": "Tabs",
       "settings": {
