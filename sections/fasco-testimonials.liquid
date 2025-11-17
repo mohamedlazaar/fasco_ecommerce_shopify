@@ -120,6 +120,11 @@
   height: 20px;
   fill: #333;
 }
+.button_conta{
+    width:200px;
+    height: auto;
+    margin: 0 auto
+}
 @media (max-width: 900px) {
   .testimonials {
     height: 400px;
@@ -174,9 +179,7 @@
   <h2>{{ section.settings.title }}</h2>
   <p class="subtitle">{{ section.settings.subtitle }}</p>
   <div class="testimonials_wrapper">
-    <button class="slider_nav prev" data-slider-id="{{ section.id }}" data-direction="-1">
-      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    </button>
+
     <div class="testimonials" data-testimonials-id="{{ section.id }}">
       {% for block in section.blocks %}
         <div class="testimonial">
@@ -191,9 +194,15 @@
         </div>
       {% endfor %}
     </div>
-    <button class="slider_nav next" data-slider-id="{{ section.id }}" data-direction="1">
-      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </button>
+    <div class="button_conta">
+        <button class="slider_nav prev" data-slider-id="{{ section.id }}" data-direction="-1">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <button class="slider_nav next" data-slider-id="{{ section.id }}" data-direction="1">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>        
+    </div>
+
   </div>
 </div>
 
