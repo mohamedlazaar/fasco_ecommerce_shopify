@@ -153,13 +153,33 @@
     "fasco_products_tabs_FnPg3q": {
       "type": "fasco-products-tabs",
       "blocks": {
-        "tabs_filter_buttons_tRzwHL": {
+        "tabs_filter_buttons_T7RVpp": {
           "type": "tabs-filter-buttons",
-          "settings": {}
+          "settings": {
+            "collection_list": [
+              "flash-sales-promotion",
+              "frontpage"
+            ]
+          }
+        },
+        "tabs_info_HUTzzU": {
+          "type": "tabs-info",
+          "settings": {
+            "collection": "flash-sales-promotion",
+            "tab_name": "",
+            "is_cake": false,
+            "is_muffins": false,
+            "is_croissant": false,
+            "is_bread": false,
+            "is_tart": false,
+            "is_favorite": false,
+            "artist_link": ""
+          }
         }
       },
       "block_order": [
-        "tabs_filter_buttons_tRzwHL"
+        "tabs_filter_buttons_T7RVpp",
+        "tabs_info_HUTzzU"
       ],
       "name": "Tabs",
       "settings": {
