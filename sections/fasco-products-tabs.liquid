@@ -98,7 +98,8 @@
             {% assign collection_list = btn.settings.collection_list %}
             {% for collection in collection_list %}
               {% assign tab_label = collection.title %}
-              <button class="tab-button" data-tab="is_{{ tab_label | handleize }}">{{ tab_label }}</button>
+              {% assign tab_handle = collection.handle %}
+              <button class="tab-button" data-tab="is_{{ tab_handle | handleize }}">{{ tab_label }}</button>
             {% endfor %}
           {% endfor %}
         </div>
@@ -106,8 +107,8 @@
         <div class="fliter_artist_profiles">
           {% assign profiles = section.blocks | where: "type", "tabs-info" %}
           {% for profile in profiles %}
-            {% assign c = collections[profile.settings.collection] %}
-            <div class="profile_link is_{{ profile.settings.tab_name | handleize }}">
+            {% assign c = profile.settings.collection %}
+            <div class="profile_link is_{{ c.handle | handleize }}">
               <div class="profile-group">
                 <div class="thumbnails">
                   {% for product in c.products %}
