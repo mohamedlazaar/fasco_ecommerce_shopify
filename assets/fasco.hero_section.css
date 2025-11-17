@@ -135,7 +135,7 @@
   }
   
   /* ========== Media - Images ========== */
-  img {
+  .col img {
     object-fit: contain;
   }
   
