@@ -83,6 +83,31 @@
         height: 300px
     }
     
+    .star-rating {
+      --star-size: 24px;
+      --star-color: #fc0;
+      --star-background: #eee;
+      display: inline-block;
+      position: relative;
+      font-size: var(--star-size);
+      font-family: 'Arial', sans-serif;
+      line-height: 1;
+      letter-spacing: 2px;
+      /* Optional: visually hidden text so screen readers get info */
+      overflow: hidden;
+    }
+
+    .star-rating::before {
+      content: "★★★★★";
+      background: linear-gradient(
+        90deg, 
+        var(--star-color) calc(var(--rating) / 5 * 100%), 
+        var(--star-background) calc(var(--rating) / 5 * 100%)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     </style>
     
     <section class="section__wrapper artist-section">
@@ -119,12 +144,31 @@
                           <h3>{{ product.title }}</h3>
                           <p>{{ product.vendor }}</p>
                         </div>
-                        {% if product.metafields.custom.product_rating %}
-                          <div class="product-rating">
-                            <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating }};"></span>
-                            <span class="rating-value">{{ product.metafields.custom.product_rating }}</span>
-                          </div>
-                        {% endif %}
+                        .star-rating {
+                          --star-size: 24px;
+                          --star-color: #fc0;
+                          --star-background: #eee;
+                          display: inline-block;
+                          position: relative;
+                          font-size: var(--star-size);
+                          font-family: 'Arial', sans-serif;
+                          line-height: 1;
+                          letter-spacing: 2px;
+                          /* Optional: visually hidden text so screen readers get info */
+                          overflow: hidden;
+                        }
+                        
+                        .star-rating::before {
+                          content: "★★★★★";
+                          background: linear-gradient(
+                            90deg, 
+                            var(--star-color) calc(var(--rating) / 5 * 100%), 
+                            var(--star-background) calc(var(--rating) / 5 * 100%)
+                          );
+                          -webkit-background-clip: text;
+                          -webkit-text-fill-color: transparent;
+                        }
+                        
                       </div>
                     </div>
                
