@@ -221,13 +221,22 @@
             "top": 35,
             "left": 55
           }
+        },
+        "hotspot_kmVGaa": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Santoni",
+            "top": 90,
+            "left": 60
+          }
         }
       },
       "block_order": [
         "hotspot_AMaWEc",
         "hotspot_wUYn4w",
         "hotspot_aFtiUk",
-        "hotspot_zn6Ayw"
+        "hotspot_zn6Ayw",
+        "hotspot_kmVGaa"
       ],
       "name": "Product Feature Split",
       "settings": {
