@@ -1,311 +1,301 @@
 {% style %}
-    .section__wrapper.artist-section {
-      {% if section.settings.width == 'wide' %}
-        width: 100%;
-        max-width: 95%;
-      {% endif %}
+  .section__wrapper.artist-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .container_ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page_aritists_decription {
+    width: 100%;
+    text-align: center;
+  }
+  .page_aritists_decription h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #232323;
+  }
+  .page_aritists_decription p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  .buttons__container {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .tab-button {
+    padding: 14px 38px;
+    border-radius: 18px;
+    background: #f6f6f6;
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .tab-button.active {
+    background: #191919;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  }
+  .fliter_artist_profiles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+  }
+  .profile_link {
+    display: none;
+  }
+  .profile_link.active {
+    display: block;
+  }
+  .profile-group .thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(270px, 1fr));
+    gap: 32px;
+    justify-content: center;
+  }
+  .product_card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(40,44,53,0.09);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+    transition: box-shadow .2s;
+  }
+  .product_card img {
+    width: 100%;
+    max-width: 260px;
+    height: 238px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 1px 7px rgba(0,0,0,0.03);
+    margin-bottom: 16px;
+  }
+  .product_content {
+    width: 100%;
+  }
+  .product__title h3 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: #222;
+  }
+  .product__title p {
+    font-size: 0.93rem;
+    color: #949494;
+    margin-bottom: 6px;
+  }
+  .product-rating {
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .star-rating {
+    --star-size: 18px;
+    font-size: var(--star-size);
+    line-height: 1;
+  }
+  .star-rating::before {
+    content: "★★★★★";
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ffc700 calc(var(--rating, 0)/5*100%), #e3e3e3 calc(var(--rating, 0)/5*100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  .rating-value {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #232323;
+  }
+  .review-text {
+    font-size: 0.93rem;
+    color: #949494;
+    margin-bottom: 8px;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #191919;
+  }
+  .almost-sold-out {
+    font-size: 0.96rem;
+    color: #d63b3b;
+    font-weight: 600;
+  }
+  @media (max-width: 850px) {
+    .profile-group .thumbnails {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
     }
-    {% endstyle %}
-    
-    <style>
-        .section__wrapper.artist-section {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding-top: 40px;
-      }
-      .container_ {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .page_aritists_decription {
-        width: 100%;
-        text-align: center;
-      }
-      .page_aritists_decription h2 {
-        font-size: 2.8rem;
-        font-weight: 800;
-        margin-bottom: 12px;
-        color: #232323;
-      }
-      .page_aritists_decription p {
-        font-size: 1rem;
-        color: #555;
-        font-weight: 400;
-        margin-bottom: 30px;
-      }
-      .buttons__container {
-        display: flex;
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 32px;
-      }
-      .tab-button {
-        padding: 14px 38px;
-        border-radius: 18px;
-        background: #f6f6f6;
-        color: #333;
-        font-weight: 600;
-        font-size: 1rem;
-        border: none;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        cursor: pointer;
-        transition: background .2s, color .2s;
-      }
-      .tab-button.active {
-        background: #191919;
-        color: #fff;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.10);
-      }
-      .fliter_artist_profiles {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(270px, 1fr));
-        gap: 32px;
-        justify-content: center;
-      }
-      .profile_link {
-        display: none;
-      }
-      .profile_link.active {
-        display: contents;
-      }
-      .product_card {
-        background: #fff;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(40,44,53,0.09);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 18px 18px 18px 18px;
-        transition: box-shadow .2s;
-      }
-      .product_card img {
-        width: 100%;
-        max-width: 260px;
-        height: 238px;
-        object-fit: cover;
-        border-radius: 15px;
-        box-shadow: 0 1px 7px rgba(0,0,0,0.03);
-        margin-bottom: 16px;
-      }
-      .product_content {
-        width: 100%;
-      }
-      .product__title h3 {
-        font-size: 1.18rem;
-        font-weight: 700;
-        margin-bottom: 0;
-        color: #222;
-      }
-      .product__title p {
-        font-size: 0.93rem;
-        color: #949494;
-        margin-bottom: 6px;
-      }
-      .product-rating {
-        margin-bottom: 2px;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .star-rating {
-        --star-size: 18px;
-        font-size: var(--star-size);
-        color: #ffc700;
-      }
-      .rating-value {
-        font-size: 1.05rem;
-        font-weight: 500;
-        color: #232323;
-      }
-      .review-text {
-        font-size: 0.93rem;
-        color: #949494;
-        margin-bottom: 8px;
-      }
-      .price-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      .price {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #191919;
-      }
-      .almost-sold-out {
-        font-size: 0.96rem;
-        color: #d63b3b;
-        font-weight: 600;
-      }
-      @media (max-width: 850px) {
-        .fliter_artist_profiles {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 22px;
-        }
-      }
-      @media (max-width: 600px) {
-        .fliter_artist_profiles {
-          grid-template-columns: 1fr;
-          gap: 14px;
-        }
-      }
-
-
-    </style>
-    
-    <section class="section__wrapper artist-section">
-      <div class="container_">
-        <!-- Description -->
-        <div class="page_aritists_decription">
-          <h2>New Arrivals</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
-        </div>
-        
-    
-        <div class="buttons__container">
-          {% assign tabs = section.blocks | where: "type", "tabs-filter-buttons" %}
-          {% for btn in tabs %}
-            {% assign collection_list = btn.settings.collection_list %}
-            {% for collection in collection_list %}
-              {% assign tab_label = collection.title %}
-              {% assign tab_handle = collection.handle %}
-              <button class="tab-button" data-tab="is_{{ tab_handle | handleize }}">{{ tab_label }}</button>
-            {% endfor %}
+  }
+  @media (max-width: 600px) {
+    .profile-group .thumbnails {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+  {% endstyle %}
+  
+  <section class="section__wrapper artist-section">
+    <div class="container_">
+      <!-- Description -->
+      <div class="page_aritists_decription">
+        <h2>New Arrivals</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+      </div>
+  
+      <div class="buttons__container">
+        {% assign tabs = section.blocks | where: "type", "tabs-filter-buttons" %}
+        {% for btn in tabs %}
+          {% assign collection_list = btn.settings.collection_list %}
+          {% for collection in collection_list %}
+            {% assign tab_label = collection.title %}
+            {% assign tab_handle = collection.handle %}
+            <button class="tab-button" data-tab="is_{{ tab_handle | handleize }}">{{ tab_label }}</button>
           {% endfor %}
-        </div>
-        
-        <div class="fliter_artist_profiles">
-          {% assign profiles = section.blocks | where: "type", "tabs-info" %}
-          {% for profile in profiles %}
-            {% assign c = profile.settings.collection %}
-            <div class="profile_link is_{{ c.handle | handleize }}">
-              <div class="profile-group">
-                <div class="thumbnails">
-                  {% for product in c.products %}
-                    <div class="product_card">
-                      <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100" height="100" />
-                      <div class="product_content">
-                        <div class="product__title">
-                          <h3>{{ product.title }}</h3>
-                          <p>{{ product.vendor }}</p>
-                        </div>
+        {% endfor %}
+      </div>
+  
+      <div class="fliter_artist_profiles">
+        {% assign profiles = section.blocks | where: "type", "tabs-info" %}
+        {% for profile in profiles %}
+          {% assign c = profile.settings.collection %}
+          <div class="profile_link is_{{ c.handle | handleize }}">
+            <div class="profile-group">
+              <div class="thumbnails">
+                {% for product in c.products %}
+                  <div class="product_card">
+                    <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100" height="100" />
+                    <div class="product_content">
+                      <div class="product__title">
+                        <h3>{{ product.title }}</h3>
+                        <p>{{ product.vendor }}</p>
+                      </div>
+                      {% if product.metafields.custom.product_rating %}
                         <div class="product-rating" aria-label="Rated {{ product.metafields.custom.product_rating }} out of 5">
-                          <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating }}"></span>
+                          <span class="star-rating" style="--rating: {{ product.metafields.custom.product_rating | divided_by: 1.0 }}"></span>
                           <span class="rating-value">{{ product.metafields.custom.product_rating | round: 1 }}</span>
                         </div>
-                        <div class="review-text">(4.1k Customer Reviews)</div>
-                        <div class="price-row">
-                          <span class="price">${{ product.price | divided_by: 100.0 }}</span>
-                          <span class="almost-sold-out">Almost Sold Out</span>
-                        </div>
+                      {% endif %}
+                      <div class="review-text">(4.1k Customer Reviews)</div>
+                      <div class="price-row">
+                        <span class="price">${{ product.price | divided_by: 100.0 }}</span>
+                        <span class="almost-sold-out">Almost Sold Out</span>
                       </div>
                     </div>
-                    
-                  {% endfor %}
-                </div>
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          {% endfor %}
-        </div>
+          </div>
+        {% endfor %}
       </div>
-    </section>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-        const tabButtons = document.querySelectorAll(".tab-button");
-        const profiles = document.querySelectorAll(".profile_link");
-    
-        if (tabButtons.length > 0) {
-            // Set first tab as active by default
-            const firstTab = tabButtons[0];
-            firstTab.classList.add("active");
-            const defaultTab = firstTab.dataset.tab;
-    
-            // Show only profiles matching the first tab on load
-            profiles.forEach(profile => {
-            if (profile.classList.contains(defaultTab)) {
-                profile.classList.add("active");
-            } else {
-                profile.classList.remove("active");
-            }
-            });
+    </div>
+  </section>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const profiles = document.querySelectorAll(".profile_link");
+  
+    if (tabButtons.length > 0) {
+      const firstTab = tabButtons[0];
+      firstTab.classList.add("active");
+      const defaultTab = firstTab.dataset.tab;
+      // Show only profiles matching the first tab on load
+      profiles.forEach(profile => {
+        if (profile.classList.contains(defaultTab)) {
+          profile.classList.add("active");
+        } else {
+          profile.classList.remove("active");
         }
-    
-        tabButtons.forEach(button => {
-            button.addEventListener("click", () => {
-            // Remove active class from all buttons
-            tabButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
-    
-            const selectedTab = button.dataset.tab;
-    
-            // Show only profiles from selected category
-            profiles.forEach(profile => {
-                profile.classList.remove("active");
-                if (profile.classList.contains(selectedTab)) {
-                profile.classList.add("active");
-                }
-            });
-            });
-        });
-        });
-    </script>
-    
-    
-    {% schema %}
-    {
-      "name": "Tabs Section",
-      "class": "artists-template-section",
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "width",
-          "label": "Wide display"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description"
-        }
-      ],
-      "blocks": [
-        {
-          "type": "tabs-filter-buttons",
-          "name": "Tabs Filter Buttons",
-          "settings": [
-            {
-              "type": "collection_list",
-              "id": "collection_list",
-               "label": "Collection List"
-            }
-          ]
-        },
-        {
-          "type": "tabs-info",
-          "name": "Tabs Info",
-          "settings": [
-            {
-              "type": "collection",
-              "id": "collection",
-              "label": "collection"
-            },
-            { "type": "text", "id": "tab_name", "label": "Tab Name" },
-            { "type": "checkbox", "id": "is_cake", "label": "Cake" },
-            { "type": "checkbox", "id": "is_muffins", "label": "Muffins" },
-            { "type": "checkbox", "id": "is_croissant", "label": "Croissant" },
-            { "type": "checkbox", "id": "is_bread", "label": "Bread" },
-            { "type": "checkbox", "id": "is_tart", "label": "Tart" },
-            { "type": "checkbox", "id": "is_favorite", "label": "Favorite" },
-            { "type": "url", "id": "artist_link", "label": "Artist Link" }
-          ]
-        }
-      ],
-      "presets": [
-        { "name": "Tabs", "blocks": [] }
-      ]
+      });
     }
-    {% endschema %}
-    
+  
+    tabButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        tabButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        const selectedTab = button.dataset.tab;
+        profiles.forEach(profile => {
+          profile.classList.remove("active");
+          if (profile.classList.contains(selectedTab)) {
+            profile.classList.add("active");
+          }
+        });
+      });
+    });
+  });
+  </script>
+  
+  {% schema %}
+  {
+    "name": "Tabs Section",
+    "class": "artists-template-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "width",
+        "label": "Wide display"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tabs-filter-buttons",
+        "name": "Tabs Filter Buttons",
+        "settings": [
+          {
+            "type": "collection_list",
+            "id": "collection_list",
+             "label": "Collection List"
+          }
+        ]
+      },
+      {
+        "type": "tabs-info",
+        "name": "Tabs Info",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      { "name": "Tabs", "blocks": [] }
+    ]
+  }
+  {% endschema %}
+  
