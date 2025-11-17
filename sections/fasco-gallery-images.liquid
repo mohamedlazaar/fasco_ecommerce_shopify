@@ -1,34 +1,115 @@
-<div class="gallery-container">
-    <div class="gallery-header">
-        <h2>
-            Follow Us On Instagram
-        </h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores officiis, voluptatem eligendi fuga est deleniti qui incidunt, eos repudiandae ab eum commodi illo. Deleniti, consequuntur nisi, tempora ipsa autem, beatae tempore impedit similique quasi facere aliquid nesciunt ea ipsum perspiciatis.
-        </p>
-    </div>
-    <div class="gallery">
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-        <img src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" width="100" height="100" al="instagram" />
-    </div>
-</div>
-
-
-{% schema %}
-{
-    "name": "Images Gallery",
-    "settings": [
-        
-    ],
-    "presets": [
+{% style %}
+    .instagram-section {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    
+    .instagram-section h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #3b3b3b;
+      margin-bottom: 15px;
+    }
+    
+    .instagram-section p.subtitle {
+      max-width: 650px;
+      margin: 0 auto 50px;
+      color: #7e7e7e;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    
+    .instagram-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    
+    .instagram-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .instagram-gallery::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+    
+    .instagram-item {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 380px;
+      overflow: hidden;
+    }
+    
+    .instagram-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .instagram-item {
+        width: 240px;
+        height: 300px;
+      }
+    }
+    {% endstyle %}
+    
+    <section class="instagram-section">
+      <h2>{{ section.settings.title }}</h2>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+    
+      <div class="instagram-gallery">
+        {% for block in section.blocks %}
+          <div class="instagram-item">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | image_url }}" alt="Instagram image" width="100" height="100">
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+    {% schema %}
+    {
+      "name": "Images Gallery",
+      "settings": [
         {
-            "name": "Images Gallery"
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Follow Us On Instagram"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
         }
-    ]
-}
-{% endschema %}
+      ],
+      "blocks": [
+        {
+          "type": "image",
+          "name": "Instagram Image",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Upload Image"
+            }
+          ]
+        }
+      ],
+      "max_blocks": 12,
+      "presets": [
+        {
+          "name": "Images Gallery"
+        }
+      ]
+    }
+    {% endschema %}
+    
