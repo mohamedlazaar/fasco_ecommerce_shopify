@@ -2,145 +2,184 @@
     .product-feature-section {
       display: flex;
       align-items: stretch;
-      min-height: 480px;
-      background: #efefef;
+      min-height: 600px;
       border-radius: 0;
+      background: #efefef;
+      overflow: hidden;
     }
+    
+    /* LEFT SIDE (Image + Hotspots) */
     .product-feature-left {
       position: relative;
-      /* flex: 1.2; */
       width: 50%;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fff;
-      clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-      border-right: 1px solid #000;
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%); /* angled diagonal cut */
     }
-    .product-feature-image { 
+    
+    .product-feature-image {
       position: relative;
-      width: 60%;
-      height: 100%;
+      width: 70%;
+      height: auto;
       z-index: 2;
     }
+    
     .product-feature-image img {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
-      border-radius: 8px;
     }
+    
+    /* Hotspot Labels */
     .product-feature-label {
       position: absolute;
-      z-index: 3;
       background: #fff;
-      font-size: 1.1rem;
-      color: #231f20;
       border: 2px solid #222;
       border-radius: 4px;
-      padding: 7px 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 6px 14px;
+      font-size: 1.1rem;
+      color: #231f20;
       white-space: nowrap;
+      z-index: 5;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
+    
+    /* RIGHT SIDE */
     .product-feature-right {
-      /* flex: 1.8; */
-      background: #ededed;
+      width: 50%;
+      background: #e8e8e8;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 44px;
-      width:50%
+      padding: 70px 60px;
+      position: relative;
     }
+    
+    .product-detail-collection {
+      font-size: 1rem;
+      color: #8b8b8b;
+      margin-bottom: 5px;
+    }
+    
     .product-detail-title {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #575352;
-      letter-spacing: 1px;
-      margin-bottom: 14px;
+      margin-bottom: 25px;
     }
-    .product-detail-collection {
-      font-size: 1.05rem;
-      color: #949494;
-      margin-bottom: 7px;
-    }
+    
     .product-detail-description-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-decoration: underline;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
       color: #222;
     }
+    
     .product-detail-description {
       font-size: 1.06rem;
-      color: #555;
       line-height: 1.7;
-      margin-bottom: 22px;
+      color: #555;
+      width: 80%;
+      margin-bottom: 30px;
     }
+    
     .product-detail-size-row {
       font-size: 1.07rem;
       font-weight: 500;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
+    
     .product-detail-size-pill {
       display: inline-block;
       background: #181818;
       color: #fff;
-      font-size: 1rem;
       padding: 6px 24px;
       border-radius: 18px;
       font-weight: 600;
-      margin-left: 18px;
+      margin-left: 12px;
     }
+    
     .product-detail-price-row {
-      font-size: 2.0rem;
-      color: #222;
-      font-weight: 700;
-      margin-bottom: 22px;
+      font-size: 2rem;
+      color: #000;
+      font-weight: 800;
+      margin-bottom: 30px;
     }
+    
     .product-detail-buy-btn {
-      background: #1a1a1a;
+      background: #000;
       color: #fff;
-      font-size: 1.13rem;
-      font-weight: 600;
+      font-size: 1.2rem;
       padding: 18px 60px;
       border-radius: 14px;
       border: none;
-      margin-top: 6px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.11);
       cursor: pointer;
-      transition: background .2s;
+      transition: 0.2s ease;
     }
+    
     .product-detail-buy-btn:hover {
-      background: #2c2c2c;
+      background: #222;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .product-feature-section {
+        flex-direction: column;
+      }
+      .product-feature-left,
+      .product-feature-right {
+        width: 100%;
+        clip-path: none;
+      }
+      .product-feature-right {
+        padding: 40px 30px;
+      }
     }
     {% endstyle %}
     
     <section class="product-feature-section">
       <div class="product-feature-left">
         <div class="product-feature-image">
-          <img src="{{ section.settings.product.featured_image | image_url }}" alt="{{ section.settings.product.title }}" width="100" height="100" />
+          <img src="{{ section.settings.product.featured_image | image_url }}" alt="{{ section.settings.product.title }}"/>
+    
           {% for block in section.blocks %}
             {% if block.type == 'hotspot' %}
-              <div class="product-feature-label" style="top:{{ block.settings.top | append: 'px' }}; left:{{ block.settings.left | append: 'px' }};">
+              <div class="product-feature-label"
+                   style="top:{{ block.settings.top }}px; left:{{ block.settings.left }}px;">
                 {{ block.settings.label }}
               </div>
             {% endif %}
           {% endfor %}
         </div>
       </div>
+    
       <div class="product-feature-right">
-        <div class="product-detail-collection">{{ section.settings.product.collections.first.title }}</div>
-        <div class="product-detail-title">{{ section.settings.product.title }}</div>
+        <div class="product-detail-collection">
+          {{ section.settings.product.collections.first.title }}
+        </div>
+    
+        <div class="product-detail-title">
+          {{ section.settings.product.title }}
+        </div>
+    
         <div class="product-detail-description-title">DESCRIPTION</div>
+    
         <div class="product-detail-description">
           {{ section.settings.product.description | strip_html | truncate: 360 }}
         </div>
+    
         <div class="product-detail-size-row">
           Size:
           <span class="product-detail-size-pill">M</span>
         </div>
+    
         <div class="product-detail-price-row">
           ${{ section.settings.product.price | divided_by: 100.0 }}
         </div>
+    
         <button class="product-detail-buy-btn">Buy Now</button>
       </div>
     </section>
@@ -149,7 +188,6 @@
     {
       "name": "Product Feature Split",
       "tag": "section",
-      "class": "product-feature-section",
       "settings": [
         {
           "type": "product",
@@ -162,75 +200,14 @@
           "type": "hotspot",
           "name": "Hotspot Label",
           "settings": [
-            {
-              "type": "text",
-              "id": "label",
-              "label": "Label Text",
-              "default": "Feature name"
-            },
-            {
-              "type": "number",
-              "id": "top",
-              "label": "Top (px)",
-              "default": 0,
-              "info": "Vertical position of hotspot"
-            },
-            {
-              "type": "number",
-              "id": "left",
-              "label": "Left (px)",
-              "default": 0,
-              "info": "Horizontal position of hotspot"
-            }
+            { "type": "text", "id": "label", "label": "Label Text" },
+            { "type": "number", "id": "top", "label": "Top (px)", "default": 50 },
+            { "type": "number", "id": "left", "label": "Left (px)", "default": 50 }
           ]
         }
       ],
       "presets": [
-        {
-          "name": "Product Feature Split",
-          "blocks": [
-            {
-              "type": "hotspot",
-              "settings": {
-                "label": "Flat Cap",
-                "top": 28,
-                "left": 265
-              }
-            },
-            {
-              "type": "hotspot",
-              "settings": {
-                "label": "Suspender",
-                "top": 100,
-                "left": 30
-              }
-            },
-            {
-              "type": "hotspot",
-              "settings": {
-                "label": "Hugo Boss",
-                "top": 145,
-                "left": 300
-              }
-            },
-            {
-              "type": "hotspot",
-              "settings": {
-                "label": "Hugo Boss",
-                "top": 285,
-                "left": 10
-              }
-            },
-            {
-              "type": "hotspot",
-              "settings": {
-                "label": "Santoni",
-                "top": 420,
-                "left": 170
-              }
-            }
-          ]
-        }
+        { "name": "Product Feature Split" }
       ]
     }
     {% endschema %}
