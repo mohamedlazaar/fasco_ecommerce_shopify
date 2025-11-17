@@ -1,0 +1,234 @@
+{% style %}
+    .product-feature-section {
+      display: flex;
+      align-items: stretch;
+      min-height: 480px;
+      background: #efefef;
+      border-radius: 0;
+    }
+    .product-feature-left {
+      position: relative;
+      flex: 1.2;
+      min-width: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+    .product-feature-image {
+      position: relative;
+      width: 380px;
+      height: 520px;
+      z-index: 2;
+    }
+    .product-feature-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .product-feature-label {
+      position: absolute;
+      z-index: 3;
+      background: #fff;
+      font-size: 1.1rem;
+      color: #231f20;
+      border: 2px solid #222;
+      border-radius: 4px;
+      padding: 7px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      white-space: nowrap;
+    }
+    .product-feature-right {
+      flex: 1.8;
+      background: #ededed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 44px;
+    }
+    .product-detail-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #575352;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .product-detail-collection {
+      font-size: 1.05rem;
+      color: #949494;
+      margin-bottom: 7px;
+    }
+    .product-detail-description-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-bottom: 6px;
+      color: #222;
+    }
+    .product-detail-description {
+      font-size: 1.06rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .product-detail-size-row {
+      font-size: 1.07rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .product-detail-size-pill {
+      display: inline-block;
+      background: #181818;
+      color: #fff;
+      font-size: 1rem;
+      padding: 6px 24px;
+      border-radius: 18px;
+      font-weight: 600;
+      margin-left: 18px;
+    }
+    .product-detail-price-row {
+      font-size: 2.0rem;
+      color: #222;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    .product-detail-buy-btn {
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1.13rem;
+      font-weight: 600;
+      padding: 18px 60px;
+      border-radius: 14px;
+      border: none;
+      margin-top: 6px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .product-detail-buy-btn:hover {
+      background: #2c2c2c;
+    }
+    {% endstyle %}
+    
+    <section class="product-feature-section">
+      <div class="product-feature-left">
+        <div class="product-feature-image">
+          <img src="{{ section.settings.product.featured_image | image_url: '650x850' }}" alt="{{ section.settings.product.title }}" width="100" height="100" />
+          {% for block in section.blocks %}
+            {% if block.type == 'hotspot' %}
+              <div class="product-feature-label" style="top:{{ block.settings.top | append: 'px' }}; left:{{ block.settings.left | append: 'px' }};">
+                {{ block.settings.label }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product-feature-right">
+        <div class="product-detail-collection">{{ section.settings.product.collections.first.title }}</div>
+        <div class="product-detail-title">{{ section.settings.product.title }}</div>
+        <div class="product-detail-description-title">DESCRIPTION</div>
+        <div class="product-detail-description">
+          {{ section.settings.product.description | strip_html | truncate: 360 }}
+        </div>
+        <div class="product-detail-size-row">
+          Size:
+          <span class="product-detail-size-pill">M</span>
+        </div>
+        <div class="product-detail-price-row">
+          ${{ section.settings.product.price | divided_by: 100.0 }}
+        </div>
+        <button class="product-detail-buy-btn">Buy Now</button>
+      </div>
+    </section>
+    
+    {% schema %}
+    {
+      "name": "Product Feature Split",
+      "tag": "section",
+      "class": "product-feature-section",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "hotspot",
+          "name": "Hotspot Label",
+          "settings": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": "Label Text",
+              "default": "Feature name"
+            },
+            {
+              "type": "number",
+              "id": "top",
+              "label": "Top (px)",
+              "default": 0,
+              "info": "Vertical position of hotspot"
+            },
+            {
+              "type": "number",
+              "id": "left",
+              "label": "Left (px)",
+              "default": 0,
+              "info": "Horizontal position of hotspot"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Product Feature Split",
+          "blocks": [
+            {
+              "type": "hotspot",
+              "settings": {
+                "label": "Flat Cap",
+                "top": 28,
+                "left": 265
+              }
+            },
+            {
+              "type": "hotspot",
+              "settings": {
+                "label": "Suspender",
+                "top": 100,
+                "left": 30
+              }
+            },
+            {
+              "type": "hotspot",
+              "settings": {
+                "label": "Hugo Boss",
+                "top": 145,
+                "left": 300
+              }
+            },
+            {
+              "type": "hotspot",
+              "settings": {
+                "label": "Hugo Boss",
+                "top": 285,
+                "left": 10
+              }
+            },
+            {
+              "type": "hotspot",
+              "settings": {
+                "label": "Santoni",
+                "top": 420,
+                "left": 170
+              }
+            }
+          ]
+        }
+      ]
+    }
+    {% endschema %}
+    
