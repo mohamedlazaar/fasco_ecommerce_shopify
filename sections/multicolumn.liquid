@@ -212,7 +212,7 @@
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".multicolumn-{{ section.id }}",
-        start: "top 85%",
+        start: "top 25%",
         scrub: true,
         toggleActions: "play reverse play reverse",
         // markers: true  // uncomment to debug
@@ -226,8 +226,8 @@
         {
           opacity: 1,
           y: 0,
-          stagger: 0.25,
-          duration: 0.7,
+          stagger: 0.5,
+          duration: 0.5,
           ease: "power2.inOut"
         }
       );      
