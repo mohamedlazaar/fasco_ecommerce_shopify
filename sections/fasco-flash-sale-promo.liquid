@@ -181,6 +181,14 @@
         transform: scale(1);
         padding: 2px;
         border: 1px solid #000;
+        position: relative;
+    }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active::after{
+        width: 16px;
+        height: 16px;
+        content:'';
+        border:1px solid black;
+        top: 0; left:0; right:0; bottom:0;
     }
     .flash_sale_container .swiper-pagination.swiper-pagination-clickable{
         bottom: 12%;
