@@ -312,6 +312,11 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fasco_gallery_images_ixdwnM": {
+      "type": "fasco-gallery-images",
+      "name": "Images Gallery",
+      "settings": {}
     }
   },
   "order": [
@@ -320,6 +325,7 @@
     "fasco_flash_sale_promo_GW3UKx",
     "fasco_products_tabs_FnPg3q",
     "fasco_image_banner_8mpnnj",
-    "multicolumn_GJ6xTy"
+    "multicolumn_GJ6xTy",
+    "fasco_gallery_images_ixdwnM"
   ]
 }
