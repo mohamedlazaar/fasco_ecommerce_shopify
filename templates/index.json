@@ -194,32 +194,32 @@
           "type": "hotspot",
           "settings": {
             "label": "Flat Cap",
-            "top": 28,
-            "left": 265
+            "top": 10,
+            "left": 67
           }
         },
         "hotspot_wUYn4w": {
           "type": "hotspot",
           "settings": {
             "label": "Suspender",
-            "top": 100,
-            "left": 30
+            "top": 30,
+            "left": 8
           }
         },
         "hotspot_aFtiUk": {
           "type": "hotspot",
           "settings": {
-            "label": "Feature name",
-            "top": 0,
-            "left": 0
+            "label": "Hugo Boss",
+            "top": 60,
+            "left": 6
           }
         },
         "hotspot_zn6Ayw": {
           "type": "hotspot",
           "settings": {
             "label": "Hugo Boss",
-            "top": 145,
-            "left": 300
+            "top": 35,
+            "left": 55
           }
         }
       },
