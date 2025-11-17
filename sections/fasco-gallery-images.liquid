@@ -1,123 +1,115 @@
 {% style %}
-    .instagram-follow-section {
-      padding: 60px 0 40px 0;
-      background: #fff;
+    .instagram-section {
+      padding: 60px 0 40px;
       text-align: center;
     }
-    .instagram-follow-title {
-      font-size: 2.8rem;
+    
+    .instagram-section h2 {
+      font-size: 42px;
       font-weight: 700;
-      color: #232323;
-      margin-bottom: 13px;
-      letter-spacing: 1px;
+      color: #3b3b3b;
+      margin-bottom: 15px;
     }
-    .instagram-follow-subtitle {
-      font-size: 1.14rem;
-      color: #616161;
-      font-weight: 400;
-      margin-bottom: 35px;
-      max-width: 610px;
-      margin-left: auto;
-      margin-right: auto;
+    
+    .instagram-section p.subtitle {
+      max-width: 650px;
+      margin: 0 auto 50px;
+      color: #7e7e7e;
+      font-size: 16px;
+      line-height: 1.7;
     }
+    
     .instagram-gallery {
-  display: flex;
-  gap: 28px;
-  justify-content: center;
-  align-items: end;
-}
-    .instagram-photo-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 13px;
-    display: block;
-    /* no fixed height, so images can be variable! */
-    }
-
-    .instagram-photo-card {
-      background: #fff;
-      border-radius: 14px;
-      overflow: hidden;
-      min-width: 210px;
-      max-width: 240px;
-      width: 18vw;
-      height: 350px;
-      box-shadow: 0 8px 32px rgba(40,44,53,0.09);
       display: flex;
-      align-items: stretch;
       justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
     }
-
+    
+    .instagram-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .instagram-gallery::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+    
+    .instagram-item {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 380px;
+      overflow: hidden;
+    }
+    
+    .instagram-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .instagram-item:nth-type(odd){
+        height: 400px
+    }
+    /* Responsive */
     @media (max-width: 900px) {
-      .instagram-photo-card {
-        min-width: 150px;
-        max-width: 170px;
-        height: 220px;
-      }
-      .instagram-gallery {
-        gap: 10px;
+      .instagram-item {
+        width: 240px;
+        height: 300px;
       }
     }
     {% endstyle %}
     
-    <section class="instagram-follow-section">
-      <div class="instagram-follow-title">
-        {{ section.settings.title }}
-      </div>
-      <div class="instagram-follow-subtitle">
-        {{ section.settings.subtitle }}
-      </div>
+    <section class="instagram-section">
+      <h2>{{ section.settings.title }}</h2>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+    
       <div class="instagram-gallery">
         {% for block in section.blocks %}
-          {% if block.type == 'photo' %}
-            <div class="instagram-photo-card">
-              <img src="{{ block.settings.image | image_url }}" alt="Instagram Gallery Photo" />
-            </div>
-          {% endif %}
+          <div class="instagram-item">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | image_url }}" alt="Instagram image" width="100" height="100">
+            {% endif %}
+          </div>
         {% endfor %}
       </div>
-      
     </section>
     
     {% schema %}
     {
       "name": "Images Gallery",
-      "tag": "section",
       "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Section Title",
+          "label": "Title",
           "default": "Follow Us On Instagram"
         },
         {
           "type": "textarea",
           "id": "subtitle",
-          "label": "Section Subtitle",
+          "label": "Subtitle",
           "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
         }
       ],
       "blocks": [
         {
-          "type": "photo",
-          "name": "Instagram Photo",
+          "type": "image",
+          "name": "Instagram Image",
           "settings": [
             {
               "type": "image_picker",
               "id": "image",
-              "label": "Gallery Image"
+              "label": "Upload Image"
             }
           ]
         }
       ],
+      "max_blocks": 12,
       "presets": [
         {
-          "name": "Images Gallery",
-          "settings": {
-            "title": "Follow Us On Instagram",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
-          },
-          "blocks": []
+          "name": "Images Gallery"
         }
       ]
     }
