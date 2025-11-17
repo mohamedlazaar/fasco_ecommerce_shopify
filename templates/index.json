@@ -139,7 +139,7 @@
       "name": "Fasco Flash Sales Promo",
       "settings": {
         "collection": "flash-sales-promotion",
-        "flash_background": "#ffffff",
+        "flash_background": "#F5F5F5",
         "title": "<h2>Deals Of The Month</h2>",
         "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum velit blanditiis voluptate neque corporis aspernatur quisquam animi.</p>",
         "button_text": "Button",
