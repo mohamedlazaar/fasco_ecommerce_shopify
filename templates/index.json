@@ -186,12 +186,60 @@
         "tabs_title": "<h2>New Arrivals</h2>",
         "description": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident praesentium amet iste! Iusto ducimus perspiciatis molestias quidem laborum recusandae ex.</p>"
       }
+    },
+    "fasco_image_banner_8mpnnj": {
+      "type": "fasco-image-banner",
+      "blocks": {
+        "hotspot_AMaWEc": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Flat Cap",
+            "top": 28,
+            "left": 265
+          }
+        },
+        "hotspot_wUYn4w": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Suspender",
+            "top": 100,
+            "left": 30
+          }
+        },
+        "hotspot_aFtiUk": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Feature name",
+            "top": 0,
+            "left": 0
+          }
+        },
+        "hotspot_zn6Ayw": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Hugo Boss",
+            "top": 145,
+            "left": 300
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_AMaWEc",
+        "hotspot_wUYn4w",
+        "hotspot_aFtiUk",
+        "hotspot_zn6Ayw"
+      ],
+      "name": "Product Feature Split",
+      "settings": {
+        "product": "171248"
+      }
     }
   },
   "order": [
     "fasco_hero_section_zjnxqR",
     "multicolumn_r4VCMK",
     "fasco_flash_sale_promo_GW3UKx",
-    "fasco_products_tabs_FnPg3q"
+    "fasco_products_tabs_FnPg3q",
+    "fasco_image_banner_8mpnnj"
   ]
 }
