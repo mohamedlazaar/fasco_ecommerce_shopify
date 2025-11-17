@@ -92,46 +92,30 @@
           <p>{{ section.settings.description }}</p>
         </div>
     
-        <!-- Tabs -->
-        {% assign btns = section.blocks | where: "type", "tabs-filter-buttons" %}
-        {% for btn in btns %}
-          <div class="buttons__container">
-            {% for i in (1..6) %}
-              {% assign btn_id = 'btn' | append: i %}
-              {% assign btn_label = btn.settings[btn_id] %}
-              {% assign data_value = 'is_' | append: btn_label | handleize %}
-              {% if btn_label %}
-                <button class="tab-button" data-tab="{{ data_value }}">{{ btn_label }}</button>
-              {% endif %}
+        <div class="buttons__container">
+          {% assign tabs = section.blocks | where: "type", "tabs-filter-buttons" %}
+          {% for btn in tabs %}
+            {% assign collection_list = btn.settings.collection_list %}
+            {% for collection in collection_list %}
+              {% assign tab_label = collections[collection].title %}
+              <button class="tab-button" data-tab="is_{{ tab_label | handleize }}">{{ tab_label }}</button>
             {% endfor %}
-    
-          </div>
-        {% endfor %}
-    
-        <!-- Profiles -->
+          {% endfor %}
+        </div>
+        
         <div class="fliter_artist_profiles">
-          {% assign tab_profiles = section.blocks | where: "type", "tabs-info" %}
-          {% for profile in tab_profiles %}
-          <div class="profile_link
-            {{ profile.settings.collection.handle }}
-            ">
-            <div class="profile-group">
-              <div class="thumbnails">
-               {% if  profile.settings.collection %}
-                {%  assign coll = collections[profile.settings.collection]  %}
-                {% if coll.products_count  > 0%}
-                   {% for product in coll.products %}
-                    {% if product.featured_image %}
-                      <img src="{{ product.featured_image |  image_url }}" width="100" height="100" alt="{{ product.title }}" />
-                    {% endif %}
-                   {% endfor %}
-                {% endif %}
-                {% else %}
-                  <p>No collection Selected.</p>
-               {% endif %}
+          {% assign profiles = section.blocks | where: "type", "tabs-info" %}
+          {% for profile in profiles %}
+            {% assign c = collections[profile.settings.collection] %}
+            <div class="profile_link is_{{ profile.settings.tab_name | handleize }}">
+              <div class="profile-group">
+                <div class="thumbnails">
+                  {% for product in c.products %}
+                    <img src="{{ product.featured_image | image_url: '300x300' }}" alt="{{ product.title }}" width="100" height="100" />
+                  {% endfor %}
+                </div>
               </div>
             </div>
-        </div>
           {% endfor %}
         </div>
       </div>
@@ -200,12 +184,11 @@
           "type": "tabs-filter-buttons",
           "name": "Tabs Filter Buttons",
           "settings": [
-            { "type": "text", "id": "btn1", "label": "Button 1" },
-            { "type": "text", "id": "btn2", "label": "Button 2" },
-            { "type": "text", "id": "btn3", "label": "Button 3" },
-            { "type": "text", "id": "btn4", "label": "Button 4" },
-            { "type": "text", "id": "btn5", "label": "Button 5" },
-            { "type": "text", "id": "btn6", "label": "Button 6" }
+            {
+              "type": "collection_list",
+              "id": "collection_list",
+               "label": "Collection List"
+            }
           ]
         },
         {
