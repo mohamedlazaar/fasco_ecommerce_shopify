@@ -207,7 +207,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  const items = document.querySelectorAll('.multicolumn-list__item');
+  const items = document.querySelectorAll('#Slide-{{ section.id }}-{{ forloop.index }}');
 
   gsap.from(items, {
     opacity: 0,
