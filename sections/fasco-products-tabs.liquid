@@ -271,6 +271,8 @@
   
   <script>
   document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const tabButtons = document.querySelectorAll(".tab-button");
     const profiles = document.querySelectorAll(".profile_link");
     const container = document.querySelector('.products-tabs-{{ section.id }} .container')
@@ -306,24 +308,32 @@
       });
     });
   });
-  gsap.registerPlugin(ScrollTrigger);
 
 
-       // Create a timeline
-            let timeline = gsap.timeline({
-            scrollTrigger: {
+       
+            const timeline = gsap.timeline({
+              scrollTrigger: {
                 trigger: container,
-                start: "top 95%",
-                end: "bottom 90%",
-          
+                start: "top 85%",
+                end: "top 30%",
                 toggleActions: "play reverse play reverse",
-            }
+                // scrub: 1,  // Remove this - conflicts with toggleActions
+                // markers: true  // Uncomment to debug
+              }
             });
-            buttons__container.forEach((btn,i)=>{
-              timeline.fromTo(btn, 
+
+            // Animate buttons
+            timeline.fromTo(buttons__container, 
               { opacity: 0, y: 30 },
-              { opacity: 1, y: 0, stagger: 0.1 }, i)
-            })
+              { opacity: 1, y: 0, stagger: 0.15, duration: 0.5, ease: "power2.out" }
+            );
+
+            // Animate products
+            timeline.fromTo(products, 
+              { opacity: 0, y: 40 },
+              { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power2.out" },
+              "-=0.3"  // Start 0.3s before previous animation ends
+            );
             // tl.fromTo(buttons__container, 
             // { opacity: 0, y: 30 },
             // { opacity: 1, y: 0, stagger: 0.1 }
