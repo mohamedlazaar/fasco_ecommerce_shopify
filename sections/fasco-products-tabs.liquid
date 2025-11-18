@@ -314,9 +314,9 @@
     scrollTrigger: {
       trigger: container,
       start: "top 100%",
-      end: "bottom +=150%",
+      end: "bottom 90%",
+      scrub: 1,
       toggleActions: "play reverse play reverse",
-      // scrub: 1,
       // markers: true  // Uncomment to debug
     }
   });
@@ -330,7 +330,7 @@
   // Animate products
   timeline.fromTo(products, 
   { opacity: 0, x: 30 },
-    { opacity: 1, x: 0, stagger: 0.15, duration: 0.2, ease: "power2.out" }
+    { opacity: 1, x: 0, stagger: 0.25, duration: 0.5, ease: "power2.out" }
   );   
   });
 
