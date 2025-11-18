@@ -320,14 +320,15 @@
     }
   });
 
-  // Animate buttons
-  // timeline.fromTo(buttons__container, 
-  //   { opacity: 0, y: 30 },
-  //   { opacity: 1, y: 0, stagger: 0.15, duration: 0.5, ease: "power2.out" }
-  // );
+  Animate buttons
+  timeline.fromTo(buttons__container, 
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, stagger: 0.15, duration: 0.5, ease: "power2.out" }
+  );
 
   // Animate products
-  timeline.to(products, 
+  timeline.fromTo(products, 
+  { opacity: 0, y: 30 },
     { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power2.out" }
   );   
   });
