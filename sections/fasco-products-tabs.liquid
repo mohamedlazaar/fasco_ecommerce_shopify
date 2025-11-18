@@ -275,10 +275,9 @@
 
     const tabButtons = document.querySelectorAll(".tab-button");
     const profiles = document.querySelectorAll(".profile_link");
-    const container = document.querySelector('.products-tabs-{{ section.id }}')
-    const buttons__container = document.querySelectorAll('.tab__buttons_{{ section.id }}')
-    const products = document.querySelectorAll('.product_card_{{ section.id }}')
-    console.log("test", container, buttons__container, products, gsap.utils.toArray(buttons__container))
+    const container = document.querySelector('.products-tabs-{{ section.id }}');
+    const buttons__container = document.querySelectorAll('.tab__buttons_{{ section.id }}');
+    const products = document.querySelectorAll('.product_card_{{ section.id }}');
   
     if (tabButtons.length > 0) {
       const firstTab = tabButtons[0];
@@ -325,13 +324,14 @@
     timeline.fromTo(buttons__container, 
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, stagger: 0.15, duration: 0.5, ease: "power2.out" }
-    ).fromTo(products, 
+    );
+    timeline.fromTo(products, 
     { opacity: 0, y: 30 },
       { opacity: 1, y: 0, stagger: 0.25, duration: 10, ease: "power2.out" }
     );   
 
 
-    
+
   });
 
 
