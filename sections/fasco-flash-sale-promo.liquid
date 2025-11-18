@@ -266,7 +266,7 @@
 {%- endstyle -%} 
 
 <div class="flash_sale_container flash_{{ section.id }}">
-    <div class="flash_content countdown-flash-{{ section.id }}">
+    <div class="flash_content">
         <div class="content">
             {{ section.settings.title }}
             {{ section.settings.description }}
@@ -316,7 +316,7 @@
         const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
         const clockElement = document.querySelector('.flash_{{ section.id }} .count_down .count_down_clock')
         const product = document.querySelectorAll(".collection-{{ section.id }}")
-        const countDown = document.querySelector(".countdown-flash-{{ section.id }}")
+        const countDown = document.querySelector(".flash_{{ section.id }} .flash_content")
         const container = document.querySelector('.flash_{{ section.id }}')
 
         if (clockElement) {
@@ -389,8 +389,8 @@
             });
 
             tl.fromTo(countDown, 
-            { opacity: 0, x: -30 },
-            { opacity: 1, x: 0, stagger: 0.1 }
+            { opacity: 0, x: -100 },
+            { opacity: 1, x: 0, stagger: 0.1, duration:5 }
             ).fromTo(product, 
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, stagger: 0.1 }
