@@ -1,0 +1,23 @@
+ul.facets-layout.facets-layout-list.facets-layout-list--text.facets__list--vertical.list-unstyled{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+li.list-menu__item.facets__item{
+    justify-content: center;
+}
+label.facets__label.facet-checkbox{
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    transition: all .5px ease-in-out;
+}
+
+label.facets__label.facet-checkbox.active{
+    background-color: #000;
+    color: #fff;
+}
+.facet-checkbox>svg, .facet-checkbox>.svg-wrapper{
+    display: none;
+}
