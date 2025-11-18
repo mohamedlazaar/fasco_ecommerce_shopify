@@ -27,17 +27,7 @@
     assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
   endif
 -%}
-{%  style  %} 
-   {% if filter_type == 'vertical' and filter.label == "Size"%}
-   label.label.facets__label.facet-checkbox{
-      border: 1px solid #000;
-   }
-   label.facets__label.facet-checkbox.active{
-    background-color: #000;
-    color: #fff;
-   }
-   {% endif %}
-{% endstyle %}
+
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
@@ -137,6 +127,17 @@
               {% case filter.type %}
                 {% when 'boolean', 'list' %}
                   {% comment %} fasco changes {% endcomment %}
+                  {%  style  %} 
+                    {% if filter_type == 'vertical' and filter.label == "Size"%}
+                    label.label.facets__label.facet-checkbox{
+                       border: 1px solid #000;
+                    }
+                    label.facets__label.facet-checkbox.active{
+                     background-color: #000;
+                     color: #fff;
+                    }
+                    {% endif %}
+                 {% endstyle %}
                   <details
                     id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
                     class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
