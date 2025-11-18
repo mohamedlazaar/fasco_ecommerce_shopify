@@ -327,8 +327,7 @@
   );
 
   // Animate products
-  timeline.fromTo(products, 
-    { opacity: 0, y: 40 },
+  timeline.to(products, 
     { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power2.out" }
   );   
   });
