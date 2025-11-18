@@ -226,7 +226,7 @@
           {% for collection in collection_list %}
             {% assign tab_label = collection.title %}
             {% assign tab_handle = collection.handle %}
-            <button class="tab-button" data-tab="is_{{ tab_handle | handleize }}">{{ tab_label }}</button>
+            <button class="tab-button tab__buttons_{{ section.id }}" data-tab="is_{{ tab_handle | handleize }}">{{ tab_label }}</button>
           {% endfor %}
         {% endfor %}
       </div>
@@ -274,7 +274,7 @@
     const tabButtons = document.querySelectorAll(".tab-button");
     const profiles = document.querySelectorAll(".profile_link");
     const container = document.querySelector('.products-tabs-{{ section.id }}')
-    const buttons__container = document.querySelectorAll('.products-tabs-{{ section.id }} .cotainer_ .buttons__container button')
+    const buttons__container = document.querySelectorAll('.tab__buttons_{{ section.id }}')
     const products = document.querySelectorAll('.product_card_{{ section.id }}')
   
     if (tabButtons.length > 0) {
