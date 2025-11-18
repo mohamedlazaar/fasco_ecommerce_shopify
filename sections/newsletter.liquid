@@ -44,6 +44,7 @@
   .column_field label{
     color : #8a8a8a;
     font-size: 22px;
+    font-weight: 100;
   }
   .column_field button{
     position: relative;
@@ -71,6 +72,15 @@
   }
   .newsletter.no_padding{
     padding: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .fasco_newsletter_container{
+      flex-direction: column;
+    }
+    .fasco_newsletter_container img{
+      width: 100%;
+      height: auto;
+    }
   }
  </style>
 
@@ -173,11 +183,11 @@
                       {% elsif form.posted_successfully? %}
                         aria-describedby="Newsletter-success--{{ section.id }}"
                       {% endif %}
-                      placeholder="{{ 'newsletter.label' | t }}"
+                      placeholder="michael@ymail.com"
                       required
                     >
                     <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                      {{ 'newsletter.label' | t }}
+                      michael@ymail.com
                     </label>
                     <button
                       type="submit"
