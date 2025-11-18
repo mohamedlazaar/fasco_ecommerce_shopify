@@ -6,6 +6,7 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+  
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -28,6 +29,24 @@
     max-height: 750px;
     height: 100%;
   }
+  .column_field{
+    display: flex;    
+    justify-content: center;
+    gap: 40px;
+    flex-direction: column;
+ 
+    align-items: center;
+  }
+  .column_field input{
+    box-shadow: 1px 1px 1px black;
+  }
+  .column_field button{
+    position: relative;
+    max-width: 207px;
+    width: 100%;
+    height: 56px;
+  }
+  
  </style>
 
 <div class="newsletter fasco_newsletter_container center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
@@ -145,9 +164,7 @@
                       id="Subscribe"
                       aria-label="{{ 'newsletter.button_label' | t }}"
                     >
-                      <span class="svg-wrapper">
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      </span>
+                     subscribe now
                     </button>
                     </div>
                  {% endif %}  
