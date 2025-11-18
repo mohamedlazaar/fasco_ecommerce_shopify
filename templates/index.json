@@ -422,14 +422,14 @@
         "heading_FG6gGt": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Subscribe To Our Newsletter",
             "heading_size": "h1"
           }
         },
         "paragraph_WCiUQ4": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin </p>"
           }
         },
         "email_form_7jXcTR": {
