@@ -211,7 +211,7 @@
   }
   {% endstyle %}
   
-  <section class="section__wrapper artist-section">
+  <section class="section__wrapper artist-section products-tabs-{{ section.id }}">
     <div class="container_">
       <!-- Description -->
       <div class="page_aritists_decription">
@@ -239,7 +239,7 @@
             <div class="profile-group">
               <div class="thumbnails">
                 {% for product in c.products limit:6 %}
-                  <a href="{{ product.url }}" class="product_card">
+                  <a href="{{ product.url }}" class="product_card product_card_{{ section.id }}">
                     <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100" height="100" />
                     <div class="product_content"  style="display: flex; flex-wrap:wrap; justify-content:space-between; align-items:start;">
                       <div class="product__title">
@@ -273,6 +273,9 @@
   document.addEventListener("DOMContentLoaded", () => {
     const tabButtons = document.querySelectorAll(".tab-button");
     const profiles = document.querySelectorAll(".profile_link");
+    const container = document.querySelector('.products-tabs-{{ section.id }}')
+    const buttons__container = document.querySelectorAll('.products-tabs-{{ section.id }} .cotainer_ .buttons__container button')
+    const products = document.querySelectorAll('.product_card_{{ section.id }}')
   
     if (tabButtons.length > 0) {
       const firstTab = tabButtons[0];
@@ -302,6 +305,28 @@
       });
     });
   });
+  gsap.registerPlugin(ScrollTrigger);
+            
+
+       // Create a timeline
+            const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container,
+                start: "top 95%",
+                end: "bottom 90%",
+                scrub: 1,
+                toggleActions: "play reverse play reverse",
+            }
+            });
+
+            tl.fromTo(buttons__container, 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, stagger: 0.1 }
+            ).tl.fromTo(products, 
+            { opacity: 0, x: -100 },
+            { opacity: 1, x: 0, stagger: 0.1, duration:5 }
+            )
+    
   </script>
   
   {% schema %}
