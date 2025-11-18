@@ -35,7 +35,7 @@
     display: grid;
     grid-template-rows: 100%;
     gap: var(--hero-grid-gap);
-    width: 80%;
+    width: 75%;
     height: 100%;
     margin: 0 auto;
   }
