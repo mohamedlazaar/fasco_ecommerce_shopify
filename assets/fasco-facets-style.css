@@ -13,10 +13,7 @@ label.facets__label.facet-checkbox{
     transition: all .5px ease-in-out;
 }
 
-label.facets__label.facet-checkbox.active{
-    background-color: #000;
-    color: #fff;
-}
+
 .facet-checkbox>svg, .facet-checkbox>.svg-wrapper{
     display: none;
 }
