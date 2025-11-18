@@ -266,7 +266,7 @@
 {%- endstyle -%} 
 
 <div class="flash_sale_container flash_{{ section.id }}">
-    <div class="flash_content">
+    <div class="flash_content countdown-flash--{{ section.id }}">
         <div class="content">
             {{ section.settings.title }}
             {{ section.settings.description }}
@@ -284,7 +284,7 @@
                 <div class="swiper-wrapper">
                     {% for product in collection.products limit: 10 %}
 
-                        <div class="collection swiper-slide">
+                        <div class="collection swiper-slide collection-{{ section.id }}">
                             <img 
                               src="{{ product.featured_image | image_url }}" 
                               alt="{{ product.title }}"
@@ -315,6 +315,9 @@
         /* Countdown Timer */
         const countDownDate = new Date('{{ section.settings.end_date }}').getTime();
         const clockElement = document.querySelector('.flash_{{ section.id }} .count_down .count_down_clock')
+        const product = document.querySelectorAll(".collection-{{ section.id }}")
+        const countDown = document.querySelector(".countdown-flash--{{ section.id }}")
+        const container = document.querySelector('.flash_{{ section.id }}')
 
         if (clockElement) {
             const x = setInterval(() => {
@@ -341,7 +344,8 @@
             }, 1000);
 
         }
-
+        
+        // swiper
         const swiper = new Swiper('.flash_{{ section.id }} .swiper', {
             slidesPerView: 3,
             slidesPerGroup: 1,
@@ -368,7 +372,31 @@
                 1024: { slidesPerView: 3 }
             }
         });
-    })
+
+        // GSAP
+        gsap.registerPlugin(SplitText, ScrollTrigger);
+            
+
+            // Create a timeline
+            const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container,
+                start: "top 80%",
+                end: "bottom 60%",
+                scrub: 1,
+                toggleActions: "play reverse play reverse",
+            }
+            });
+
+            tl.fromTo(countDown, 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, stagger: 0.1 }
+            ).fromTo(product, 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, stagger: 0.1 }
+            )
+    
+})
 
 
 </script>
