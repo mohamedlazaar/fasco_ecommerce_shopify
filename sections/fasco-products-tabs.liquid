@@ -307,7 +307,7 @@
     });
   });
   gsap.registerPlugin(ScrollTrigger);
-            
+
 
        // Create a timeline
             const tl = gsap.timeline({
@@ -319,14 +319,18 @@
                 toggleActions: "play reverse play reverse",
             }
             });
-            
-            tl.fromTo(buttons__container, 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, stagger: 0.1 }
-            ).fromTo(products, 
-            { opacity: 0, x: -100 },
-            { opacity: 1, x: 0, stagger: 0.1, duration:5 }
-            )
+            buttons__container.forEach((btn,i)=>{
+              tl.fromTo(btn, 
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, stagger: 0.1 }, i)
+            })
+            // tl.fromTo(buttons__container, 
+            // { opacity: 0, y: 30 },
+            // { opacity: 1, y: 0, stagger: 0.1 }
+            // ).fromTo(products, 
+            // { opacity: 0, x: -100 },
+            // { opacity: 1, x: 0, stagger: 0.1, duration:5 }
+            // )
     
   </script>
   
