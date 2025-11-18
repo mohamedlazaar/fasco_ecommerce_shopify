@@ -143,18 +143,18 @@
                       <div>
                         <span class="facets__summary-label">
                           {{- filter.label | escape }}
-                          {% comment %} {%- if filter_type == 'vertical' -%}
+                          {%- if filter_type == 'vertical' -%}
                             <span class="facets__selected{% if filter.active_values.size == 0 %} hidden{% endif %}">
                               ({{ filter.active_values.size }})</span
                             >
-                          {%- endif -%} {% endcomment %}
+                          {%- endif -%}
                         </span>
                         {%- if filter_type == 'vertical' and filter.operator == 'AND' -%}
                           <span class="facets__and-helptext">
                             {{ 'products.facets.filter_and_operator_subtitle' | t }}
                           </span>
                         {%- endif -%}
-                        {% comment %} {{- 'icon-caret.svg' | inline_asset_content -}}  fasco-removing the svg{% endcomment %}
+                        {{- 'icon-caret.svg' | inline_asset_content -}}
                       </div>
                     </summary>
                     <div
