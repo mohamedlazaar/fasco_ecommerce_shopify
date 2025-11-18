@@ -209,7 +209,10 @@
 
                             {%- capture text_value -%}
                               <span class="facet-checkbox__text" aria-hidden="true">
-                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
+                                {% if filter.label != "color" %}
+                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
+                               {% endif %}
+                           
                               </span>
                               <span class="visually-hidden">
                                 {{- value.label | escape }} (
@@ -578,7 +581,12 @@
 
                               {%- capture text_value -%}
                                 <span class="facet-checkbox__text" aria-hidden="true">
-                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
+                                  {% comment %} fasco {% endcomment %}
+                                   {% if filter.label != "color" %}
+                                       <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
+                                    {% endif %}
+                                
+
                                 </span>
                                 <span class="visually-hidden">
                                   {{- value.label | escape }} (
