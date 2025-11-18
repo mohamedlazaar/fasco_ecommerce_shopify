@@ -143,11 +143,11 @@
                       <div>
                         <span class="facets__summary-label">
                           {{- filter.label | escape }}
-                          {%- if filter_type == 'vertical' -%}
+                          {% comment %} {%- if filter_type == 'vertical' -%}
                             <span class="facets__selected{% if filter.active_values.size == 0 %} hidden{% endif %}">
                               ({{ filter.active_values.size }})</span
                             >
-                          {%- endif -%}
+                          {%- endif -%} {% endcomment %}
                         </span>
                         {%- if filter_type == 'vertical' and filter.operator == 'AND' -%}
                           <span class="facets__and-helptext">
