@@ -310,7 +310,7 @@
 
 
        // Create a timeline
-            let tl = gsap.timeline({
+            let timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: container,
                 start: "top 95%",
@@ -320,7 +320,7 @@
             }
             });
             buttons__container.forEach((btn,i)=>{
-              tl.fromTo(btn, 
+              timeline.fromTo(btn, 
               { opacity: 0, y: 30 },
               { opacity: 1, y: 0, stagger: 0.1 }, i)
             })
