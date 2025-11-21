@@ -155,10 +155,12 @@
                     data-index="{{ forloop.index }}" 
                     open
                   >
+                   <p>{{ filter.param_name }}</p>
                     {% comment %} {% if filter_type == 'vertical' and forloop.index == 1 %}
                       open
                     {% endif %}
                   > {% endcomment %}
+
                     <summary
                       class="facets__summary caption-large focus-offset"
                       aria-label="{{ filter.label | escape }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})"
