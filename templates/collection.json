@@ -161,12 +161,74 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fasco_gallery_images_PpD6qt": {
+      "type": "fasco-gallery-images",
+      "blocks": {
+        "image_9eT4nC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image1.png"
+          }
+        },
+        "image_FqefjC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image2.png"
+          }
+        },
+        "image_MWg4Vb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image3.png"
+          }
+        },
+        "image_Nkjcq3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image4.png"
+          }
+        },
+        "image_Vxhdh9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image6.png"
+          }
+        },
+        "image_xHwDFG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image5.png"
+          }
+        },
+        "image_BngxU8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image7.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_9eT4nC",
+        "image_FqefjC",
+        "image_MWg4Vb",
+        "image_Nkjcq3",
+        "image_Vxhdh9",
+        "image_xHwDFG",
+        "image_BngxU8"
+      ],
+      "name": "Images Gallery",
+      "settings": {
+        "title": "Follow Us On Instagram",
+        "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "fasco_image_banner_yaGgAn",
-    "multicolumn_AzUDUM"
+    "multicolumn_AzUDUM",
+    "fasco_gallery_images_PpD6qt"
   ]
 }
