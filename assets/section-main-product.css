@@ -42,7 +42,7 @@ product-info {
     height: 100%;
   }
   .gallery_media_ .thumbnail-list .thumbnail-list__item {
-    width: 50% !important;
+    width: 100% !important;
   }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
