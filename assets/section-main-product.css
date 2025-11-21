@@ -20,17 +20,23 @@ product-info {
 }
 
 @media screen and (min-width: 750px) {
+
   .product__column-sticky {
     display: block;
     position: sticky;
     top: 3rem;
     z-index: 2;
   }
-  media-gallery {
-    display: flex !important;
+  media-gallery.product__column-sticky {
+    display: flex;
     flex-direction: row-reverse;
   }
-
+  .product_media_ {
+    width: 80% !important;
+  }
+  .gallery_media_ {
+    width: 20% !important;
+  }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
   }
