@@ -44,7 +44,7 @@ product-info {
   .gallery_media_ .thumbnail-list .thumbnail-list__item {
     width: 100% !important;
   }
-  .gallery_media_ .thumbnail-list .thumbnail-list__item div {
+  .product_media_ ul li div {
     margin: 0 !important;
   }
   .product--thumbnail .thumbnail-list {
