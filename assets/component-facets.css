@@ -228,6 +228,7 @@
 .facets__summary:hover .facets__summary-label {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
+  font-weight: 800; /* fasco changes */
 }
 
 .facets__and-helptext {
