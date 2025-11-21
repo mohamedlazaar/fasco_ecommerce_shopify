@@ -35,7 +35,15 @@ product-info {
     top: 3rem;
     z-index: 2;
   }
-
+  .slider-mobile-gutter {
+    width: 80%;
+  }
+  .slider-mobile-gutter.slider-button {
+    width: 20%; 
+  }
+  .thumbnail-list.list-unstyled {
+    flex-direction: column;
+  }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
   }
@@ -1001,7 +1009,7 @@ a.product__text {
   }
 
   .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-    width: calc(25% - 0.8rem);
+    width: 100%; /* fasco changes */
   }
 
   .product--thumbnail_slider .slider-mobile-gutter .slider-button {
