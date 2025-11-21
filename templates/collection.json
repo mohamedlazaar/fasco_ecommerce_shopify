@@ -36,10 +36,67 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fasco_image_banner_yaGgAn": {
+      "type": "fasco-image-banner",
+      "blocks": {
+        "hotspot_Up9XW7": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Flat Cap",
+            "top": 10,
+            "left": 67
+          }
+        },
+        "hotspot_eFpMmk": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Suspender",
+            "top": 30,
+            "left": 8
+          }
+        },
+        "hotspot_LfbEeJ": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Hugo Boss",
+            "top": 60,
+            "left": 6
+          }
+        },
+        "hotspot_Bg9qmz": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Hugo Boss",
+            "top": 35,
+            "left": 55
+          }
+        },
+        "hotspot_EAaHU7": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Santoni",
+            "top": 90,
+            "left": 60
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_Up9XW7",
+        "hotspot_eFpMmk",
+        "hotspot_LfbEeJ",
+        "hotspot_Bg9qmz",
+        "hotspot_EAaHU7"
+      ],
+      "name": "Product Feature Split",
+      "settings": {
+        "product": "peaky-blinders"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "fasco_image_banner_yaGgAn"
   ]
 }
