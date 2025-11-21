@@ -38,7 +38,7 @@ product-info {
   .slider-mobile-gutter {
     width: 80%;
   }
-  .slider-mobile-gutter.slider-button {
+ .thumbnail-slider.slider-mobile-gutter {
     width: 20%; 
   }
   .thumbnail-list.list-unstyled {
