@@ -39,6 +39,7 @@ product-info {
   }
   .gallery_media_ .thumbnail-list {
     flex-direction: column;
+    height: 100%;
   }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
