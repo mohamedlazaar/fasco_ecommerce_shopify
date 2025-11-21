@@ -28,10 +28,10 @@ product-info {
     z-index: 2;
   }
   /* fasco changes */
-  .product__column-sticky {
+  /* .product__column-sticky {
     display: flex !important;
     flex-direction: row-reverse;
-  }
+  } */
   /* .slider-mobile-gutter {
     width: 80%;
   }
