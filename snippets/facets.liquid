@@ -135,14 +135,14 @@
                   >
                   {% if filter.para_name == 'filter.v.option.size' %}
                     {%  style  %} 
-                       label.facets__label.facet-checkbox{
-                       border: 1px solid #000;
+                       #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox{
+                         border: 1px solid #000;
                         }
-                        label.facets__label.facet-checkbox.active{
+                        #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox.active{
                         background-color: #000;
                       
                         }
-                        label.facets__label.facet-checkbox.active *{
+                        #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox.active *{
                           color: #fff;
                         }
                     {% endstyle %}
