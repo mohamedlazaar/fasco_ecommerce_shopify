@@ -27,27 +27,30 @@ product-info {
     top: 3rem;
     z-index: 2;
   }
-  media-gallery.product__column-sticky {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .product_media_ {
-    width: 85% !important;
-  }
-  .gallery_media_ {
-    width: 15% !important;
-  }
-  .gallery_media_ .thumbnail-list {
-    flex-direction: column;
-    height: 100%;
-  }
-  .gallery_media_ .thumbnail-list .thumbnail-list__item {
-    width: 100% !important;
-  }
-  .product_media_ ul li .product-media-container.constrain-height.media-fit-contain {
-    margin: 0 !important;
-    width:  100% !important;
-  }
+  /* fasco changes start */
+    media-gallery.product__column-sticky {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    .product_media_ {
+      width: 85% !important;
+    }
+    .gallery_media_ {
+      width: 15% !important;
+    }
+    .gallery_media_ .thumbnail-list {
+      flex-direction: column;
+      height: 100%;
+    }
+    .gallery_media_ .thumbnail-list .thumbnail-list__item {
+      width: 100% !important;
+    }
+    .product_media_ ul li .product-media-container.constrain-height.media-fit-contain {
+      margin: 0 !important;
+      width:  100% !important;
+    }
+    /* fasco changes ends */
+
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
   }
