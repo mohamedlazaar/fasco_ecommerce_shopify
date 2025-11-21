@@ -228,6 +228,13 @@
                   </details>
                 </div>
               {%- when 'quantity_selector' -%}
+                <style>
+                  .quantity_with_addtocart{
+                    display: flex;
+                    flex-direction: column;
+                  }
+                </style>
+                <div class="quantity_with_addtocart">
                 <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -453,6 +460,14 @@
                       {%- endif -%}
                     </volume-pricing>
                   {%- endif -%}
+                </div>
+                {%- render 'buy-buttons',
+                block: block,
+                product: product,
+                product_form_id: product_form_id,
+                section_id: section.id,
+                show_pickup_availability: true
+              -%}
                 </div>
               {%- when 'popup' -%}
                 <modal-opener
