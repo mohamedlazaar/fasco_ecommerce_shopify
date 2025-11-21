@@ -21,7 +21,8 @@ product-info {
 
 @media screen and (min-width: 750px) {
   .product__column-sticky {
-    display: block;
+    display: flex;
+    flex-direction: row-reverse;
     position: sticky;
     top: 3rem;
     z-index: 2;
