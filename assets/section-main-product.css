@@ -1009,7 +1009,7 @@ a.product__text {
   }
 
   .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-    width: 100%; /* fasco changes */
+    width: calc(25% - 0.8rem);
   }
 
   .product--thumbnail_slider .slider-mobile-gutter .slider-button {
@@ -1023,7 +1023,7 @@ a.product__text {
   }
 
   .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-    width: 100%; /* fasco changes */
+    width: calc(20% - 0.8rem);
   }
 }
 
