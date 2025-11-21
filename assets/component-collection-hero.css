@@ -40,6 +40,10 @@
 .collection-hero__title {
   margin: 2.5rem 0;
   text-align: center; /* fasco collection header centered */
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.02em;
 }
 
 .collection-hero__title + .collection-hero__description {
