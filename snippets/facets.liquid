@@ -133,7 +133,7 @@
                     data-index="{{ forloop.index }}" 
                     open
                   >
-                  {% if filter.para_name == 'filter.v.option.size' %}
+                  {% if filter.param_name == 'filter.v.option.size' %}
                     {%  style  %} 
                      label.facets__label.facet-checkbox.facets_{{ filter.param_name }}{
                          border: 1px solid #000;
@@ -142,7 +142,7 @@
                         background-color: #000;
                       
                         }
-                       label.facets__label.facet-checkbox.facets_{{ filter.param_name }}.active *{
+                       label.facets__label.facet-checkboxfacets_{{ filter.param_name }}.active *{
                           color: #fff;
                         }
                     {% endstyle %}
