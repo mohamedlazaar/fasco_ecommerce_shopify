@@ -1,6 +1,7 @@
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
+  align-items: center; /* fasco collection header centered */ 
 }
 
 .collection-hero--with-image .collection-hero__inner {
@@ -37,6 +38,7 @@
 
 .collection-hero__title {
   margin: 2.5rem 0;
+
 }
 
 .collection-hero__title + .collection-hero__description {
