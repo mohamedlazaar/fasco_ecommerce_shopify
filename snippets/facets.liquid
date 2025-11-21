@@ -135,14 +135,14 @@
                   >
                   {% if filter.para_name == 'filter.v.option.size' %}
                     {%  style  %} 
-                       #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox{
+                     label.facets__label.facet-checkbox{
                          border: 1px solid #000;
                         }
-                        #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox.active{
+                       label.facets__label.facet-checkbox.active{
                         background-color: #000;
                       
                         }
-                        #Details-{{ filter.param_name | escape }}-{{ section.id }} label.facets__label.facet-checkbox.active *{
+                       label.facets__label.facet-checkbox.active *{
                           color: #fff;
                         }
                     {% endstyle %}
@@ -220,7 +220,7 @@
                               endif
                             %}
                             {%- capture label_class -%}
-                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} facets_{{ filter.param_name }}
                             {%- endcapture -%}
 
                             {%- capture text_value -%}
