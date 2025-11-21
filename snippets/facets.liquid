@@ -133,20 +133,20 @@
                     data-index="{{ forloop.index }}" 
                     open
                   >
-                 
+             
                     {%  style  %} 
-                     label.facets__label.facet-checkbox.facets_{{ filter.param_name }}{
+                     label.facets__label.facet-checkbox.size{
                          border: 1px solid #000;
                         }
-                       label.facets__label.facet-checkbox.active.facets_{{ filter.param_name }}{
+                       label.facets__label.facet-checkbox.size.active{
                         background-color: #000;
                       
                         }
-                       label.facets__label.facet-checkboxfacets_{{ filter.param_name }}.active *{
+                       label.facets__label.facet-checkbox.size.active *{
                           color: #fff;
                         }
                     {% endstyle %}
-               
+    
                     {% comment %} {% if filter_type == 'vertical' and forloop.index == 1 %}
                       open
                     {% endif %}
@@ -220,7 +220,7 @@
                               endif
                             %}
                             {%- capture label_class -%}
-                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} facets_{{ filter.param_name }}
+                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} {% if filter.param_name == 'filter.v.option.size' %} size{% endif %}
                             {%- endcapture -%}
 
                             {%- capture text_value -%}
