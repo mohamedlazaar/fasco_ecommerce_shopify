@@ -44,8 +44,9 @@ product-info {
   .gallery_media_ .thumbnail-list .thumbnail-list__item {
     width: 100% !important;
   }
-  .product_media_ ul li div {
+  .product_media_ ul li .product-media-container.constrain-height.media-fit-contain {
     margin: 0 !important;
+    width:  100% !important;
   }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
