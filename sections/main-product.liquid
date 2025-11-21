@@ -230,8 +230,12 @@
               {%- when 'quantity_selector' -%}
                 <style>
                   .quantity_with_addtocart{
-                    display: flex;
-                    gap: 10px;
+                    display: grid;
+                    grid-template-columns: 1fr 2fr;
+                    gap: 5px
+                  }
+                  .quantity_with_addtocart .product-form__quantity .price-per-item__container{
+                    width: 100%;
                   }
                 </style>
                 <div class="quantity_with_addtocart">
