@@ -37,6 +37,9 @@ product-info {
   .gallery_media_ {
     width: 20% !important;
   }
+  .gallery_media_ .thumbnail-list {
+    flex-direction: column;
+  }
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
   }
