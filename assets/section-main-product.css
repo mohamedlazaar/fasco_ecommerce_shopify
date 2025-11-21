@@ -26,6 +26,10 @@ product-info {
     top: 3rem;
     z-index: 2;
   }
+  media-gallery {
+    display: flex !important;
+    flex-direction: row-reverse;
+  }
 
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
