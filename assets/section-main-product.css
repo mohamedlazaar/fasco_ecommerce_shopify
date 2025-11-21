@@ -32,10 +32,10 @@ product-info {
     flex-direction: row-reverse;
   }
   .product_media_ {
-    width: 90% !important;
+    width: 85% !important;
   }
   .gallery_media_ {
-    width: 10% !important;
+    width: 15% !important;
   }
   .gallery_media_ .thumbnail-list {
     flex-direction: column;
