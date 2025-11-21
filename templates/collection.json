@@ -222,6 +222,43 @@
         "title": "Follow Us On Instagram",
         "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin."
       }
+    },
+    "newsletter_m4zkUN": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_PHf8AK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe To Our Newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_wmfycb": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin </p>"
+          }
+        },
+        "email_form_ziNTXN": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_PHf8AK",
+        "paragraph_wmfycb",
+        "email_form_ziNTXN"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "newsletter_img_1": "shopify://shop_images/newsletter2.png",
+        "newsletter_img_2": "shopify://shop_images/newsletter1.png",
+        "outline_submit_button": true
+      }
     }
   },
   "order": [
@@ -229,6 +266,7 @@
     "product-grid",
     "fasco_image_banner_yaGgAn",
     "multicolumn_AzUDUM",
-    "fasco_gallery_images_PpD6qt"
+    "fasco_gallery_images_PpD6qt",
+    "newsletter_m4zkUN"
   ]
 }
