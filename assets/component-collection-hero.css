@@ -1,12 +1,13 @@
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
-  align-items: center; /* fasco collection header centered */ 
+
 }
 
 .collection-hero--with-image .collection-hero__inner {
   margin-bottom: 0;
   padding-bottom: 2rem;
+  text-align: center; /* fasco collection header centered */ 
 }
 
 @media screen and (min-width: 750px) {
