@@ -29,18 +29,15 @@ product-info {
   }
   /* fasco changes */
   .product__column-sticky {
-    display: flex;
+    display: flex !important;
     flex-direction: row-reverse;
-    position: sticky;
-    top: 3rem;
-    z-index: 2;
   }
-  .slider-mobile-gutter {
+  /* .slider-mobile-gutter {
     width: 80%;
   }
  .thumbnail-slider.slider-mobile-gutter {
     width: 20%; 
-  }
+  } */
   .thumbnail-list.list-unstyled {
     flex-direction: column;
   }
