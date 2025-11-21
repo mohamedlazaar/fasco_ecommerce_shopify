@@ -92,11 +92,81 @@
       "settings": {
         "product": "peaky-blinders"
       }
+    },
+    "multicolumn_AzUDUM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_W7xbcb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/high_quality.png",
+            "title": "High Quality",
+            "text": "<p>crafted from top materials</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9hN7UT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/good.png",
+            "title": "Warrany Protection",
+            "text": "<p>Over 2 years</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_46ibgb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shipping.png",
+            "title": "Free Shipping",
+            "text": "<p>Order over 150 $</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_GeMyKC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/support.png",
+            "title": "24 / 7 Support",
+            "text": "<p>Delicated support</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_W7xbcb",
+        "column_9hN7UT",
+        "column_46ibgb",
+        "column_GeMyKC"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "is_flex": true,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "fasco_image_banner_yaGgAn"
+    "fasco_image_banner_yaGgAn",
+    "multicolumn_AzUDUM"
   ]
 }
