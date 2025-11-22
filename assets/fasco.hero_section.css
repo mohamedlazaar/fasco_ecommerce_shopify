@@ -132,8 +132,16 @@
     background: #000;
     text-decoration: none;
     border-radius: var(--hero-border-radius);
+    transition: all 0.3s ease;
   }
-  
+  .item_2_content a:hover{
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+  .item_2_content a:hover span{
+    color: #000;
+  }
   /* ========== Media - Images ========== */
   .col img {
     object-fit: contain;
