@@ -186,13 +186,12 @@
                         label.facets__label.facet-checkbox{
                          padding: 5px 10px;
                         }
-                        {% if filter.param_name == 'filter.v.option.color' %}
-                          label.facets__label.facet-checkbox{
+
+                          .facet_filter_color li label.facets__label.facet-checkbox{
                             border-radius: 100%
                           }
-                        {% endif %}
       
-                         .facet_{{ filter.param_name }}_size li label.facets__label.facet-checkbox{
+                         .facet_filter_size li label.facets__label.facet-checkbox{
                             border: 1px solid #9D9D9D;
 
                           }
@@ -218,7 +217,7 @@
                           endif
                         -%}
                         <ul
-                          class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled {% if filter.param_name contains 'filter.v.option.size' %} facet_{{ filter.param_name }}_size {% endif %}"
+                          class="{{ visual_layout_class }}{% if filter_type == 'vertical' %} facets__list--vertical{% else %} facets__list{% endif %} list-unstyled {% if filter.param_name contains 'filter.v.option.size' %} facet_filter_size {%  elsif  filter.param_name contains 'filter.v.option.color'%} facet_filter_color {% endif %}"
                           role="list"
                         >
                           {%- for value in sorted_values -%}
