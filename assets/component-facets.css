@@ -181,7 +181,6 @@
   display: block;
   color: rgba(var(--color-foreground), 0.85);
   font-size: 1.4rem;
-  font-weight: 800; /* fasco changes */
   margin: -1.5rem 2rem 0 0;
 }
 
@@ -198,7 +197,6 @@
   font-size: 1.4rem;
   padding: 0 1.75rem 0 0;
   margin-bottom: 1.5rem;
-  font-weight: 800; /* fasco changes */
 }
 
 .facets__summary .svg-wrapper {
@@ -229,7 +227,6 @@
 .facets__summary:hover .facets__summary-label {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
-  font-weight: 800; /* fasco changes */
 }
 
 .facets__and-helptext {
@@ -1143,7 +1140,7 @@ input.mobile-facets__checkbox {
   }
 
   .facets__disclosure-vertical {
-    /* border-top: 0.1rem solid rgba(var(--color-foreground), 0.1);  fasco changes */
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.1);
     margin-right: 0;
   }
 
@@ -1155,7 +1152,7 @@ input.mobile-facets__checkbox {
 
   .facets__heading--vertical {
     margin: 0 0 1.5rem 0;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .facets__header-vertical {

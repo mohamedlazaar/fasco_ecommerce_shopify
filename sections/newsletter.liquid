@@ -6,7 +6,6 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-  
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -15,102 +14,8 @@
     }
   }
 {%- endstyle -%}
-<style>
-  .fasco_newsletter_container{
-    width: 100%;
-    display: flex;
-    align-items:center;
-    gap:10px;
-    justify-content: center;
-  }
-  .fasco_newsletter_container img{
-    width: 20%;
-    max-height: 750px;
-    height: 100%;
-  }
-  .column_field{
-    display: flex;    
-    justify-content: center;
-    gap: 60px;
-    flex-direction: column;
- 
-    align-items: center;
-  }
-  .column_field input{
-    box-shadow: 0px 40px 20px 0px #cecece;
-    width: 100%;
-    height: 60px;
-   
-  }
-  .column_field label{
-    color : #8a8a8a;
-    font-size: 22px;
-    font-weight: 100;
-  }
-  .column_field button{
-    position: relative;
-    max-width: 207px;
-    width: 100%;
-    height: 56px;
-    background-color: black !important;
-    color: white !important;
-    border-radius: 10px;
-  }
-  .fasco{
-    width: 100%;
-  }
-  .fasco form{
-    width:100%;
-    max-width: unset;
-    margin: 0;
-  }
-  .fasco form .newsletter-form__field-wrapper{
-    width:100%;
-    max-width: unset;
-  }
-  .fasco form .newsletter-form__field-wrapper .column_field{
-    width: 100%;
-  }
-  .newsletter.no_padding{
-    padding: 0;
-  }
-  .fasco_h2 {
-      font-size: 42px;
-      font-weight: 700;
-      color: #3b3b3b;
-      margin-bottom: 15px;
-    }
-    
-    .fasco_p {
-      max-width: 650px;
-      margin: 0 auto 50px;
-      color: #7e7e7e;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    .fasco_newsletter_container .newsletter-form__button:hover{
-      background: #fff !important;
-      color: #000 !important;
-      border: 1px solid #000 !important;
-    }
-    .fasco_newsletter_container .newsletter-form__button:hover span{
-      color: #000 !important;
-    }
-  @media screen and (max-width: 768px) {
-    .fasco_newsletter_container{
-      flex-direction: column;
-    }
-    .fasco_newsletter_container img{
-      width: 100%;
-      height: auto;
-    }
-  }
- </style>
 
-<div class="newsletter fasco_newsletter_container center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %} {% if section.settings.newsletter_img_1 %} no_padding {% endif %}">
-  {% if section.settings.newsletter_img_1  != blank %}
-    <img src="{{ section.settings.newsletter_img_1 |  image_url  }}" alt="test" width="100" height="100"/>    
-  {% endif %}
+<div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
   <div class="newsletter__wrapper color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
@@ -118,7 +23,7 @@
           {% render block %}
         {%- when 'heading' -%}
           <h2
-            class="inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} fasco_h2"
+            class="inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
@@ -129,7 +34,7 @@
           </h2>
         {%- when 'paragraph' -%}
           <div
-            class="newsletter__subheading rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} fasco_p"
+            class="newsletter__subheading rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
@@ -139,123 +44,80 @@
             {{ block.settings.text }}
           </div>
         {%- when 'email_form' -%}
-          {% comment %} fasco email changes start  {% endcomment %}   
-            <div {{ block.shopify_attributes }} class="{% if section.settings.outline_submit_button == true %} fasco {% endif %}">
-              {% form 'customer', class: 'newsletter-form' %}
-                <input type="hidden" name="contact[tags]" value="newsletter">
-                <div
-                  class="newsletter-form__field-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
-                >
-                 {% if section.settings.outline_submit_button == false %}
-                  <div class="field">
-                    <input
-                      id="NewsletterForm--{{ section.id }}"
-                      type="email"
-                      name="contact[email]"
-                      class="field__input"
-                      value="{{ form.email }}"
-                      aria-required="true"
-                      autocorrect="off"
-                      autocapitalize="off"
-                      autocomplete="email"
-                      {% if form.errors %}
-                        autofocus
-                        aria-invalid="true"
-                        aria-describedby="Newsletter-error--{{ section.id }}"
-                      {% elsif form.posted_successfully? %}
-                        aria-describedby="Newsletter-success--{{ section.id }}"
-                      {% endif %}
-                      placeholder="{{ 'newsletter.label' | t }}"
-                      required
-                    >
-                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                      {{ 'newsletter.label' | t }}
-                    </label>
-                    <button
-                      type="submit"
-                      class="newsletter-form__button field__button"
-                      name="commit"
-                      id="Subscribe"
-                      aria-label="{{ 'newsletter.button_label' | t }}"
-                    >
-                      <span class="svg-wrapper">
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      </span>
-                    </button>
-                  </div>
-                  {% else %}
-                    <div class="column_field">
-                      <input
-                      id="NewsletterForm--{{ section.id }}"
-                      type="email"
-                      name="contact[email]"
-                      class="field__input"
-                      value="{{ form.email }}"
-                      aria-required="true"
-                      autocorrect="off"
-                      autocapitalize="off"
-                      autocomplete="email"
-                      {% if form.errors %}
-                        autofocus
-                        aria-invalid="true"
-                        aria-describedby="Newsletter-error--{{ section.id }}"
-                      {% elsif form.posted_successfully? %}
-                        aria-describedby="Newsletter-success--{{ section.id }}"
-                      {% endif %}
-                      placeholder="michael@ymail.com"
-                      required
-                    >
-                    <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                      michael@ymail.com
-                    </label>
-                    <button
-                      type="submit"
-                      class="newsletter-form__button field__button"
-                      name="commit"
-                      id="Subscribe"
-                      aria-label="{{ 'newsletter.button_label' | t }}"
-                    >
-                     subscribe now
-                    </button>
-                    </div>
-                 {% endif %}  
-                  {%- if form.errors -%}
-                    <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
-                      <span class="svg-wrapper">
-                        {{- 'icon-error.svg' | inline_asset_content -}}
-                      </span>
-                      {{- form.errors.translated_fields.email | capitalize }}
-                      {{ form.errors.messages.email -}}
-                    </small>
-                  {%- endif -%}
-                </div>
-                {%- if form.posted_successfully? -%}
-                  <h3
-                    class="newsletter-form__message newsletter-form__message--success form__message"
-                    id="Newsletter-success--{{ section.id }}"
-                    tabindex="-1"
-                    autofocus
+          <div {{ block.shopify_attributes }}>
+            {% form 'customer', class: 'newsletter-form' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div
+                class="newsletter-form__field-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+              >
+                <div class="field">
+                  <input
+                    id="NewsletterForm--{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="field__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="Newsletter-error--{{ section.id }}"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="Newsletter-success--{{ section.id }}"
+                    {% endif %}
+                    placeholder="{{ 'newsletter.label' | t }}"
+                    required
+                  >
+                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                    {{ 'newsletter.label' | t }}
+                  </label>
+                  <button
+                    type="submit"
+                    class="newsletter-form__button field__button"
+                    name="commit"
+                    id="Subscribe"
+                    aria-label="{{ 'newsletter.button_label' | t }}"
                   >
                     <span class="svg-wrapper">
-                      {{- 'icon-success.svg' | inline_asset_content -}}
+                      {{- 'icon-arrow.svg' | inline_asset_content -}}
                     </span>
-                    {{- 'newsletter.success' | t }}
-                  </h3>
+                  </button>
+                </div>
+                {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </small>
                 {%- endif -%}
-              {% endform %}
-            </div>
-             
-          {% comment %} fasco email changes end {% endcomment %}
+              </div>
+              {%- if form.posted_successfully? -%}
+                <h3
+                  class="newsletter-form__message newsletter-form__message--success form__message"
+                  id="Newsletter-success--{{ section.id }}"
+                  tabindex="-1"
+                  autofocus
+                >
+                  <span class="svg-wrapper">
+                    {{- 'icon-success.svg' | inline_asset_content -}}
+                  </span>
+                  {{- 'newsletter.success' | t }}
+                </h3>
+              {%- endif -%}
+            {% endform %}
+          </div>
       {%- endcase -%}
     {%- endfor -%}
   </div>
-  {% if section.settings.newsletter_img_2  != blank %}
-   <img src="{{ section.settings.newsletter_img_2 | image_url }}" alt="test" width="100" height="100"/>
-  {% endif %}
 </div>
 
 {% schema %}
@@ -306,22 +168,6 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 52
-    },
-    {
-      "type": "image_picker",
-      "id": "newsletter_img_1",
-      "label": "Newsletter Image 1"
-    },    
-    {
-      "type": "image_picker",
-      "id": "newsletter_img_2",
-      "label": "Newsletter Image 2"
-    },
-    {
-      "type": "checkbox",
-      "id": "outline_submit_button",
-      "label": "is Outline?",
-      "default": false
     }
   ],
   "blocks": [

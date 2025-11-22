@@ -1,13 +1,11 @@
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
-
 }
 
 .collection-hero--with-image .collection-hero__inner {
   margin-bottom: 0;
   padding-bottom: 2rem;
-
 }
 
 @media screen and (min-width: 750px) {
@@ -39,11 +37,6 @@
 
 .collection-hero__title {
   margin: 2.5rem 0;
-  text-align: center; /* fasco collection header centered */
-  font-size: 42px;
-  font-weight: 600;
-  line-height: 32px;
-  letter-spacing: 0.02em;
 }
 
 .collection-hero__title + .collection-hero__description {

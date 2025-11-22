@@ -15,7 +15,7 @@
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
-{{ 'fasco-facets-style.css' |  asset_url |  stylesheet_tag }}
+
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
@@ -27,7 +27,6 @@
     assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
   endif
 -%}
-
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
@@ -126,32 +125,14 @@
 
               {% case filter.type %}
                 {% when 'boolean', 'list' %}
-                  {% comment %} fasco changes {% endcomment %}
                   <details
                     id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
                     class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
-                    data-index="{{ forloop.index }}" 
-                    open
-                  >
-             
-                    {%  style  %} 
-                     label.facets__label.facet-checkbox.size{
-                         border: 1px solid #000;
-                        }
-                       label.facets__label.facet-checkbox.size.active{
-                        background-color: #000;
-                      
-                        }
-                       label.facets__label.facet-checkbox.size.active *{
-                          color: #fff;
-                        }
-                    {% endstyle %}
-    
-                    {% comment %} {% if filter_type == 'vertical' and forloop.index == 1 %}
+                    data-index="{{ forloop.index }}"
+                    {% if filter_type == 'vertical' and forloop.index == 1 %}
                       open
                     {% endif %}
-                  > {% endcomment %}
-
+                  >
                     <summary
                       class="facets__summary caption-large focus-offset"
                       aria-label="{{ filter.label | escape }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})"
@@ -159,11 +140,11 @@
                       <div>
                         <span class="facets__summary-label">
                           {{- filter.label | escape }}
-                          {% comment %} {%- if filter_type == 'vertical' -%}
+                          {%- if filter_type == 'vertical' -%}
                             <span class="facets__selected{% if filter.active_values.size == 0 %} hidden{% endif %}">
                               ({{ filter.active_values.size }})</span
                             >
-                          {%- endif -%} {% endcomment %}
+                          {%- endif -%}
                         </span>
                         {%- if filter_type == 'vertical' and filter.operator == 'AND' -%}
                           <span class="facets__and-helptext">
@@ -220,15 +201,12 @@
                               endif
                             %}
                             {%- capture label_class -%}
-                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} {% if filter.param_name == 'filter.v.option.size' %} size{% endif %}
+                            facets__label facet-checkbox{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
                             {%- endcapture -%}
 
                             {%- capture text_value -%}
                               <span class="facet-checkbox__text" aria-hidden="true">
-                                {% if filter.label != "Color" %}
-                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
-                               {% endif %}
-                           
+                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> ({{- value.count -}})
                               </span>
                               <span class="visually-hidden">
                                 {{- value.label | escape }} (
@@ -322,7 +300,7 @@
                     id="Details-{{ filter.param_name | escape }}-{{ section.id }}"
                     class="{% if filter_type == 'horizontal' %}disclosure-has-popup facets__disclosure{% else %} facets__disclosure-vertical{% endif %} js-filter"
                     data-index="{{ forloop.index }}"
-                    {% if filter_type == 'vertical'  %}  
+                    {% if filter_type == 'vertical' and forloop.index == 1 %}
                       open
                     {% endif %}
                   >
@@ -597,12 +575,7 @@
 
                               {%- capture text_value -%}
                                 <span class="facet-checkbox__text" aria-hidden="true">
-                                  {% comment %} fasco {% endcomment %}
-                                   {% if filter.label != "Color" %}
-                                       <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> 
-                                    {% endif %}
-                                
-
+                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> ({{- value.count -}})
                                 </span>
                                 <span class="visually-hidden">
                                   {{- value.label | escape }} (
