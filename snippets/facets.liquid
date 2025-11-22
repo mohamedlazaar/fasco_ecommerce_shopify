@@ -517,9 +517,16 @@
                       assign visual_layout_class = 'facets-layout facets-layout-list facets-layout-list--' | append: presentation
                     endif
                   %}
-
+                 {%  style  %}
+                 ul.facets-layout.facets-layout-list.facets-layout-list--text.facets__list--vertical.list-unstyled{
+                  display: flex;
+                  flex-wrap: wrap;
+                 } 
+                 
+                 {% endstyle %}
                   {% case filter.type %}
                     {% when 'boolean', 'list' %}
+
                       <details
                         id="Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}"
                         class="mobile-facets__details js-filter"
