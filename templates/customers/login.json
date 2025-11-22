@@ -52,7 +52,7 @@
         "padding_bottom": 52,
         "newsletter_img_1": "shopify://shop_images/newsletter2.png",
         "newsletter_img_2": "shopify://shop_images/newsletter1.png",
-        "outline_submit_button": false
+        "outline_submit_button": true
       }
     }
   },
