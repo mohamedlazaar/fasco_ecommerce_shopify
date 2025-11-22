@@ -32,8 +32,8 @@
             "paragraph": "<p>NEW COLLECTION</p>",
             "background_color_content": "rgb(0,0,0)",
             "color_content": "#ffffff",
-            "button_text": "Button",
-            "button_url": "https://google.com",
+            "button_text": "SHOP NOW",
+            "button_url": "shopify://collections/new-arrivals",
             "button_background": "rgb(0,0,0)",
             "button_color": "#ffffff"
           }
