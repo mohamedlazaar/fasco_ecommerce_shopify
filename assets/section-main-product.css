@@ -26,6 +26,23 @@ product-info {
     top: 3rem;
     z-index: 2;
   }
+  .product__column-sticky{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  slider-component.product_media_gallery{
+    width: 70%;
+  }
+  slider-component.thumbnail-slider{
+    width: 30%;
+  }
+  slider-component.product_media_gallery ul{
+    flex-direction: column;
+    height: 100%;
+  }
+  slider-component.product_media_gallery ul li{
+    width: 100%;
+  }
 
   .product--thumbnail .thumbnail-list {
     padding-right: var(--media-shadow-horizontal-offset);
