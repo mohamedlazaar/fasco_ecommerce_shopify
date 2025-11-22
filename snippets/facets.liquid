@@ -177,6 +177,37 @@
                           </facet-remove>
                         </div>
                       {%- endif -%}
+                      {%  style  %}
+                        ul.facets-layout.facets-layout-list.facets-layout-list--text.facets__list--vertical.list-unstyled{
+                         display: flex;
+                         gap: 10px;
+                         flex-wrap: wrap;
+                        } 
+                        label.facets__label.facet-checkbox{
+                         padding: 5px 10px;
+                         border: 1px solid #9D9D9D;
+                        }
+                        {% if filter.param_name == 'color' %}
+                          label.facets__label.facet-checkbox{
+                            padding: 5px 10px;
+                            border-radius: 100%
+                          }
+                        {% endif %}
+                        {% if filter.param_name == 'color' %}
+                          label.facets__label.facet-checkbox{
+                            background: #000;
+                            color: #fff;
+                          }
+                        {% endif %}
+                        label.facets__label.facet-checkbox.active{
+                         background: #000;
+                         color: #fff;
+                        }
+                        label.facets__label.facet-checkbox svg, label.facets__label.facet-checkbox .svg-wrapper{
+                         display: none
+                        }
+                        
+                        {% endstyle %}
                       <fieldset class="facets-wrap parent-wrap {% if filter_type == 'vertical' %} facets-wrap-vertical{% endif %}">
                         <legend class="visually-hidden">{{ filter.label | escape }}</legend>
                         {%- liquid
