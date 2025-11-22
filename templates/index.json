@@ -159,7 +159,10 @@
           "settings": {
             "collection_list": [
               "womens-fashion",
-              "flash-sales-promotion"
+              "flash-sales-promotion",
+              "men-accessories",
+              "mens-fashion",
+              "women-accessories"
             ]
           }
         },
@@ -174,12 +177,26 @@
           "settings": {
             "collection": "flash-sales-promotion"
           }
+        },
+        "tabs_info_aJPbPd": {
+          "type": "tabs-info",
+          "settings": {
+            "collection": "men-accessories"
+          }
+        },
+        "tabs_info_aRMVdV": {
+          "type": "tabs-info",
+          "settings": {
+            "collection": "women-accessories"
+          }
         }
       },
       "block_order": [
         "tabs_filter_buttons_T7RVpp",
         "tabs_info_HUTzzU",
-        "tabs_info_FbREpg"
+        "tabs_info_FbREpg",
+        "tabs_info_aJPbPd",
+        "tabs_info_aRMVdV"
       ],
       "name": "Tabs",
       "settings": {
