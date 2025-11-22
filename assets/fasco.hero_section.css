@@ -136,7 +136,7 @@
   
   /* ========== Media - Images ========== */
   .col img {
-    object-fit: contain;
+    object-fit: cover;
   }
   
   /* ========== Media Queries ========== */
