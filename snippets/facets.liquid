@@ -185,18 +185,16 @@
                         } 
                         label.facets__label.facet-checkbox{
                          padding: 5px 10px;
-                         border: 1px solid #9D9D9D;
                         }
-                        {% if filter.param_name == 'color' %}
+                        {% if filter.param_name == 'facet_filter.v.option.color' %}
                           label.facets__label.facet-checkbox{
-                            padding: 5px 10px;
                             border-radius: 100%
                           }
                         {% endif %}
-                        {% if filter.param_name == 'color' %}
+                        {% if filter.param_name == 'facet_filter.v.option.size' %}
                           label.facets__label.facet-checkbox{
-                            background: #000;
-                            color: #fff;
+                            border: 1px solid #9D9D9D;
+
                           }
                         {% endif %}
                         label.facets__label.facet-checkbox.active{
