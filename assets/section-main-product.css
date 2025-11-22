@@ -26,7 +26,7 @@ product-info {
     top: 3rem;
     z-index: 2;
   }
-  .product__column-sticky{
+  .product__column-stick.flex_media{
     display: flex;
     flex-direction: row-reverse;
   }
