@@ -101,6 +101,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{'fasco.gsap_header.js' |  asset_url}}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -247,35 +248,48 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+    {% if customer %}  
+    {% render 'header-search', input_id: 'Search-In-Modal' %}
+    {% endif %}
 
       {%- if shop.customer_accounts_enabled -%}
-        <a
-          href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-          class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
-          rel="nofollow"
-        >
-          {%- if section.settings.enable_customer_avatar -%}
-            <account-icon>
-              {%- if customer and customer.has_avatar? -%}
-                {{ customer | avatar }}
+        {%- if customer -%}
+          <a
+              href="{{ routes.account_url }}"
+              class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+              rel="nofollow"
+            >
+              {%- if section.settings.enable_customer_avatar -%}
+                <account-icon>
+                  {%- if customer and customer.has_avatar? -%}
+                    {{ customer | avatar }}
+                  {%- else -%}
+                    <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                  {%- endif -%}
+                </account-icon>
               {%- else -%}
                 <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
               {%- endif -%}
-            </account-icon>
-          {%- else -%}
-            <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-          {%- endif -%}
-          <span class="visually-hidden">
-            {%- liquid
-              if customer
-                echo 'customer.account_fallback' | t
-              else
-                echo 'customer.log_in' | t
-              endif
-            -%}
-          </span>
-        </a>
+              <span class="visually-hidden">
+                {%- liquid
+                  if customer
+                    echo 'customer.rccount_fallback' | t
+                  else
+                    echo 'customer.log_in' | t
+                  endif
+                -%}
+              </span>
+          </a>
+        {%- else -%}
+        <div class="cont small-hide">
+          <a href="{{ routes.account_login_url }}" class="login__ ">
+            <span>Sign In</span>
+          </a>   
+            <a href="{{ routes.account_register_url }}" class="sign_up">Sign Up</a>   
+        </div>
+
+      {%- endif -%}
+
       {%- endif -%}
 
       {%- for block in section.blocks -%}
@@ -284,7 +298,7 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
-
+      {% if customer %}
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
           <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
@@ -300,7 +314,9 @@
             <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
           </div>
         {%- endif -%}
-      </a>
+      </a>        
+      {% endif %}
+
     </div>
   </header>
 </{{ header_tag }}>
