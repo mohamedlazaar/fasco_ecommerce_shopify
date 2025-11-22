@@ -589,7 +589,7 @@
                               %}
 
                               {%- capture label_class -%}
-                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} facet_{{ filter.param_name }}
+                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} 
                               {%- endcapture -%}
 
                               {%- capture text_value -%}
@@ -626,7 +626,7 @@
                                     {{ text_value }}
                                   </div>
                                 {% else %}
-                                  <label for="{{ input_id }}" class="{{ label_class }}">
+                                  <label for="{{ input_id }}" class="{{ label_class }} facet_{{ filter.param_name }}">
                                     <input
                                       class="mobile-facets__checkbox"
                                       type="checkbox"
