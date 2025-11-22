@@ -41,7 +41,7 @@ product-info {
     height: 100%;
   }
   slider-component.thumbnail-slider ul li{
-    width: 100%;
+    width: 100% !important;
   }
 
   .product--thumbnail .thumbnail-list {
