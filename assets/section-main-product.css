@@ -31,17 +31,17 @@ product-info {
     flex-direction: row-reverse;
   }
   slider-component.product_media_gallery{
-    width: 70%;
+    width: 80%;
   }
   slider-component.thumbnail-slider{
-    width: 30%;
+    width: 20%;
   }
   slider-component.thumbnail-slider ul{
     flex-direction: column;
     height: 100%;
   }
   slider-component.thumbnail-slider ul li{
-    width: 60% !important;
+    width: 100% !important;
   }
 
   .product--thumbnail .thumbnail-list {
