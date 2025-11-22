@@ -589,7 +589,7 @@
                               %}
 
                               {%- capture label_class -%}
-                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} facet_{{ filter.param_name }}
                               {%- endcapture -%}
 
                               {%- capture text_value -%}
