@@ -36,11 +36,11 @@ product-info {
   slider-component.thumbnail-slider{
     width: 30%;
   }
-  slider-component.product_media_gallery ul{
+  slider-component.thumbnail-slider ul{
     flex-direction: column;
     height: 100%;
   }
-  slider-component.product_media_gallery ul li{
+  slider-component.thumbnail-slider ul li{
     width: 100%;
   }
 
