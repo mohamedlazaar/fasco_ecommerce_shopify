@@ -569,7 +569,7 @@
                               </span>
                             {%- endif -%}
                           </button>
-                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
+                          <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled facet_{{ filter.param_name }}" role="list">
                             {%- liquid
                               assign sorted_values = filter.values
                               # Keep the selected values grouped together when operator is AND
@@ -626,7 +626,7 @@
                                     {{ text_value }}
                                   </div>
                                 {% else %}
-                                  <label for="{{ input_id }}" class="{{ label_class }} facet_{{ filter.param_name }}">
+                                  <label for="{{ input_id }}" class="{{ label_class }}">
                                     <input
                                       class="mobile-facets__checkbox"
                                       type="checkbox"
