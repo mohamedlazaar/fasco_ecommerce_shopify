@@ -184,6 +184,12 @@
             "collection": "men-accessories"
           }
         },
+        "tabs_info_bytgDf": {
+          "type": "tabs-info",
+          "settings": {
+            "collection": "mens-fashion"
+          }
+        },
         "tabs_info_aRMVdV": {
           "type": "tabs-info",
           "settings": {
@@ -196,6 +202,7 @@
         "tabs_info_HUTzzU",
         "tabs_info_FbREpg",
         "tabs_info_aJPbPd",
+        "tabs_info_bytgDf",
         "tabs_info_aRMVdV"
       ],
       "name": "Tabs",
