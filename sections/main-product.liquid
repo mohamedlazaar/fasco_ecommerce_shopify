@@ -229,6 +229,7 @@
                 </div>
               {%- when 'quantity_selector' -%}
                 <style>
+                  
                   .quantity_with_addtocart{
                     display: grid;
                     grid-template-columns: 25% 60%;
@@ -236,6 +237,11 @@
                   }
                   .quantity_with_addtocart .product-form__quantity .price-per-item__container .quantity{
                     width: 100%;
+                  }
+                  @media screen and (max-width: 768px){
+                    .quantity_width_addtocart{
+                      grid-template-columns: 35% 60%;
+                    }
                   }
                 </style>
                 <div class="quantity_with_addtocart">
