@@ -16,7 +16,7 @@
 {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
 <style>
-     .facets__summary-label{
+     .facets__summary-label, .facets__summary.caption-large div span{
        font-weight: 600
       }
      .collection-hero__title{
@@ -26,6 +26,7 @@
         font-weight: bold;
         font-size: 18px;  
       }
+      
 </style>
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
