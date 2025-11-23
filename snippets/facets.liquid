@@ -15,7 +15,11 @@
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
-
+<style>
+     .facets__summary-label{
+       font-weight: 600
+      }
+</style>
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
@@ -177,17 +181,7 @@
                           </facet-remove>
                         </div>
                       {%- endif -%}
-                      {%  style  %}
-                      .collection-hero__title{
-                        text-align: center;
-                      }
-                      .facets__heading{
-                        font-weight: bold;
-                        font-size: 18px;  
-                      }
-                      .facets__summary-label{
-                        font-weight: 600
-                      }
+                      {%  style  %}  
                         ul.facets-layout.facets-layout-list.facets-layout-list--text.facets__list--vertical.list-unstyled{
                          display: flex;
                          gap: 10px;
