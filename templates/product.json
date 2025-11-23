@@ -38,8 +38,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "picker_type": "dropdown",
+            "swatch_shape": "square"
           }
         },
         "quantity_selector": {
@@ -52,6 +52,19 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text_xhMr7p": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/shipping.png",
+            "heading_1": "Good Shiping",
+            "icon_2": "return",
+            "heading_2": "Heading",
+            "icon_3": "truck",
+            "heading_3": "Heading"
           }
         },
         "description": {
@@ -73,6 +86,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "icon_with_text_xhMr7p",
         "description",
         "share"
       ],
