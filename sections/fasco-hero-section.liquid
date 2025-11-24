@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const highlight = document.querySelector('.item_2_content')
 
 
-    let mySplitHighlight = new SplitText(highlight, {type:'lines'})
+    {% comment %} let mySplitHighlight = new SplitText(highlight, {type:'lines'})
     // text Animation
-    tl.from(mySplitHighlight.lines, {opacity: 0, y: 50, stagger: 0.05, ease: "back.out(1.7)", duration: 2}, 1.2)
+    tl.from(mySplitHighlight.lines, {opacity: 0, y: 50, stagger: 0.05, ease: "back.out(1.7)", duration: 2}, 1.2) {% endcomment %}
 
     //  images Animation
     images.forEach((image, i) => {
