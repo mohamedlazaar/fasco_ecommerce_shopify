@@ -62,9 +62,11 @@
             "image_1": "shopify://shop_images/shipping.png",
             "heading_1": "Good Shiping",
             "icon_2": "return",
-            "heading_2": "Heading",
+            "image_2": "shopify://shop_images/good.png",
+            "heading_2": "Warrany Protection",
             "icon_3": "truck",
-            "heading_3": "Heading"
+            "image_3": "shopify://shop_images/high_quality.png",
+            "heading_3": "High Quality"
           }
         },
         "description": {
