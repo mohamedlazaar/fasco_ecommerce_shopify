@@ -347,7 +347,7 @@
         
         // swiper
         const swiper = new Swiper('.flash_{{ section.id }} .swiper', {
-            slidesPerView: 1,
+            slidesPerView: 3,
             slidesPerGroup: 1,
             spaceBetween: 30,
             loop: true,
@@ -394,9 +394,9 @@
             ).fromTo(countDown, 
             { opacity: 0, x: -100 },
             { opacity: 1, x: 0, stagger: 0.1, duration:5 }
-            )
+            ) {% endcomment %}
     
-}) {% endcomment %}
+})
 
 
 </script>
