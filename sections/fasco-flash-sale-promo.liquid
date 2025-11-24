@@ -347,7 +347,7 @@
         
         // swiper
         const swiper = new Swiper('.flash_{{ section.id }} .swiper', {
-            slidesPerView: 1,
+            slidesPerView: 3,
             slidesPerGroup: 1,
             spaceBetween: 30,
             loop: true,
@@ -372,6 +372,8 @@
                 1024: { slidesPerView: 3 }
             }
         });
+
+        console.log('swiper', swiper)
 
         // GSAP
         {% comment %} gsap.registerPlugin(ScrollTrigger);
