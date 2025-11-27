@@ -183,6 +183,7 @@
     }
     
     .col {
+      width: 90svw;
       grid-template-columns: 1fr;
       grid-template-rows: var(--hero-item-height) auto var(--hero-item-height);
     }
