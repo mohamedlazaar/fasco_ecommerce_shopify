@@ -78,6 +78,12 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "optilayer_smart_timer_timer_block_yxyALh": {
+          "type": "shopify://apps/optilayer-smart-timer/blocks/timer-block/019ec5a5-6b38-70a6-b551-da75f785310a",
+          "settings": {
+            "timer_id": "cmrpf5ohb0000i904e2vadxy9"
+          }
         }
       },
       "block_order": [
@@ -90,7 +96,8 @@
         "buy_buttons",
         "icon_with_text_xhMr7p",
         "description",
-        "share"
+        "share",
+        "optilayer_smart_timer_timer_block_yxyALh"
       ],
       "settings": {
         "enable_sticky_info": true,
