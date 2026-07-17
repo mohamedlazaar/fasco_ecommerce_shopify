@@ -150,7 +150,7 @@
       },
       "1323127026827490271": {
         "type": "shopify://apps/optilayer-smart-timer/blocks/timer-auto/019ec5a5-6b38-70a6-b551-da75f785310a",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     },
