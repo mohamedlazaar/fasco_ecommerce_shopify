@@ -147,6 +147,11 @@
         "type": "shopify://apps/optilayer-product-seo/blocks/seo_meta_tags/019b55ea-78f4-7fcb-8579-07116bbce9ff",
         "disabled": false,
         "settings": {}
+      },
+      "1323127026827490271": {
+        "type": "shopify://apps/optilayer-smart-timer/blocks/timer-auto/019ec5a5-6b38-70a6-b551-da75f785310a",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
